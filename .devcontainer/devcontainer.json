@@ -11,12 +11,10 @@
     "remoteUser": "vscode",
     // Remote environment variables to set for processes spawned in the container including lifecycle scripts and any remote editor/IDE server process.
     "remoteEnv": {
-      "INSTALL_AWS": "${localEnv:INSTALL_AWS:-false}",
       "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
     },
     "containerEnv": {
-      "INSTALL_AWS": "${localEnv:INSTALL_AWS:-false}",
-      "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+      "INSTALL_AWS": "${localEnv:INSTALL_AWS:-false}"
     },
     // Mount points to set up when creating the container. See Docker's documentation for the --mount option for the supported syntax.
     "mounts": [
@@ -89,8 +87,8 @@
           "[python]": {
             "editor.formatOnSave": true,
             "editor.codeActionsOnSave": {
-              "source.fixAll": true,
-              "source.organizeImports": true
+              "source.fixAll": "always",
+              "source.organizeImports": "always"
             }
           },
           "[ansible]": {
@@ -105,12 +103,12 @@
             "editor.autoIndent": "advanced",
             "editor.formatOnSave": true,
             "editor.codeActionsOnSave": {
-              "source.fixAll": true
+              "source.fixAll": "always"
             }
           },
           "[ansible-jinja]": {
             "editor.codeActionsOnSave": {
-              "source.fixAll": true
+              "source.fixAll": "always"
             }
           },
           "editor.defaultFormatter": "trunk.io",
