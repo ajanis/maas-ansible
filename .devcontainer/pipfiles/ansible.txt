@@ -1,0 +1,16 @@
+ansible-builder
+ansible-compat
+ansible-core
+ansible-lint
+ansible-navigator
+ansible-runner
+jmespath
+molecule
+molecule-plugins
+netaddr
+openshift
+passlib
+proxmoxer
+redis
+toml
+tomli-w

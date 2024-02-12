@@ -1,0 +1,13 @@
+---
+collections:
+  - name: community.general
+  - name: lvrfrc87.git_acp
+  - name: ansible.netcommon
+  - name: ansible.posix
+  - name: ansible.utils
+  - name: community.docker
+  - name: community.aws
+  - name: grafana.grafana
+  - name: maas.maas
+  - name: community.postgresql
+  

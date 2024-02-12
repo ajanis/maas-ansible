@@ -1,0 +1,73 @@
+all:
+  hosts:
+    localhost:
+      ansible_python_interpreter: /home/vscode/.pyenv/shims/python3
+      vars:
+        o11y_enable: true
+        o11y_prometheus_url:
+          - 'http://10.0.20.100:9090/api/v1/write'
+        o11y_loki_url:
+          - 'http://10.0.20.100:3100/loki/api/v1/push'
+        o11y_alertrules_dest: ./maas_local/alertrules
+        maas_backup_download_path: ./maas_local/backups
+        maas_backup_file: /tmp/mass_backup.tgz
+  vars:
+    maas_version: '3.3'
+    maas_postgres_password: 'pg_admin'
+    maas_installation_type: deb
+    maas_url: http://10.0.20.100:5240/MAAS
+    admin_username: 'admin'
+    admin_password: 'admin'
+    admin_email: 'alan.janis@icloud.com'
+    # admin_id:
+    maas_proxy_postgres_proxy_enabled: false
+    enable_tls: true
+    enable_firewall: true
+    vault_integration: false
+    # vault_url:
+    # vault_approle_id:
+    # vault_wrapped_token:
+    # vault_secrets_path:
+    o11y_enable: true
+    o11y_prometheus_url:
+      - 'http://10.0.20.100:9090/api/v1/write'
+    o11y_loki_url:
+      - 'http://10.0.20.100:3100/loki/api/v1/push'
+    o11y_alertrules_dest: ./maas_local/alertrules
+    maas_backup_download_path: ./maas_local/backups
+    maas_backup_file: /tmp/mass_backup.tgz
+  children:
+    maas_postgres:
+      hosts:
+        maas01-internal:
+          ansible_host: 10.0.20.100
+        # db01.example.com:
+        # db02.example.com:
+        # db03.example.com:
+    maas_region_controller:
+      hosts:
+        maas01-internal:
+          ansible_host: 10.0.20.100
+        # region01.example.com:
+        # region02.example.com:
+        # region03.example.com:
+    maas_rack_controller:
+      hosts:
+        maas01-internal:
+          ansible_host: 10.0.20.100
+        # region01.example.com:
+        # rack01.example.com:
+        # rack02.example.com:
+    # maas_proxy:
+    #   hosts:
+    #     proxy01.example.com:
+    # maas_postgres_proxy:
+    #   hosts:
+    #     region01.example.com:
+    # maas_pacemaker:
+    #   children:
+    #     maas_corosync:
+    #       hosts:
+    #         db01.example.com
+    #         db02.example.com
+    #         db03.example.com

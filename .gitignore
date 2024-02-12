@@ -1,0 +1,8 @@
+*.swp
+/maas-*-alert-rules
+/*-alert-rules.yml
+.vault
+/02-inventory-proxmox.yml
+maas-loki-alert-rules
+maas-prometheus-alert-rules
+maas_local

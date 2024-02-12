@@ -1,0 +1,34 @@
+---
+maas_proxy_postgres_proxy_enabled: false
+maas_postgres_user: "maas"
+maas_postgres_database: "maasdb"
+maas_postgres_password: 'pg_admin'
+
+maas_ha_postgres_enabled: "{{ groups['maas_postgres']|length > 1 }}"
+maas_postgres_uri_login: "{{ maas_postgres_user }}:{{ maas_postgres_password }}"
+
+maas_postgres_proxy_self: "{{ inventory_hostname in groups['maas_postgres_proxy']|d([]) }}"
+maas_postgres_proxy_host: "{{ inventory_hostname if maas_postgres_proxy_self|bool else groups['maas_postgres_proxy']|first|d('') }}"
+
+maas_postgres_proxy_host_v4: "{{ '127.0.0.1' if maas_postgres_proxy_self|bool else hostvars[maas_postgres_proxy_host]['ansible_default_ipv4']['address']|d('') }}"
+maas_postgres_proxy_host_v6: "{{ '::1' if maas_postgres_proxy_self|bool else hostvars[maas_postgres_proxy_host]['ansible_default_ipv6']['address']|d('') }}"
+maas_postgres_proxy_uri: "postgres://{{ maas_postgres_uri_login }}@{{ maas_postgres_proxy_host_v4|d(maas_postgres_proxy_host_v6, True) }}:5432/{{ maas_postgres_database }}"
+
+maas_postgres_primary_host_v4: "{{ hostvars[groups['maas_postgres'][0]]['ansible_default_ipv4']['address']|d('') }}"
+maas_postgres_primary_host_v6: "{{ hostvars[groups['maas_postgres'][0]]['ansible_default_ipv6']['address']|d('') }}"
+maas_postgres_primary_uri: "postgres://{{ maas_postgres_uri_login }}@{{ maas_postgres_primary_host_v4|d(maas_postgres_primary_host_v6, True) }}:5432/{{ maas_postgres_database }}"
+
+maas_postgres_uri: "{{ maas_postgres_proxy_uri if groups['maas_postgres_proxy']|d(False) else maas_postgres_primary_uri }}"
+
+# postgres version number
+maas_postgres_version_number: "{{ 14 if ansible_distribution_major_version | float >= 22 and maas_use_version is version('3.2', '>=') else 12 }}"
+maas_postgres_replication_user: "replicator"
+maas_postgres_backup_dir: "/tmp/maas_backup/" 
+maas_postgres_backup_path: "{{ maas_postgres_backup_dir }}dump.sql.gz"
+maas_config_backup_path: "{{ '/etc/maas/' if maas_install_deb | bool else '' }}"
+maas_runtime_backup_path: "{{ '/var/lib/maas/' if maas_install_deb | bool else '' }}"
+maas_exclude_backup_path: "{{ '/var/lib/maas/boot-resources/' if maas_install_deb | bool else '' }}"
+maas_backup_dest_path: "/tmp/{{ inventory_hostname }}_maas_backup_{{ ansible_date_time.iso8601 }}.tgz"
+maas_restore_config_path: "{{ '/etc/maas' if maas_install_deb | bool else '' }}"
+maas_restore_runtime_path: "{{ '/var/lib/maas' if maas_install_deb | bool else '' }}"
+maas_backup_file: /tmp/mass_backup.tgz

@@ -1,0 +1,7 @@
+# MAAS installation setup
+maas_snap_channel: "stable"     # if using snap, then the channel. ie: stable, beta, edge
+maas_deb_state: "present"       # if using deb, the state for install
+maas_package_name: "{{ 'maas' if (not maas_install_deb | bool) else 'maas-rack-controller' }}"
+
+maas_log_dir: "{{ '/var/log/maas' if maas_install_deb|bool else '/var/snap/maas/common/log' }}"
+maas_promtail_port: 5238

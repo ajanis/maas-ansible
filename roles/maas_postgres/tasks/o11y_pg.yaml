@@ -1,0 +1,48 @@
+---
+- name: "Create postgres-exporter directory"
+  ansible.builtin.file:
+    path: "{{ o11y_postgres_exporter_dir }}"
+    state: "directory"
+    mode: 0755
+
+- name: Install unzip
+  ansible.builtin.apt:
+    name: unzip
+    state: "present"
+
+- name: "Download and unzip latest postgres-exporter release"
+  ansible.builtin.unarchive:
+    src: "{{ pg_exp_pkg }}"
+    dest: "{{ o11y_postgres_exporter_dir }}"
+    remote_src: true
+    creates: "{{ o11y_postgres_exporter_dir ~ '/postgres_exporter' }}"
+    extra_opts:
+      - "--strip-components"
+      - "1"
+
+- name: "Set env variable for data source"
+  ansible.builtin.copy:
+    dest: "{{ o11y_postgres_exporter_dir ~ '/postgres_exporter.env' }}"
+    mode: 0644
+    content: "{{ pg_exp_conn }}"
+
+- name: "Create a service file"
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/postgres_exporter.service
+    mode: 0644
+    content: |
+      [Unit]
+      Description=Postgres Exporter service
+      Requires=postgresql@{{ maas_postgres_version_number }}-main.service
+      After=postgresql@{{ maas_postgres_version_number }}-main.service
+      [Service]
+      User=postgres
+      Group=postgres
+      Type=simple
+      EnvironmentFile={{ o11y_postgres_exporter_dir }}/postgres_exporter.env
+      ExecStart={{ o11y_postgres_exporter_dir }}/postgres_exporter $ARGS
+      ExecReload=/bin/kill -HUP $MAINPID
+      Restart=always
+      [Install]
+      WantedBy=multi-user.target
+  notify: "Start Postgres metrics agent"

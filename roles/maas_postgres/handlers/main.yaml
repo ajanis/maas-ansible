@@ -1,0 +1,26 @@
+---
+- name: "Stop Postgres Service To Load New Configuration"
+  ansible.builtin.systemd:
+    name: "postgresql@{{ maas_postgres_version_number }}-main.service"
+    state: stopped
+    no_block: false # wait for clean stop
+
+- name: "Start Postgres Service To Load New Configuration"
+  ansible.builtin.systemd:
+    name: "postgresql@{{ maas_postgres_version_number }}-main.service"
+    enabled: true
+    state: started
+    no_block: false
+
+- name: "Restart xinetd"
+  ansible.builtin.systemd:
+    name: "xinetd.service"
+    state: restarted
+    enabled: true
+
+- name: "Start Postgres metrics agent"
+  ansible.builtin.systemd:
+    name: postgres_exporter
+    enabled: true
+    state: "restarted"
+    daemon-reload: true

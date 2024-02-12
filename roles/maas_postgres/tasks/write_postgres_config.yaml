@@ -1,0 +1,14 @@
+---
+- name: "Write postgresql.conf"
+  ansible.builtin.template:
+    src: "postgresql.conf.j2"
+    dest: "{{ maas_postgres_config_dir }}postgresql.conf"
+    mode: 0644
+    owner: 'postgres'
+    group: 'postgres'
+  notify:
+    - "Stop Postgres Service To Load New Configuration"
+    - "Start Postgres Service To Load New Configuration"
+
+- name: "Flush Handlers"
+  ansible.builtin.meta: "flush_handlers"

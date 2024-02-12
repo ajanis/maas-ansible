@@ -1,0 +1,13 @@
+---
+
+- name: Uninstall MAAS - snap
+  community.general.snap:
+    name: maas
+    state: absent
+
+- name: Uninstall MAAS - deb
+  ansible.builtin.apt:
+    name:
+      - "maas-rack-controller"
+    purge: true
+    state: absent
