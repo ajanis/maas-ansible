@@ -1,18 +1,12 @@
 ---
 # O11y variables
 
-o11y_enable: true
-o11y_prometheus_url:
-  - 'http://10.0.20.100:9090/api/v1/write'
-o11y_loki_url:
-  - 'http://10.0.20.100:3100/loki/api/v1/push'
-
 o11y_prometheus_alert_repos: "https://github.com/canonical/maas-prometheus-alert-rules.git"
 o11y_loki_alert_repos: "https://github.com/canonical/maas-loki-alert-rules.git"
 o11y_enabled_roles:
   - maas_postgres
-  # - maas_corosync
-  # - maas_pacemaker
+  - maas_corosync
+  - maas_pacemaker
   - maas_region_controller
   - maas_rack_controller
 

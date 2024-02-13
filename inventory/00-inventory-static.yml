@@ -21,7 +21,7 @@ all:
     admin_email: 'alan.janis@icloud.com'
     # admin_id:
     maas_proxy_postgres_proxy_enabled: false
-    enable_tls: true
+    enable_tls: false
     enable_firewall: true
     vault_integration: false
     # vault_url:
@@ -41,33 +41,38 @@ all:
       hosts:
         maas01-internal:
           ansible_host: 10.0.20.100
-        # db01.example.com:
-        # db02.example.com:
-        # db03.example.com:
+        # maas-db01:
+        # maas-db02:
+        # maas-db03:
+
     maas_region_controller:
       hosts:
         maas01-internal:
-          ansible_host: 10.0.20.100
+        # maas-region01:
+        # maas-region02:
+        # maas-region03:
         # region01.example.com:
         # region02.example.com:
         # region03.example.com:
     maas_rack_controller:
       hosts:
         maas01-internal:
-          ansible_host: 10.0.20.100
+          # maas-region01:
         # region01.example.com:
         # rack01.example.com:
         # rack02.example.com:
-    # maas_proxy:
-    #   hosts:
-    #     proxy01.example.com:
-    # maas_postgres_proxy:
-    #   hosts:
-    #     region01.example.com:
-    # maas_pacemaker:
-    #   children:
-    #     maas_corosync:
-    #       hosts:
-    #         db01.example.com
-    #         db02.example.com
-    #         db03.example.com
+    maas_proxy:
+      hosts:
+        maas01-internal:
+
+    maas_postgres_proxy:
+      hosts:
+        maas01-internal:
+
+    maas_pacemaker:
+      children:
+        maas_corosync:
+          hosts:
+            maas-db01:
+            maas-db02:
+            maas-db03:

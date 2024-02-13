@@ -1,0 +1,26 @@
+o11y_enable: true
+o11y_prometheus_url:
+  - 'http://10.0.20.100:9090/api/v1/write'
+o11y_loki_url:
+  - 'http://10.0.20.100:3100/loki/api/v1/push'
+o11y_alertrules_dest: ./maas_local/alertrules
+maas_backup_download_path: ./maas_local/backups
+maas_backup_file: /tmp/mass_backup.tgz
+maas_version: '3.3'
+maas_postgres_password: 'pg_admin'
+maas_installation_type: deb
+maas_url: http://10.0.20.100:5240/MAAS
+admin_username: 'admin'
+admin_password: 'admin'
+admin_email: 'alan.janis@icloud.com'
+# admin_id:
+# maas_proxy_postgres_proxy_enabled: true
+enable_tls: false
+enable_firewall: true
+vault_integration: false
+# vault_url:
+# vault_approle_id:
+# vault_wrapped_token:
+maas_postgres_floating_ip_prefix_len: 24
+maas_postgres_floating_ip: 10.0.20.110
+# http_proxy: 

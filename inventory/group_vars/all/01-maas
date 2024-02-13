@@ -1,13 +1,7 @@
 # Global variable file for Ansible playbooks
-maas_version: '3.3'
 # Standard MAAS Variables
-enable_tls: true           # Use TLS for MAAS communication
-maas_url: http://10.0.20.100:5240/MAAS
-admin_username: 'admin'
-admin_password: 'admin'
-admin_email: 'alan.janis@icloud.com'
-enable_firewall: true       # Run the firewall setup tasks.
-maas_installation_type: deb
+# enable_tls: true           # Use TLS for MAAS communication
+# enable_firewall: true       # Run the firewall setup tasks.
 # Installation variables
 maas_install_deb: "{{ maas_installation_type == 'deb' }}"
 maas_snap_channel: "stable"     # if using snap, then the channel. ie: stable, beta, edge
