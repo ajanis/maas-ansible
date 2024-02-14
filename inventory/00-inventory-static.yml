@@ -1,23 +1,21 @@
 localhost:
   vars:
     o11y_enable: true
-    o11y_prometheus_url:
-      - 'http://10.0.20.100:9090/api/v1/write'
-    o11y_loki_url:
-      - 'http://10.0.20.100:3100/loki/api/v1/push'
+    o11y_prometheus_url: 'http://10.0.20.100:9090/api/v1/write'
+    o11y_loki_url: 'http://10.0.20.100:3100/loki/api/v1/push'
     o11y_alertrules_dest: ./maas_local/alertrules
     maas_backup_download_path: ./maas_local/backups
-    maas_backup_file: /tmp/mass_backup.tgz
+    maas_backup_file: mass_backup.tgz
+    maas_postgres_primary: "{{ groups['maas_postgres'][0] }}"
 all:
   vars:
-    maas_version: '3.3'
+    maas_version: '3.4'
     maas_postgres_password: 'pg_admin'
-    maas_installation_type: deb
+    maas_installation_type: snap
     maas_url: http://10.0.20.100:5240/MAAS
     admin_username: 'admin'
     admin_password: 'admin'
     admin_email: 'alan.janis@icloud.com'
-    # admin_id:
     maas_proxy_postgres_proxy_enabled: false
     enable_tls: false
     enable_firewall: true
@@ -27,52 +25,51 @@ all:
     # vault_wrapped_token:
     # vault_secrets_path:
     o11y_enable: true
-    o11y_prometheus_url:
-      - 'http://10.0.20.100:9090/api/v1/write'
-    o11y_loki_url:
-      - 'http://10.0.20.100:3100/loki/api/v1/push'
+    o11y_prometheus_url: 'http://10.0.20.100:9090/api/v1/write'
+    o11y_loki_url: 'http://10.0.20.100:3100/loki/api/v1/push'
     o11y_alertrules_dest: ./maas_local/alertrules
     maas_backup_download_path: ./maas_local/backups
-    maas_backup_file: /tmp/mass_backup.tgz
-
+    maas_backup_file: mass_backup.tgz
+    maas_postgres_floating_ip_prefix_len: 24
+    maas_postgres_floating_ip: 10.0.20.110
   children:
     maas_postgres:
       hosts:
-        maas01-internal:
+        maas-aio-01:
           ansible_host: 10.0.20.100
-        # maas-db01:
-        # maas-db02:
-        # maas-db03:
+        # maas-pg01:
+        # maas-pg02:
+        # maas-pg03:
 
     maas_region_controller:
       hosts:
-        maas01-internal:
+        maas-aio-01: {}
         # maas-region01:
         # maas-region02:
         # maas-region03:
-        # region01.example.com:
-        # region02.example.com:
-        # region03.example.com:
+
     maas_rack_controller:
       hosts:
-        maas01-internal:
+        maas-aio-01: {}
           # maas-region01:
-        # region01.example.com:
-        # rack01.example.com:
-        # rack02.example.com:
+          # maas-rack01:
+          # maas-rack02:
+
     maas_proxy:
       hosts:
-        maas01-internal:
+        maas-aio-01: {}
 
-    maas_postgres_proxy:
+    maas_postgres_proxy: {}
+      # hosts:
+      #   maas-region01:
 
 
     maas_pacemaker:
       children:
         maas_corosync:
           hosts:
-            maas01-internal:
+            maas-aio-01: {}
           # hosts:
-          #   maas-db01:
-          #   maas-db02:
-          #   maas-db03:
+          #   maas-pg01:
+          #   maas-pg02:
+          #   maas-pg03:
