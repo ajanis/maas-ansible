@@ -17,7 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update --no-install-recommends \
     zlib1g-dev libreadline-dev libbz2-dev libsqlite3-dev libcap-dev \
     libxml2-dev libxmlsec1-dev libffi-dev libtinfo5 liblzma-dev libpq-dev \
     musl-dev libonig5 libtool inetutils-ping dnsutils bind9-dnsutils \
-    docker.io redis redis-sentinel
+    docker.io redis redis-sentinel mypy
 
 WORKDIR "${LOCAL_WORKSPACE_FOLDER}"
 
