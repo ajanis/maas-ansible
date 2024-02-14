@@ -6,3 +6,4 @@
 maas-loki-alert-rules
 maas-prometheus-alert-rules
 maas_local
+.DS_Store
