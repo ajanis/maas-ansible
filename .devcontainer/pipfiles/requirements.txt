@@ -49,3 +49,4 @@ wrapt
 yamllint
 pytest-testinfra
 pytest-xdist
+mypy
