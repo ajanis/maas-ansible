@@ -1,4 +1,6 @@
 localhost:
+  ansible_connection: local
+  ansible_python_interpreter: /home/vscode/.pyenv/shims/python3
   vars:
     o11y_enable: true
     o11y_prometheus_url: 'http://10.0.20.100:9090/api/v1/write'
@@ -9,7 +11,7 @@ localhost:
     maas_postgres_primary: "{{ groups['maas_postgres'][0] }}"
 all:
   vars:
-    maas_version: '3.4'
+    maas_version: '3.3'
     maas_postgres_password: 'pg_admin'
     maas_installation_type: snap
     maas_url: http://10.0.20.100:5240/MAAS
@@ -43,23 +45,23 @@ all:
 
     maas_region_controller:
       hosts:
-        maas-aio-01: {}
+        maas-aio-01:
         # maas-region01:
         # maas-region02:
         # maas-region03:
 
     maas_rack_controller:
       hosts:
-        maas-aio-01: {}
+        maas-aio-01:
           # maas-region01:
           # maas-rack01:
           # maas-rack02:
 
     maas_proxy:
       hosts:
-        maas-aio-01: {}
+        maas-aio-01:
 
-    maas_postgres_proxy: {}
+    maas_postgres_proxy:
       # hosts:
       #   maas-region01:
 
@@ -68,7 +70,7 @@ all:
       children:
         maas_corosync:
           hosts:
-            maas-aio-01: {}
+            maas-aio-01:
           # hosts:
           #   maas-pg01:
           #   maas-pg02:
