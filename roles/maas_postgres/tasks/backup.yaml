@@ -1,0 +1,22 @@
+- name: backup | Ensure psycopg2 pip module is installed
+  ansible.builtin.pip:
+    executable: pip3
+    name: psycopg2
+    state: present
+
+- name: backup | Ensure remote postgres backup directory exists
+  ansible.builtin.file:
+    state: directory
+    path: "{{ maas_postgres_backup_dir }}"
+    mode: "0777"
+
+- name: Dump an existing database to a file (with compression)
+  community.postgresql.postgresql_db:
+    name: "{{ maas_postgres_database }}"
+    state: dump
+    login_host: "{{ groups['maas_postgres'][0] }}"
+    target: "{{ maas_postgres_backup_path }}"
+    login_user: "{{ maas_postgres_user }}"
+    ssl_mode: disable
+    login_password: "{{ maas_postgres_password }}"
+  become: true
