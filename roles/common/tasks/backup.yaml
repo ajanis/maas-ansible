@@ -1,30 +1,50 @@
 ---
+
 - name: backup | Generate List of Archiveable Directories
+  vars:
+    archive: []
   ansible.builtin.set_fact:
-    archive_list: "{{ archive_list | default([]) + [archive_built] }}"
+    archive_list: "{{ archive + [item] }}"
   loop:
-    - "{{ ('maas_postgres_primary' in group_names) | ternary('{{ maas_postgres_backup_dir }}', None) }}"
-    - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_config_backup_path }}', None) }}"
-    - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_runtime_backup_path }}', None) }}"
-  loop_var: archive_built
-  when: archive_built
+    - "{{ ('maas_postgres_primary' in group_names) | ternary('{{ maas_postgres_backup_dir }}', '') }}"
+    - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_config_backup_path }}', '') }}"
+    - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_runtime_backup_path }}', '') }}"
+  when: item
+
+- name: backup | Print backup archives to create
+  ansible.builtin.debug:
+    msg: "{{ item }}"
+  when: item is defined
+  loop: "{{ archive_list }}"
 
 - name: backup | Bundle Backup Assets
   community.general.archive:
-    path: "{{ archive_list }}"
+    path: "{{ item }}"
     mode: "0644"
     exclude_path:
       - "{{ maas_exclude_backup_path }}"
     dest: "{{ maas_backup_dest_path }}"
+  loop: "{{ archive_list }}"
+  register: backups_created
+  when: archive_list is defined
 
-# ansible.builtin.fetch has the ability to be oom killed on large files, so we're using scp instead
+- name: backup | Stat archives created
+  ansible.builtin.stat:
+    path: "{{ item.dest }}"
+  when: backups_created is defined
+  loop: "{{ backups_created.results }}"
+
+- name: backup | List archives created
+  ansible.builtin.debug:
+    msg: "{{ item.dest }}"
+  when: backups_created is defined
+  loop: "{{ backups_created.results }}"
+
 - name: backup | Download Backup
-  ansible.builtin.command: scp {{ ansible_user }}@{{ inventory_hostname }}:{{ maas_backup_dest_path }} {{ maas_backup_download_path }}
-  delegate_to: localhost
-  become: false # don't need sudo locally
-  changed_when: false
-
-- name: backup | Remove Backup from Remote Host
-  ansible.builtin.file:
-    path: "{{ maas_backup_dest_path }}"
-    state: absent
+  ansible.posix.synchronize:
+    mode: pull
+    dest: "{{ maas_backup_download_path }}/{{ item.dest | basename }}"
+    src: "{{ item.dest }}"
+    delete: true
+  loop: "{{ backups_created.results }}"
+  when: item

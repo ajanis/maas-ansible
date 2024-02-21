@@ -6,7 +6,6 @@ o11y_loki_url:
   - http://10.0.20.100:3100/loki/api/v1/push
 o11y_alertrules_dest: ./maas_local/alertrules
 maas_backup_download_path: ./maas_local/backups
-maas_backup_file: mass_backup.tgz
 maas_version: "3.3"
 maas_postgres_password: pg_admin
 maas_installation_type: snap
@@ -25,3 +24,4 @@ vault_integration: false
 maas_postgres_floating_ip_prefix_len: 24
 maas_postgres_floating_ip: 10.0.20.110
 # http_proxy:
+maas_postgres_primary: "{{ groups['maas_postgres'][0] }}"
