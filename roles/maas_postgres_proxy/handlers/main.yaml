@@ -1,6 +1,6 @@
 ---
-- name: "Restart Postgres HAProxy"
+- name: Restart Postgres HAProxy
   ansible.builtin.systemd:
-    name: "haproxy.service"
-    state: 'restarted'
+    name: haproxy.service
+    state: restarted
     enabled: true

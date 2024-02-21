@@ -1,5 +1,6 @@
 ---
-- hosts: maas_postgres_primary
+- name: Backup postgres
+  hosts: maas_postgres_primary
   tasks:
     - name: Backup Postgres
       ansible.builtin.include_role:
@@ -10,7 +11,8 @@
   tags:
     - maas_postgres_primary
 
-- hosts:
+- name: Archive Backups
+  hosts:
     - maas_postgres_primary
     - maas_region_controller
     - maas_rack_controller
@@ -22,7 +24,8 @@
   become: true
   gather_facts: true
 
-- hosts:
+- name: Remove temporary database dump
+  hosts:
     - maas_postgres_primary
   tasks:
     - name: Remove DB dump

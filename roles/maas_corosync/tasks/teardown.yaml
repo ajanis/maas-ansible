@@ -1,14 +1,15 @@
 ---
-- name: "Uninstall Corosync"
+- name: teardown | Uninstall Corosync
   ansible.builtin.apt:
-    name: "corosync"
+    name: corosync
     state: absent
     purge: true
     autoremove: true
 
-- name: "Remove Corosync artifacts"
+- name: teardown | Remove Corosync artifacts
   ansible.builtin.file:
     state: absent
-    name: "{{ item }}"
-  with_items:
-    - "/etc/corosync/corosync.conf"
+    name: "{{ corrosync_artifacts }}"
+  loop:
+    - /etc/corosync/corosync.conf
+  loop_var: corrosync_artifacts

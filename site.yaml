@@ -1,60 +1,59 @@
 ---
-
 # This playbook should deploy everything
-
-- hosts: all
+- name: Site playbook
+  hosts: all
   tasks:
-    - name: "Ensure required variables have been defined"
+    - name: Ensure required variables have been defined
       ansible.builtin.assert:
         quiet: true
-        fail_msg: "Required variable has not been defined"
+        fail_msg: Required variable has not been defined
         that:
           - maas_url is defined
           - maas_version is defined
           - maas_installation_type is defined
           - maas_postgres_password is defined
 
-    - name: "Ensure maas_version is a version string"
+    - name: Ensure maas_version is a version string
       ansible.builtin.assert:
         fail_msg: "'{{ maas_version }}' is not a valid version number"
         that:
           - maas_version is regex('\d+\.\d+(\.\d+)?')
 
-    - name: "Ensure o11y can be enabled"
+    - name: Ensure o11y can be enabled
       ansible.builtin.assert:
         quiet: true
-        fail_msg: "Prometheus or Loki endpoints must be defined"
+        fail_msg: Prometheus or Loki endpoints must be defined
         that:
           - (o11y_prometheus_url|length > 0 or o11y_loki_url|length > 0)
       when: o11y_enable
 
-    - name: "Define proxy environment if proxies given"
+    - name: Define proxy environment if proxies given
       ansible.builtin.set_fact:
-        proxy_env: "{{ proxy_env | combine({'http_proxy' : http_proxy | d(omit)}) |
-          combine({'https_proxy' : https_proxy | d(omit)}) }}"
+        proxy_env: "{{ proxy_env | combine({'http_proxy': http_proxy | d(omit)}) | combine({'https_proxy': https_proxy | d(omit)}) }}"
 
-    - name: "Show proxy environment if in use"
+    - name: Show proxy environment if in use
       ansible.builtin.debug:
         msg: "Playbooks using proxy settings: {{ proxy_env }}"
       with_dict: "{{ proxy_env }}"
 
-    - name: "Ensure dist is up to date"
+    - name: Ensure dist is up to date
       ansible.builtin.apt:
-        upgrade: "dist"
+        upgrade: dist
         update_cache: true
         cache_valid_time: 3600
       become: true
 
-    - name: "Discover host architecture"
+    - name: Discover host architecture
       ansible.builtin.command: dpkg --print-architecture
       register: arch_out
       changed_when: false
 
-    - name: "Set architechture facts"
+    - name: Set architechture facts
       ansible.builtin.set_fact:
         ubuntu_arch: "{{ arch_out.stdout }}"
 
-- hosts: maas_postgres
+- name: Build postgres
+  hosts: maas_postgres
   roles:
     - role: maas_postgres
     - role: o11y_agent
@@ -67,7 +66,8 @@
     - maas_ha_postgres
   environment: "{{ proxy_env }}"
 
-- hosts: maas_corosync
+- name: Build Corrosync
+  hosts: maas_corosync
   roles:
     - role: maas_corosync
   become: true
@@ -77,7 +77,8 @@
     - maas_ha_postgres
   environment: "{{ proxy_env }}"
 
-- hosts: maas_pacemaker
+- name: Build pacemakers
+  hosts: maas_pacemaker
   roles:
     - role: maas_pacemaker
   become: true
@@ -87,7 +88,8 @@
     - maas_ha_postgres
   environment: "{{ proxy_env }}"
 
-- hosts: maas_postgres_proxy
+- name: Build postgres proxies
+  hosts: maas_postgres_proxy
   roles:
     - role: maas_postgres_proxy
   become: true
@@ -98,7 +100,8 @@
 
 # proxies are provisioned prior to rack controllers so the rack controller
 # will request to register to region controllers through the proxy
-- hosts: maas_proxy
+- name: Build MAAS proxies
+  hosts: maas_proxy
   roles:
     - role: maas_proxy
   become: true
@@ -107,7 +110,8 @@
     - maas_proxy
   environment: "{{ proxy_env }}"
 
-- hosts: maas_region_controller
+- name: Build region controllers
+  hosts: maas_region_controller
   roles:
     - role: maas_region_controller
     - role: o11y_agent
@@ -118,7 +122,8 @@
     - maas_controller
   environment: "{{ proxy_env }}"
 
-- hosts: maas_rack_controller
+- name: Build rack controllers
+  hosts: maas_rack_controller
   roles:
     - role: maas_rack_controller
     - role: o11y_agent

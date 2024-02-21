@@ -1,60 +1,61 @@
 ---
 # will reset the system state to that prior to maas install
 
-- hosts: all
+- name: Teardown playbook
+  hosts: all
   become: true
   gather_facts: true
   tasks:
-    - name: "Collect facts about installed packages"
+    - name: Collect facts about installed packages
       ansible.builtin.package_facts:
         manager: auto
         strategy: all
 
-    - name: "Collect facts about system services"
-      ansible.builtin.service_facts:
+    - name: Collect facts about system services
+      ansible.builtin.service_facts: {}
 
-    - name: "Remove iptables rules"
+    - name: Remove iptables rules
       ansible.builtin.include_role:
         name: maas_firewall
         tasks_from: teardown
 
-    - name: "Uninstall MAAS region"
+    - name: Uninstall MAAS region
       ansible.builtin.include_role:
-        name: "maas_region_controller"
+        name: maas_region_controller
         tasks_from: teardown
 
-    - name: "Uninstall MAAS rack"
+    - name: Uninstall MAAS rack
       ansible.builtin.include_role:
         name: maas_rack_controller
         tasks_from: teardown
 
-    - name: "Uninstall HAProxy"
+    - name: Uninstall HAProxy
       ansible.builtin.include_role:
         name: maas_proxy
         tasks_from: teardown
 
-    - name: "Uninstall Pacemaker"
+    - name: Uninstall Pacemaker
       ansible.builtin.include_role:
         name: maas_pacemaker
         tasks_from: teardown
 
-    - name: "Uninstall Corosync"
+    - name: Uninstall Corosync
       ansible.builtin.include_role:
         name: maas_corosync
         tasks_from: teardown
 
-    - name: "Uninstall postgres"
+    - name: Uninstall postgres
       ansible.builtin.include_role:
         name: maas_postgres
         tasks_from: teardown
 
-    - name: "Uninstall o11y"
+    - name: Uninstall o11y
       ansible.builtin.include_role:
         name: o11y_agent
         tasks_from: teardown
-      when: group_names|intersect(o11y_enabled_roles)
+      when: group_names | intersect(o11y_enabled_roles)
 
-    - name: "Remove unused packages from the cache"
+    - name: Remove unused packages from the cache
       ansible.builtin.apt:
         autoclean: true
 

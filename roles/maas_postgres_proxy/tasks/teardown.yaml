@@ -1,14 +1,15 @@
 ---
-- name: "Uninstall HAProxy"
+- name: teardown | Uninstall HAProxy
   ansible.builtin.apt:
     name: haproxy
     state: absent
     purge: true
 
-- name: "Remove HAProxy artifacts"
+- name: teardown | Remove HAProxy artifacts
   ansible.builtin.file:
     state: absent
-    name: "{{ item }}"
-  with_items:
+    name: "{{ haproxy_artifact }}"
+  loop:
     - /etc/haproxy/haproxy.cfg
     - /var/lib/haproxy
+  loop_var: haproxy_artifact

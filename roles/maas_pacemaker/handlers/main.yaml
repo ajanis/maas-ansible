@@ -1,20 +1,20 @@
 ---
-- name: "Ensure Pacemaker is started"
+- name: Ensure Pacemaker is started
   ansible.builtin.systemd:
-    name: "pacemaker.service"
+    name: pacemaker.service
     state: started
     enabled: false # if the system is rebooted, the user may not want this member to rejoin automatically
     no_block: false
 
-- name: "Restart sshd"
+- name: Restart sshd
   ansible.builtin.systemd:
-    name: "sshd.service"
+    name: sshd.service
     state: restarted
     no_block: false
 
-- name: "Start HA clusters metrics agent"
+- name: Start HA clusters metrics agent
   ansible.builtin.systemd:
     name: ha_cluster_exporter
     enabled: true
-    state: "restarted"
+    state: restarted
     daemon-reload: true

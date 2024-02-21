@@ -1,5 +1,5 @@
 ---
-- name: "Add temporary primary IP"
+- name: configure_postgres_secondary | Add temporary primary IP
   ansible.builtin.shell: >
     ip addr add\
       {{ maas_postgres_floating_ip }}/{{ maas_postgres_floating_ip_prefix_len }}\
@@ -9,37 +9,38 @@
   failed_when:
     - ip_addr_result.rc != 0
     - '"RTNETLINK answers: File exists" not in ip_addr_result.stderr'
+  changed_when: false
 
-- name: "Add floating IP to postgres' bind addresses"
+- name: configure_postgres_secondary | Add floating IP to postgres' bind addresses
   ansible.builtin.include_tasks:
     file: write_postgres_config.yaml
   vars:
     extra_ip: "{{ maas_postgres_floating_ip }}"
   when: (inventory_hostname == groups['maas_postgres'][0]) and (maas_postgres_floating_ip is defined)
 
-- name: "Stop Postgres To Clear Out Data"
+- name: configure_postgres_secondary | Stop Postgres To Clear Out Data
   ansible.builtin.systemd:
-    name: "postgresql@{{ maas_postgres_version_number }}-main.service"
+    name: postgresql@{{ maas_postgres_version_number }}-main.service
     state: stopped
     no_block: false
   when: not (inventory_hostname == groups['maas_postgres'][0])
 
-- name: "Remove Previous Data Directory"
+- name: configure_postgres_secondary | Remove Previous Data Directory
   ansible.builtin.file:
     path: "{{ maas_postgres_data_dir }}"
-    state: 'absent'
+    state: absent
   when: not (inventory_hostname == groups['maas_postgres'][0])
 
-- name: "Create a New Data Directory"
+- name: configure_postgres_secondary | Create a New Data Directory
   ansible.builtin.file:
     path: "{{ maas_postgres_data_dir }}"
     state: directory
     owner: postgres
     group: postgres
-    mode: '0700'
+    mode: "0700"
   when: not (inventory_hostname == groups['maas_postgres'][0])
 
-- name: "Create Base Backup"
+- name: configure_postgres_secondary | Create Base Backup
   ansible.builtin.expect:
     command: >
       pg_basebackup -h {{ maas_postgres_floating_ip }}
@@ -47,46 +48,47 @@
       -p 5432 -D {{ maas_postgres_data_dir }} -Fp -Xs -R
       -S {{ maas_postgres_replication_slot ~ "_" ~ inventory_hostname|regex_replace('[^A-Za-z0-9_]', '_') }}
     responses:
-      '(?i)password': "{{ maas_postgres_replication_password }}"
+      (?i)password: "{{ maas_postgres_replication_password }}"
   when: not (inventory_hostname == groups['maas_postgres'][0])
   become: true
   become_user: postgres
 
-- name: "Create standby.signal"
+- name: configure_postgres_secondary | Create standby.signal
   ansible.builtin.file:
     path: "{{ maas_postgres_data_dir }}/standby.signal"
     owner: postgres
     group: postgres
-    mode: 0644
+    mode: "0644"
   when: not (inventory_hostname == groups['maas_postgres'][0])
   notify:
-    - "Start Postgres Service To Load New Configuration"
+    - Start Postgres Service To Load New Configuration
 
-- name: "Flush Handlers"
-  ansible.builtin.meta: "flush_handlers"
+- name: configure_postgres_secondary | Flush Handlers
+  ansible.builtin.meta: flush_handlers
 
-- name: "Ensure application_name Preserved"
+- name: configure_postgres_secondary | Ensure application_name Preserved
   community.postgresql.postgresql_set:
-    name: "primary_conninfo"
+    name: primary_conninfo
     value: "{{ maas_postgres_primary_conninfo }}"
   become: true
   become_user: postgres
   when: not (inventory_hostname == groups['maas_postgres'][0])
 
-- name: "Disable Postgres in systemd for pacemaker management"
+- name: configure_postgres_secondary | Disable Postgres in systemd for pacemaker management
   ansible.builtin.systemd:
-    name: "postgresql@{{ maas_postgres_version_number }}-main.service"
+    name: postgresql@{{ maas_postgres_version_number }}-main.service
     enabled: false
 
-- name: "Remove temporary primary IP"
+- name: configure_postgres_secondary | Remove temporary primary IP
   ansible.builtin.command: >
     ip addr del {{ maas_postgres_floating_ip }}/{{ maas_postgres_floating_ip_prefix_len }} dev {{ maas_postgres_floating_ip_iface }}
   when: (inventory_hostname == groups['maas_postgres'][0]) and (maas_postgres_floating_ip is defined)
+  changed_when: false
 
-- name: "Disable auto-start"
+- name: configure_postgres_secondary | Disable auto-start
   ansible.builtin.copy:
     dest: "{{ maas_postgres_config_dir }}start.conf"
-    content: "disabled"
-    mode: 0644
+    content: disabled
+    mode: "0644"
     owner: postgres
     group: postgres

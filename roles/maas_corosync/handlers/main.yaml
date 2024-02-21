@@ -1,6 +1,6 @@
 ---
-- name: "Restart Corosync"
+- name: Restart Corosync
   ansible.builtin.systemd:
-    name: "corosync.service"
+    name: corosync.service
     state: restarted
     no_block: false

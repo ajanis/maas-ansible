@@ -1,5 +1,6 @@
 ---
-- hosts:
+- name: Postgres restore
+  hosts:
     - maas_postgres_primary
     - maas_region_controller
     - maas_rack_controller
@@ -11,7 +12,8 @@
   become: true
   gather_facts: true
 
-- hosts: maas_postgres_primary
+- name: Postgres dump
+  hosts: maas_postgres_primary
   tasks:
     - name: Restore from database dump
       ansible.builtin.include_role:
@@ -20,7 +22,8 @@
   become: true
   gather_facts: true
 
-- hosts:
+- name: Backups
+  hosts:
     - maas_postgres_primary
     - maas_region_controller
     - maas_rack_controller

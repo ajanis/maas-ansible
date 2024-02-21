@@ -10,4 +10,4 @@ collections:
   - name: grafana.grafana
   - name: maas.maas
   - name: community.postgresql
-  
+  - name: community.crypto

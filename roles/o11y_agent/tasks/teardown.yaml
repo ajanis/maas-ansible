@@ -1,13 +1,13 @@
 ---
-
-- name: Set the grafana agent service status
+- name: teardown | Set the grafana agent service status
   ansible.builtin.service:
     name: telemetry
     state: stopped
   when: ansible_facts.services['telemetry.service'] is defined
 
-- name: "Remove o11y agent artifacts"
+- name: teardown | Remove o11y agent artifacts
   ansible.builtin.file:
     state: absent
-    name: "{{ item }}"
-  with_items: "{{ o11y_grafana_agent_dirs|union([o11y_grafana_agent_unit]) }}"
+    name: "{{ agent_dir }}"
+  loop: "{{ o11y_grafana_agent_dirs|union([o11y_grafana_agent_unit]) }}"
+  loop_var: agent_dir

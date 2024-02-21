@@ -1,0 +1,14 @@
+dependencies:
+    python:
+      - pywinrm
+    system:
+      - iputils [platform:rpm]
+    galaxy:
+      collections:
+        - name: ansible.utils
+    ansible_core:
+        package_pip: ansible-core==2.14.2
+    ansible_runner:
+        package_pip: ansible-runner==2.3.1
+    python_interpreter:
+        python_path: "/home/vscode/.pyenv/shims/python3"

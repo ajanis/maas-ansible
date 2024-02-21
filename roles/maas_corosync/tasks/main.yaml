@@ -1,14 +1,14 @@
 ---
-- name: "Install Corosync"
+- name: Install Corosync
   ansible.builtin.apt:
-    name: "corosync"
+    name: corosync
     state: present
     update_cache: true
 
-- name: "Write Corosync config"
+- name: Write Corosync config
   ansible.builtin.template:
-    src: "corosync.conf.j2"
-    dest: "/etc/corosync/corosync.conf"
-    mode: 0644
+    src: corosync.conf.j2
+    dest: /etc/corosync/corosync.conf
+    mode: "0644"
   notify:
-    - "Restart Corosync"
+    - Restart Corosync

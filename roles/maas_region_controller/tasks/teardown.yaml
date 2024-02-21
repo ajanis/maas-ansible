@@ -1,22 +1,23 @@
 ---
 # Installs MAAS
 
-- name: Uninstall MAAS - Snap
+- name: teardown | Uninstall MAAS - Snap
   community.general.snap:
     name: maas
     state: absent
 
-- name: Uninstall MAAS - Deb
+- name: teardown | Uninstall MAAS - Deb
   ansible.builtin.apt:
-    name: "maas-region-api"
+    name: maas-region-api
     purge: true
     state: absent
 
-- name: Remove MAAS Files
+- name: teardown | Remove MAAS Files
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ maasfile }}"
     state: absent
-  with_items:
-    - "/var/snap/maas/"
-    - "/var/lib/maas/"
-    - "/etc/maas/"
+  loop:
+    - /var/snap/maas/
+    - /var/lib/maas/
+    - /etc/maas/
+  loop_var: maasfile

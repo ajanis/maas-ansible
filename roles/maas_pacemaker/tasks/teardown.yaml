@@ -1,10 +1,10 @@
 ---
-- name: "Stop Cluster services"
+- name: teardown | Stop Cluster services
   ansible.builtin.command: pcs cluster stop --all
   changed_when: false
   when: "'pacemaker' in ansible_facts.packages"
 
-- name: "Uninstall Pacemaker Packages"
+- name: teardown | Uninstall Pacemaker Packages
   ansible.builtin.apt:
     name:
       - pacemaker
@@ -16,15 +16,16 @@
     purge: true
     autoremove: true
 
-- name: "Remove Pacemaker artifacts"
+- name: teardown | Remove Pacemaker artifacts
   ansible.builtin.file:
     state: absent
-    name: "{{ item }}"
-  with_items:
+    name: "{{ pacemaker_artifacts }}"
+  loop:
     - /tmp/configure_pacemaker.sh
     - /tmp/pacemaker_auth
     - /etc/tmpfiles.d/postgresql-part.conf
     - /etc/ssh/sshd_config.d/pacemaker_sshd.conf
-    - "{{ maas_pacemaker_tmp_cib|d(false) }}"
+    - "{{ maas_pacemaker_tmp_cib | d(false) }}"
     - /etc/systemd/system/ha_cluster_exporter.service
     - "{{ ha_exp_dir }}"
+  loop_var: pacemaker_artifacts
