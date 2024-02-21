@@ -23,7 +23,7 @@ all:
     maas_backup_download_path: ./maas_local/backups
     maas_postgres_floating_ip_prefix_len: 24
     maas_postgres_floating_ip: 10.0.20.110
-    # maas_postgres_primary: "{{ groups['maas_postgres'][0] }}"
+    maas_postgres_primary: "{{ groups['maas_postgres'][0] }}"
 
   children:
 

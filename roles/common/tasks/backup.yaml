@@ -7,8 +7,10 @@
     archive_list: "{{ archive + [item] }}"
   loop:
     - "{{ ('maas_postgres_primary' in group_names) | ternary('{{ maas_postgres_backup_dir }}', '') }}"
+    - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_snap_backup_path }}', '') }}"
     - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_config_backup_path }}', '') }}"
     - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_runtime_backup_path }}', '') }}"
+
   when: item
 
 - name: backup | Print backup archives to create
@@ -16,6 +18,39 @@
     msg: "{{ item }}"
   when: item is defined
   loop: "{{ archive_list }}"
+
+- name: backup | Stop MAAS snap
+  ansible.builtin.command:
+    cmd: snap stop maas
+  register: snap_stop
+  changed_when: snap_stop is changed
+  when:
+    - not maas_install_deb | bool
+    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
+
+- name: backup | Save MAAS snap
+  ansible.builtin.command:
+    cmd: snap save maas
+  register: snap_save
+  changed_when: snap_save is changed
+  when:
+    - not maas_install_deb | bool
+    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
+
+- name: backup | Print snap save info
+  ansible.builtin.debug:
+    msg: "{{ snap_save }}"
+  when:
+    - not maas_install_deb | bool
+    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
+
+- name: backup | Export MAAS snap backup
+  ansible.builtin.command:
+    cmd: "snap export-snapshot {{ snap_save.snapshot_id }} {{ maas_config_backup_path }}/{{ inventory_hostname }}_maas_snap_{{ ansible_date_time.iso8601 }}"
+  become: true
+  when:
+    - not maas_install_deb | bool
+    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
 
 - name: backup | Bundle Backup Assets
   community.general.archive:
@@ -48,3 +83,10 @@
     delete: true
   loop: "{{ backups_created.results }}"
   when: item
+
+- name: backup | Delete backup archives
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  when: item is defined
+  loop: "{{ archive_list }}"
