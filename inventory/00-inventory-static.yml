@@ -40,6 +40,8 @@ all:
       hosts:
         maas02-morpheus:
           ansible_host: 44.10.4.200
+          ansible_user: silver
+
     # maas-pg01:
     # maas-pg02:
     # maas-pg03:
