@@ -1,5 +1,4 @@
 ---
-
 - name: backup | Generate List of Archiveable Directories
   vars:
     archive: []
@@ -10,7 +9,6 @@
     - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_snap_backup_path }}', '') }}"
     - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_config_backup_path }}', '') }}"
     - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_runtime_backup_path }}', '') }}"
-
   when: item
 
 - name: backup | Print backup archives to create
@@ -37,22 +35,37 @@
     - not maas_install_deb | bool
     - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
 
-- name: backup | Print snap save info
+- name: backup | Set fact for the archive created by MAAS snap backup task
+  ansible.builtin.set_fact:
+    maas_snap_backup_file: "{{ maas_snap_backup_path }}/{{ (snap_save.stdout_lines | last) | regex_replace('^(?P<set>[0-9]+)\\s+(?P<snap>[a-z]+)\\s+(?:[0-9|\\.|a-z]+)\\\
+      s+(?P<version>[0-9|\\.|a-z|-]+)\\s+(?P<revision>[0-9]+).*$', '\\g<set>_\\g<snap>_\\g<version>_\\g<revision>') }}.zip"
+  when:
+    - snap_save is success
+    - not maas_install_deb | bool
+    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
+
+- name: backup | Stat file details for MAAS snap backup
+  ansible.builtin.stat:
+    path: "{{ maas_snap_backup_file }}"
+  register: maas_snap_backup
+  when:
+    - snap_save is success
+    - not maas_install_deb | bool
+    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
+
+- name: backup | Print file details for MAAS snap backup
   ansible.builtin.debug:
-    msg: "{{ snap_save }}"
+    msg: |
+      Exists: {{ maas_snap_backup.stat.exists }}
+      Path: {{ maas_snap_backup.stat.path }}
+      File Size: {{ maas_snap_backup.stat.size }}
+      Checksum: {{ maas_snap_backup.stat.checksum }}
   when:
+    - maas_snap_backup.stat.exists | bool
     - not maas_install_deb | bool
     - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
 
-- name: backup | Export MAAS snap backup
-  ansible.builtin.command:
-    cmd: "snap export-snapshot {{ snap_save.snapshot_id }} {{ maas_config_backup_path }}/{{ inventory_hostname }}_maas_snap_{{ ansible_date_time.iso8601 }}"
-  become: true
-  when:
-    - not maas_install_deb | bool
-    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
-
-- name: backup | Bundle Backup Assets
+- name: backup | Create archive from all backup locations
   community.general.archive:
     path: "{{ item }}"
     mode: "0644"
@@ -63,17 +76,22 @@
   register: backups_created
   when: archive_list is defined
 
-- name: backup | Stat archives created
+- name: backup | Stat archive files
   ansible.builtin.stat:
     path: "{{ item.dest }}"
+  register: maas_archive_files
   when: backups_created is defined
   loop: "{{ backups_created.results }}"
 
-- name: backup | List archives created
+- name: backup | Print archive file information
   ansible.builtin.debug:
-    msg: "{{ item.dest }}"
+    msg: |
+      Exists: {{ item.stat.exists }}
+      Path: {{ item.stat.path }}
+      File Size: {{ item.stat.size }}
+      Checksum: {{ item.stat.checksum }}
   when: backups_created is defined
-  loop: "{{ backups_created.results }}"
+  loop: "{{ maas_archive_files.results }}"
 
 - name: backup | Download Backup
   ansible.posix.synchronize:

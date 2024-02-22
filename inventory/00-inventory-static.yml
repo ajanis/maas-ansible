@@ -38,7 +38,6 @@ all:
     maas_postgres_primary:
       hosts:
         maas-aio-01: {}
-
     maas_region_controller:
       hosts:
         maas-aio-01: {}

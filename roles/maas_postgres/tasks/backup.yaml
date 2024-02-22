@@ -1,3 +1,4 @@
+---
 - name: backup | Ensure psycopg2 pip module is installed
   ansible.builtin.pip:
     executable: pip3
@@ -10,7 +11,7 @@
     path: "{{ maas_postgres_backup_dir }}"
     mode: "0777"
 
-- name: Dump an existing database to a file (with compression)
+- name: backup | Dump an existing database to a file (with compression)
   community.postgresql.postgresql_db:
     name: "{{ maas_postgres_database }}"
     state: dump
