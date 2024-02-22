@@ -1,9 +1,7 @@
 ---
 - name: backup | Generate List of Archiveable Directories
-  vars:
-    archive: []
   ansible.builtin.set_fact:
-    archive_list: "{{ archive + [item] }}"
+    archive_list: "{{ (archive_list | default([])) + [item] }}"
   loop:
     - "{{ ('maas_postgres_primary' in group_names) | ternary('{{ maas_postgres_backup_dir }}', '') }}"
     - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_snap_backup_path }}', '') }}"
@@ -11,17 +9,17 @@
     - "{{ (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names)) | ternary('{{ maas_runtime_backup_path }}', '') }}"
   when: item
 
-- name: backup | Print backup archives to create
+- name: backup | Print backup locations
   ansible.builtin.debug:
-    msg: "{{ item }}"
-  when: item is defined
-  loop: "{{ archive_list }}"
+    msg: "{{ archive_list }}"
+
 
 - name: backup | Stop MAAS snap
   ansible.builtin.command:
     cmd: snap stop maas
   register: snap_stop
-  changed_when: snap_stop is changed
+  until: snap_stop is success
+  changed_when: snap_stop is success
   when:
     - not maas_install_deb | bool
     - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
@@ -30,12 +28,25 @@
   ansible.builtin.command:
     cmd: snap save maas
   register: snap_save
-  changed_when: snap_save is changed
+  until: snap_save is success
+  changed_when: snap_save is success
   when:
+    - snap_stop is success
     - not maas_install_deb | bool
     - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
 
-- name: backup | Set fact for the archive created by MAAS snap backup task
+- name: backup | Start MAAS snap
+  ansible.builtin.command:
+    cmd: snap start maas
+  register: snap_start
+  until: snap_start is success
+  changed_when: snap_start is success
+  when:
+    - snap_save is success
+    - not maas_install_deb | bool
+    - (('maas_region_controller' in group_names) or ('maas_rack_controller' in group_names))
+
+- name: backup | Set fact for MAAS snap backup location
   ansible.builtin.set_fact:
     maas_snap_backup_file: "{{ maas_snap_backup_path }}/{{ (snap_save.stdout_lines | last) | regex_replace('^(?P<set>[0-9]+)\\s+(?P<snap>[a-z]+)\\s+(?:[0-9|\\.|a-z]+)\\\
       s+(?P<version>[0-9|\\.|a-z|-]+)\\s+(?P<revision>[0-9]+).*$', '\\g<set>_\\g<snap>_\\g<version>_\\g<revision>') }}.zip"
@@ -67,44 +78,29 @@
 
 - name: backup | Create archive from all backup locations
   community.general.archive:
-    path: "{{ item }}"
+    path: "{{ archive_list }}"
     mode: "0644"
     exclude_path:
       - "{{ maas_exclude_backup_path }}"
     dest: "{{ maas_backup_dest_path }}"
-  loop: "{{ archive_list }}"
-  register: backups_created
-  when: archive_list is defined
+  register: backup_archive_created
+  when:
+    - (archive_list | length) > 0
+  until: backup_archive_created is success
 
-- name: backup | Stat archive files
-  ansible.builtin.stat:
-    path: "{{ item.dest }}"
-  register: maas_archive_files
-  when: backups_created is defined
-  loop: "{{ backups_created.results }}"
-
-- name: backup | Print archive file information
-  ansible.builtin.debug:
-    msg: |
-      Exists: {{ item.stat.exists }}
-      Path: {{ item.stat.path }}
-      File Size: {{ item.stat.size }}
-      Checksum: {{ item.stat.checksum }}
-  when: backups_created is defined
-  loop: "{{ maas_archive_files.results }}"
-
-- name: backup | Download Backup
+- name: backup | Download Backup Archive
   ansible.posix.synchronize:
     mode: pull
-    dest: "{{ maas_backup_download_path }}/{{ item.dest | basename }}"
-    src: "{{ item.dest }}"
+    dest: "{{ maas_backup_download_path }}/{{ maas_backup_dest_path | basename }}"
+    src: "{{ maas_backup_dest_path }}"
     delete: true
-  loop: "{{ backups_created.results }}"
-  when: item
+  register: backup_archive_downloaded
+  until: backup_archive_downloaded is success
+  when:
+    - backup_archive_created is success
 
 - name: backup | Delete backup archives
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ maas_backup_dest_path }}"
     state: absent
-  when: item is defined
-  loop: "{{ archive_list }}"
+  when: backup_archive_downloaded is success
