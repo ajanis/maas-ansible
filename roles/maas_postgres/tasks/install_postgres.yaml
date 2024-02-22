@@ -1,8 +1,13 @@
 ---
+- name: install_postgres | Ensure psycopg2 pip module is installed
+  ansible.builtin.pip:
+    executable: pip3
+    name: psycopg2
+    state: present
+
 - name: install_postgres | Install PostgreSQL and configuration dependencies
   ansible.builtin.apt:
     name:
-      - python3-psycopg2
       - acl
       - "{{ maas_postgres_deb_name }}"
     update_cache: true
@@ -31,7 +36,8 @@
   delegate_facts: true
   loop: "{{ groups['maas_postgres'] }}"
   when: (maas_ha_postgres_enabled|bool) and (postgres_installed.changed)
-  loop_var: pg_host
+  loop_control:
+    loop_var: pg_host
   no_log: true
 
 - name: install_postgres | Write pg_hba.conf
