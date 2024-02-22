@@ -1,9 +1,8 @@
 ---
 ansible_connection: local
 ansible_python_interpreter: /home/vscode/.pyenv/shims/python3
-o11y_enable: true
-o11y_prometheus_url: http://10.0.20.100:9090/api/v1/write
-o11y_loki_url: http://10.0.20.100:3100/loki/api/v1/push
+o11y_enable: false
+o11y_prometheus_url: http://44.10.4.200:9090/api/v1/write
+o11y_loki_url: http://44.10.4.200:3100/loki/api/v1/push
 o11y_alertrules_dest: ./maas_local/alertrules
 maas_backup_download_path: ./maas_local/backups
-maas_postgres_primary: "{{ groups['maas_postgres'][0] }}"
