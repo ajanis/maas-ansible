@@ -12,4 +12,5 @@
     name: "{{ corrosync_artifacts }}"
   loop:
     - /etc/corosync/corosync.conf
-  loop_var: corrosync_artifacts
+  loop_control:
+    loop_var: corrosync_artifacts

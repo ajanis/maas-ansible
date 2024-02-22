@@ -22,7 +22,8 @@
     - /etc/xinetd.d/pgsql_check
     - /etc/systemd/system/postgres_exporter.service
     - "{{ o11y_postgres_exporter_dir }}"
-  loop_var: pg_artifact
+  loop_control:
+    loop_var: pg_artifact
 
 - name: teardown | Uninstall PostgreSQL and configuration dependencies
   ansible.builtin.apt:

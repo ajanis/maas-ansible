@@ -28,4 +28,5 @@
     - "{{ maas_pacemaker_tmp_cib | d(false) }}"
     - /etc/systemd/system/ha_cluster_exporter.service
     - "{{ ha_exp_dir }}"
-  loop_var: pacemaker_artifacts
+  loop_control:
+    loop_var: pacemaker_artifacts

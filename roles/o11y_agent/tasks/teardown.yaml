@@ -10,4 +10,5 @@
     state: absent
     name: "{{ agent_dir }}"
   loop: "{{ o11y_grafana_agent_dirs|union([o11y_grafana_agent_unit]) }}"
-  loop_var: agent_dir
+  loop_control:
+    loop_var: agent_dir

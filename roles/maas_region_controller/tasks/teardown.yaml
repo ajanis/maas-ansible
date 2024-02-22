@@ -20,4 +20,5 @@
     - /var/snap/maas/
     - /var/lib/maas/
     - /etc/maas/
-  loop_var: maasfile
+  loop_control:
+    loop_var: maasfile

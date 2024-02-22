@@ -59,7 +59,8 @@
     - "{{ maas_proxy_tcp_ports | default([]) | select() }}"
     - "{{ maas_rack_tcp_ports | default([]) | select() }}"
     - "{{ maas_region_tcp_ports | default([]) | select() }}"
-  loop_var: tcp_port
+  loop_control:
+    loop_var: tcp_port
 
 - name: setup_firewall_rules | Open udp ports
   ansible.builtin.iptables:
@@ -73,7 +74,8 @@
     - "{{ maas_proxy_udp_ports | default([]) | select() }}"
     - "{{ maas_rack_udp_ports | default([]) | select() }}"
     - "{{ maas_region_udp_ports | default([]) | select() }}"
-  loop_var: udp_port
+  loop_control:
+    loop_var: udp_port
 
 - name: setup_firewall_rules | Set policy for INPUT chain to drop (otherwise)
   ansible.builtin.iptables:

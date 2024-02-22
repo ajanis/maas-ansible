@@ -12,4 +12,5 @@
   loop:
     - /etc/haproxy/haproxy.cfg
     - /var/lib/haproxy
-  loop_var: haproxy_artifact
+  loop_control:
+    loop_var: haproxy_artifact

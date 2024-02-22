@@ -17,4 +17,5 @@
   become_user: postgres
   register: maas_postgres_enable_sync
   loop: "{{ groups['maas_postgres'] }}"
-  loop_var: pg_host
+  loop_control:
+    loop_var: pg_host
