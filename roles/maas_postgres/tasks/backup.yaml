@@ -20,4 +20,21 @@
     login_user: "{{ maas_postgres_user }}"
     ssl_mode: disable
     login_password: "{{ maas_postgres_password }}"
+  register: maas_pg_dump
+  until: maas_pg_dump is success
   become: true
+
+- name: backup | Stat pg_dump archive
+  ansible.builtin.stat:
+    path: "{{ maas_postgres_backup_path }}"
+  register: maas_pg_archive
+  when: maas_pg_dump is success
+
+- name: backup | Print archive file information
+  ansible.builtin.debug:
+    msg: |
+      Exists: {{ maas_pg_archive.stat.exists }}
+      Path: {{ maas_pg_archive.stat.path }}
+      File Size: {{ maas_pg_archive.stat.size }}
+      Checksum: {{ maas_pg_archive.stat.checksum }}
+  when: maas_pg_dump is success
