@@ -7,7 +7,7 @@
     - maas_postgres_primary
 
   tasks:
-    - name: backup | Backup Postgres
+    - name: Backup Postgres
       ansible.builtin.include_role:
         name: maas_postgres
         tasks_from: backup
