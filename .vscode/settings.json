@@ -19,6 +19,7 @@
       "file:///workspaces/maas-ansible/roles/maas_postgres/tasks/write_postgres_config.yaml",
       "file:///workspaces/maas-ansible/roles/maas_rack_controller/tasks/main.yaml",
       "file:///workspaces/maas-ansible/roles/maas_pacemaker/tasks/main.yaml"
-    ]
+    ],
+    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/vars.json": "file:///workspaces/maas-ansible/inventory/group_vars/all/20-database"
   }
 }

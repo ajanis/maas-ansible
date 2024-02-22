@@ -1,16 +1,16 @@
 ---
 - name: Backup postgres
   hosts: maas_postgres_primary
-  tasks:
-    - name: Backup Postgres
-      ansible.builtin.include_role:
-        name: maas_postgres
-        tasks_from: backup
-
   become: true
   gather_facts: true
   tags:
     - maas_postgres_primary
+
+  tasks:
+    - name: backup | Backup Postgres
+      ansible.builtin.include_role:
+        name: maas_postgres
+        tasks_from: backup
 
 - name: Archive Backups
   hosts:
