@@ -1,16 +1,21 @@
 ---
-maas_version: "3.3"
+maas_version: 3.3
 maas_installation_type: snap
+maas_snap_channel: stable # if using snap, then the channel. ie: stable, beta, edge
+maas_deb_state: present # if using deb, the state for install
 maas_aio_ip: 44.10.4.200
-maas_aio_domain: maas-poc.charterlab.com
-maas_url: "http://{{ maas_aio_ip }}:5240/MAAS"
+maas_aio_domain: maas-poc-reg01.charterlab.com
+maas_url: "{{ 'https' if enable_tls else 'http' }}://{{ maas_aio_ip }}:5240/MAAS"
+maas_aio_upstream_dns: 10.240.64.124
+http_proxy: http://proxy4.spoc.charterlab.com:8080
+https_proxy: http://proxy4.spoc.charterlab.com:8080
 
 admin_username: admin
 admin_email: c-alan.janis@charter.com
 # admin_id:
 
 enable_tls: false
-enable_firewall: false
+enable_firewall: true
 
 vault_integration: false
 # vault_url:
@@ -18,14 +23,13 @@ vault_integration: false
 # vault_wrapped_token:
 # vault_secrets_path:
 
-http_proxy: http://proxy4.spoc.charterlab.com:8080
-https_proxy: http://proxy4.spoc.charterlab.com:8080
+
 maas_postgres_primary: "{{ groups['maas_postgres'][0] }}"
 maas_proxy_postgres_proxy_enabled: false
 # maas_postgres_floating_ip_prefix_len: 24
 # maas_postgres_floating_ip: 44.10.4.210
 
-o11y_enable: false
+o11y_enable: true
 o11y_prometheus_url: "http://{{ maas_aio_ip }}:9090/api/v1/write"
 o11y_loki_url: "http://{{ maas_aio_ip }}:3100/loki/api/v1/push"
 o11y_alertrules_dest: ./maas_local/alertrules
