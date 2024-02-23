@@ -4,7 +4,7 @@
   register: snap_refresh
   when:
     - maas_installation_type | lower == 'snap'
-    - always
+    - snap_update | default(false)
   changed_when: snap_refresh is success
 
 - name: update_maas | Add MAAS apt Repository
@@ -22,15 +22,28 @@
   when: maas_installation_type | lower == 'deb' and '"maas_rack_controller" not in group_names'
 
 - name: update_maas | Migrate MAAS database
-  ansible.builtin.command: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} migrate"
+  ansible.builtin.shell:
+    cmd: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} migrate"
+  environment:
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
+    no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
   register: maas_db_migrated
-  changed_when: maas_db_migrated is success
+  changed_when: maas_db_migrated is changed
+  until: maas_db_migrated is success
   run_once: true
 
 - name: update_maas | Refresh MAAS API
-  ansible.builtin.command: maas refresh
+  ansible.builtin.shell:
+    cmd: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} refresh"
+  environment:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
   register: maas_api_refresh
-  changed_when: maas_api_refresh is success
+  until: maas_api_refresh is success
+  changed_when: maas_api_refresh is changed
+  run_once: true
 
 - name: update_maas | Wait For MAAS To Create Secret File
   ansible.builtin.wait_for:
@@ -53,3 +66,15 @@
   loop_control:
     loop_var: rack_controller
   no_log: true
+
+# - name: update_maas | Refresh MAAS API
+#   ansible.builtin.shell:
+#     cmd: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} refresh"
+#   environment:
+#     http_proxy: ""
+#     https_proxy: ""
+#     no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
+#   register: maas_api_refresh
+#   until: maas_api_refresh is success
+#   changed_when: maas_api_refresh is changed
+#   run_once: true

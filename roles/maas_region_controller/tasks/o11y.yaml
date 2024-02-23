@@ -1,15 +1,36 @@
 ---
 - name: o11y | Set the TCP port of the Promtail Push API
-  ansible.builtin.command: maas {{ admin_username }} maas set-config name=promtail_port value={{ maas_promtail_port }}
+  ansible.builtin.shell:
+    cmd: maas {{ admin_username }} maas set-config name=promtail_port value={{ maas_promtail_port }}
+  environment:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
   when: o11y_loki_url|length > 0
-  changed_when: false
+  register: promtail_api
+  until: promtail_api is success
+  changed_when: promtail_api is changed
 
 - name: o11y | Enable syslog forwarding
-  ansible.builtin.command: maas {{ admin_username }} maas set-config name=promtail_enabled value=true
+  ansible.builtin.shell:
+    cmd: maas {{ admin_username }} maas set-config name=promtail_enabled value=true
+  environment:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
   when: o11y_loki_url|length > 0
-  changed_when: false
+  register: syslog_forward
+  until: syslog_forward is success
+  changed_when: syslog_forward is changed
 
 - name: o11y | Enable Cluster metrics endpoint
-  ansible.builtin.command: maas {{ admin_username }} maas set-config name=prometheus_enabled value=true
+  ansible.builtin.shell:
+    cmd: maas {{ admin_username }} maas set-config name=prometheus_enabled value=true
+  environment:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
   when: o11y_prometheus_url|length > 0
-  changed_when: false
+  register: cluster_metrics
+  until: cluster_metrics is success
+  changed_when: cluster_metrics is changed
