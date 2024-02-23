@@ -5,7 +5,7 @@
   community.general.snap:
     name: maas
     channel: "{{ maas_version }}/{{ maas_snap_channel }}"
-    state: "{{ 'present' if maas_state | lower == 'install' else maas_state }}"
+    state: present
   register: maas_region_new_installation
   when: maas_installation_type | lower == 'snap'
 
@@ -45,9 +45,12 @@
     {{ 'region+rack' if 'maas_rack_controller' in group_names else 'region' }}
     --maas-url={{ maas_url }}
     --database-uri {{ maas_postgres_uri }}
-  when: maas_installation_type | lower == 'snap' and maas_region_new_installation is defined
+  when:
+    - maas_installation_type | lower == 'snap'
+    - maas_region_new_installation is changed
   throttle: 1
-  changed_when: false
+  register: maas_initialize
+  changed_when: maas_initialize is success
 
 - name: install_maas | Wait For Postgres Primary To Be Elected
   ansible.builtin.uri:
@@ -57,16 +60,16 @@
       - 204
     use_proxy: false
   register: pg_healthcheck
-  until: pg_healthcheck is not failed
+  until: pg_healthcheck is success
   retries: 5
   delay: 2
   when: maas_ha_postgres_enabled | bool
 
 - name: install_maas | Migrate MAAS database
   ansible.builtin.command: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} migrate"
-  changed_when: false
+  changed_when: pg_migrate is success
   register: pg_migrate
-  until: pg_migrate is not failed
+  until: pg_migrate is success
   retries: 1
   delay: 2
   run_once: true
@@ -83,7 +86,9 @@
       "(?i)Again: ": "{{ admin_password }}"
       "(?i)Email: ": "{{ admin_email }}"
       "(?i)Import SSH keys ": "{{ admin_id if admin_id is defined else '' }}"
-  when: maas_installation_type | lower == 'deb' and maas_region_new_installation is defined
+  when:
+    - maas_installation_type | lower == 'deb'
+    - maas_region_new_installation is changed
 
 - name: install_maas | Starting MAAS region service
   ansible.builtin.systemd:
@@ -93,13 +98,23 @@
   when: maas_installation_type | lower == 'deb'
 
 - name: install_maas | Add an administrator to MAAS
-  ansible.builtin.command: >-
-    maas createadmin \
-    --username={{ admin_username }} --password={{ admin_password }} \
-    --email={{ admin_email }} --ssh-import={{ admin_id if admin_id is defined else '' }}
-  when: not maas_region_new_installation or maas_installation_type | lower == 'snap'
-  run_once: true
-  changed_when: false
+  when:
+    - maas_region_new_installation is changed
+    - maas_installation_type | lower == 'snap'
+  block:
+    - name: install_maas | Add new MAAS administrator
+      ansible.builtin.command: >-
+        maas createadmin \
+        --username={{ admin_username }} --password={{ admin_password }} \
+        --email={{ admin_email }} --ssh-import={{ admin_id if admin_id is defined else '' }}
+      run_once: true
+      register: maas_create_admin
+      changed_when: maas_create_admin is success
+  rescue:
+    - name: install_maas | Print failure reason
+      ansible.builtin.debug:
+        msg: "{{ maas_create_admin }}"
+      run_once: true
 
 - name: install_maas | Enable TLS
   ansible.builtin.include_role:
@@ -116,7 +131,7 @@
 - name: install_maas | Read MAAS Secret For Rack Controllers
   ansible.builtin.command: cat "{{ maas_secret_file }}"
   register: maas_rack_secret_tmp
-  changed_when: false
+  changed_when: maas_rack_secret_tmp is success
 
 - name: install_maas | Save MAAS Secret
   ansible.builtin.set_fact:

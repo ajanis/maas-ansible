@@ -15,7 +15,7 @@
   args:
     executable: /bin/bash
   register: snaps_installed
-  changed_when: false
+  changed_when: snaps_installed is success
 
 - name: Determine MAAS installation status
   ansible.builtin.set_fact:
@@ -34,7 +34,7 @@
 - name: Get admin user API key
   ansible.builtin.command: maas apikey --username {{ admin_username }}
   register: maas_admin_api_key
-  changed_when: false
+  changed_when: maas_admin_api_key is success
 
 - name: Login in MAAS
   ansible.builtin.command: maas login {{ admin_username }} {{ maas_url }} {{ maas_admin_api_key.stdout }}

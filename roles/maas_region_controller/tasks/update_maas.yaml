@@ -1,10 +1,11 @@
 ---
 - name: update_maas | Snap refresh
   ansible.builtin.command: snap refresh --channel={{ maas_version }}/{{ maas_snap_channel }} maas
+  register: snap_refresh
   when:
     - maas_installation_type | lower == 'snap'
     - always
-  changed_when: false
+  changed_when: snap_refresh is success
 
 - name: update_maas | Add MAAS apt Repository
   ansible.builtin.apt_repository:
@@ -22,12 +23,14 @@
 
 - name: update_maas | Migrate MAAS database
   ansible.builtin.command: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} migrate"
-  changed_when: false
+  register: maas_db_migrated
+  changed_when: maas_db_migrated is success
   run_once: true
 
 - name: update_maas | Refresh MAAS API
   ansible.builtin.command: maas refresh
-  changed_when: false
+  register: maas_api_refresh
+  changed_when: maas_api_refresh is success
 
 - name: update_maas | Wait For MAAS To Create Secret File
   ansible.builtin.wait_for:
@@ -37,7 +40,7 @@
 - name: update_maas | Read MAAS Secret For Rack Controllers
   ansible.builtin.command: cat "{{ maas_secret_file }}"
   register: maas_rack_secret_tmp
-  changed_when: false
+  changed_when: maas_rack_secret_tmp is success
 
 - name: update_maas | Save MAAS Secret
   ansible.builtin.set_fact:
