@@ -1,7 +1,6 @@
 ---
 all:
   vars:
-    maas_version: "3.3"
     maas_postgres_password: !vault |
               $ANSIBLE_VAULT;1.1;AES256
               30393538663933633734373037393731366636313636306662396337663430613633633863653432
@@ -9,9 +8,6 @@ all:
               64663130633934353830353766643231326635663736363137353237353739336363643865653135
               6162376531353261320a326563613362346332643631633739383366333333326237666664376166
               39626665653839653330666265643263396663356364636565646339303838303436
-    maas_installation_type: snap
-    maas_url: http://44.10.4.200:5240/MAAS
-    admin_username: admin
     admin_password: !vault |
               $ANSIBLE_VAULT;1.1;AES256
               31666331323863353739636566373038643031623866666261323661623466333538343630363131
@@ -19,39 +15,13 @@ all:
               36653539363036346431356563303466383165343034343139396535393166353035323834656237
               3639373337376535310a643533613065393166383932656166643230626336656361373161623066
               62333135616132613763383434636562623634643166623163636239336266663031
-    admin_email: alan.janis@icloud.com
-    maas_proxy_postgres_proxy_enabled: false
-    enable_tls: false
-    enable_firewall: true
-    vault_integration: false
-    # vault_url:
-    # vault_approle_id:
-    # vault_wrapped_token:
-    # vault_secrets_path:
-    o11y_enable: true
-    o11y_prometheus_url: http://44.10.4.200:9090/api/v1/write
-    o11y_loki_url: http://44.10.4.200:3100/loki/api/v1/push
-    o11y_alertrules_dest: ./maas_local/alertrules
-    maas_backup_download_path: ./maas_local/backups
 
   children:
-
-    maas_postgres:
+    maas_region_controller:
       hosts:
         maas02-morpheus:
           ansible_host: 44.10.4.200
           ansible_user: silver
-
-    # maas-pg01:
-    # maas-pg02:
-    # maas-pg03:
-
-    maas_postgres_primary:
-      hosts:
-        maas02-morpheus: {}
-    maas_region_controller:
-      hosts:
-        maas02-morpheus: {}
         # maas-region01:
         # maas-region02:
         # maas-region03:
@@ -59,22 +29,34 @@ all:
     maas_rack_controller:
       hosts:
         maas02-morpheus: {}
-    # maas-region01:
-    # maas-rack01:
-    # maas-rack02:
+      # maas-region01:
+      # maas-rack01:
+      # maas-rack02:
 
-    maas_proxy:
+    maas_postgres:
       hosts:
         maas02-morpheus: {}
+      # maas-pg01:
+      # maas-pg02:
+      # maas-pg03:
+
+    maas_postgres_primary:
+      hosts:
+        maas02-morpheus: {}
+
+    # maas_proxy:
+    #   hosts:
+    #     maas02-morpheus: {}
+
     # maas_postgres_proxy:
-    # hosts:
-    #   maas-region01:
-    maas_pacemaker:
-      children:
-        maas_corosync:
-          hosts:
-            maas02-morpheus: {}
-          # hosts:
-          #   maas-pg01:
-          #   maas-pg02:
-          #   maas-pg03:
+    #   hosts:
+    #     maas02-morpheus: {}
+
+    # maas_pacemaker:
+    #   children:
+    #     maas_corosync:
+    #       hosts:
+    #         maas02-morpheus: {}
+    #         maas-pg01:
+    #         maas-pg02:
+    #         maas-pg03:
