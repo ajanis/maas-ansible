@@ -19,7 +19,7 @@ all:
   children:
     maas_region_controller:
       hosts:
-        maas02-morpheus:
+        maas-poc-reg01:
           ansible_host: 44.10.4.200
           ansible_user: silver
         # maas-region01:
@@ -28,35 +28,35 @@ all:
 
     maas_rack_controller:
       hosts:
-        maas02-morpheus: {}
+        maas-poc-reg01: {}
       # maas-region01:
       # maas-rack01:
       # maas-rack02:
 
     maas_postgres:
       hosts:
-        maas02-morpheus: {}
+        maas-poc-reg01: {}
       # maas-pg01:
       # maas-pg02:
       # maas-pg03:
 
     maas_postgres_primary:
       hosts:
-        maas02-morpheus: {}
+        maas-poc-reg01: {}
 
     # maas_proxy:
     #   hosts:
-    #     maas02-morpheus: {}
+    #     maas-poc-reg01: {}
 
     # maas_postgres_proxy:
     #   hosts:
-    #     maas02-morpheus: {}
+    #     maas-poc-reg01: {}
 
     # maas_pacemaker:
     #   children:
     #     maas_corosync:
     #       hosts:
-    #         maas02-morpheus: {}
+    #         maas-poc-reg01: {}
     #         maas-pg01:
     #         maas-pg02:
     #         maas-pg03:
