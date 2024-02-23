@@ -2,6 +2,7 @@
 maas_version: 3.3
 maas_installation_type: snap
 maas_snap_channel: stable # if using snap, then the channel. ie: stable, beta, edge
+snap_update: false
 maas_deb_state: present # if using deb, the state for install
 maas_aio_ip: 44.10.4.200
 maas_aio_domain: maas-poc-reg01.charterlab.com
@@ -15,7 +16,7 @@ admin_email: c-alan.janis@charter.com
 # admin_id:
 
 enable_tls: false
-enable_firewall: true
+enable_firewall: false
 
 vault_integration: false
 # vault_url:
