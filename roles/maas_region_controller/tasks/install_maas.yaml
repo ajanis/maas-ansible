@@ -10,13 +10,15 @@
   until: maas_region_new_installation is success
   when: maas_installation_type | lower == 'snap'
 
-- set_fact:
+- name: install_maas | Set fact when clean install is detected - Snap
+  ansible.builtin.set_fact:
     maas_clean_install: true
   when:
     - maas_region_new_installation is defined
     - maas_region_new_installation.changed
 
-- debug:
+- name: install_maas | Print MAAS Region installation results - Snap
+  ansible.builtin.debug:
     msg: "{{ maas_region_new_installation }}"
   when: maas_clean_install
 
