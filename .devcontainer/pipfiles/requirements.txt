@@ -47,7 +47,6 @@ userpath
 wcmatch
 wrapt
 yamllint
-psycopg2
 pytest-testinfra
 pytest-xdist
 mypy
