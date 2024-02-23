@@ -1,3 +1,9 @@
 [submodule "packer-maas"]
 	path = packer-maas
 	url = https://github.com/canonical/packer-maas.git
+[submodule "maas-loki-alert-rules"]
+	path = maas-loki-alert-rules
+	url = https://github.com/canonical/maas-loki-alert-rules.git
+[submodule "maas-prometheus-alert-rules"]
+	path = maas-prometheus-alert-rules
+	url = https://github.com/canonical/maas-prometheus-alert-rules.git
