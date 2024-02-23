@@ -123,9 +123,15 @@
     maas_rack_secret: "{{ maas_rack_secret_tmp.stdout }}"
     cacheable: true
   run_once: true
-  delegate_to: "{{ groups['maas_rack_controller'] }}"
   delegate_facts: true
-  when: ('maas_rack_controller' not in group_names)
+  delegate_to: "{{ rack_controller }}"
+  loop: "{{ groups['maas_rack_controller'] }}"
+  loop_control:
+    loop_var: rack_controller
+  no_log: true
+  when:
+    - ('maas_rack_controller' not in group_names)
+
 
 - name: install_maas | Create Ansible installation metric file
   ansible.builtin.file:

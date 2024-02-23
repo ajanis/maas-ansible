@@ -44,5 +44,9 @@
     maas_rack_secret: "{{ maas_rack_secret_tmp.stdout }}"
     cacheable: true
   run_once: true
-  delegate_to: "{{ groups['maas_rack_controller'] }}"
   delegate_facts: true
+  delegate_to: "{{ rack_controller }}"
+  loop: "{{ groups['maas_rack_controller'] }}"
+  loop_control:
+    loop_var: rack_controller
+  no_log: true
