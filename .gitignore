@@ -6,3 +6,4 @@ maas_local
 packer-maas
 maas-prometheus-alert-rules
 maas-loki-alert-rules
+.python-version

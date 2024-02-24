@@ -7,7 +7,21 @@
     channel: "{{ maas_version }}/{{ maas_snap_channel }}"
     state: present
   register: maas_region_new_installation
+  until: maas_region_new_installation is success
   when: maas_installation_type | lower == 'snap'
+
+- name: install_maas | Set fact when clean install is detected - Snap
+  ansible.builtin.set_fact:
+    maas_clean_install: true
+  when:
+    - maas_region_new_installation is defined
+    - maas_region_new_installation.changed
+
+- name: install_maas | Print MAAS Region installation results - Snap
+  ansible.builtin.debug:
+    msg: "{{ maas_region_new_installation }}"
+  when: maas_clean_install
+
 
 - name: install_maas | Add MAAS apt Repository
   ansible.builtin.apt_repository:
@@ -47,7 +61,7 @@
     --database-uri {{ maas_postgres_uri }}
   when:
     - maas_installation_type | lower == 'snap'
-    - maas_region_new_installation is changed
+    - maas_clean_install | default(false)
   throttle: 1
   register: maas_initialize
   changed_when: maas_initialize is success
@@ -87,8 +101,8 @@
       "(?i)Email: ": "{{ admin_email }}"
       "(?i)Import SSH keys ": "{{ admin_id if admin_id is defined else '' }}"
   when:
+    - maas_clean_install | default(false)
     - maas_installation_type | lower == 'deb'
-    - maas_region_new_installation is changed
 
 - name: install_maas | Starting MAAS region service
   ansible.builtin.systemd:
@@ -99,7 +113,7 @@
 
 - name: install_maas | Add an administrator to MAAS
   when:
-    - maas_region_new_installation is changed
+    - maas_clean_install | default(false)
     - maas_installation_type | lower == 'snap'
   block:
     - name: install_maas | Add new MAAS administrator

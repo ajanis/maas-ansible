@@ -11,7 +11,8 @@
     manager: auto
 
 - name: Check installed snaps
-  ansible.builtin.shell: set -o pipefail && snap list | awk '{ print $1}'
+  ansible.builtin.shell:
+    cmd: set -o pipefail && snap list | awk '{ print $1}'
   args:
     executable: /bin/bash
   register: snaps_installed
@@ -20,15 +21,17 @@
 - name: Determine MAAS installation status
   ansible.builtin.set_fact:
     maas_installed: >
-      {{ (maas_installation_type | lower == 'snap' and 'maas' in snaps_installed.stdout.split('\n') )
-        or (maas_installation_type | lower == 'deb' and maas_package_name in ansible_facts.packages) }}
+      {{ true if ((maas_installation_type | lower == 'snap') and ('maas' in snaps_installed.stdout ))
+        or ((maas_installation_type | lower == 'deb') and (maas_package_name in ansible_facts.packages)) else false }}
 
 - name: Install MAAS Region
-  ansible.builtin.import_tasks: install_maas.yaml
+  ansible.builtin.include_tasks:
+    file: install_maas.yaml
   when: (not maas_installed)
 
 - name: Update MAAS Region
-  ansible.builtin.import_tasks: update_maas.yaml
+  ansible.builtin.include_tasks:
+    file: update_maas.yaml
   when: (maas_installed)
 
 - name: Get admin user API key
@@ -37,19 +40,21 @@
   changed_when: maas_admin_api_key is success
 
 - name: Login in MAAS
-  ansible.builtin.command: maas login {{ admin_username }} {{ maas_url }} {{ maas_admin_api_key.stdout }}
+  ansible.builtin.shell:
+    cmd: maas login {{ admin_username }} {{ maas_url }} {{ maas_admin_api_key.stdout }}
   environment:
     http_proxy: ""
     https_proxy: ""
     no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
-  changed_when: true
+  changed_when: login is success
   register: login
   until: login is not failed
   retries: 5
   delay: 2
 
 - name: Setup o11y
-  ansible.builtin.import_tasks: o11y.yaml
+  ansible.builtin.include_tasks:
+    file: o11y.yaml
   when: o11y_enable
 
 - name: Use MAAS Vault
