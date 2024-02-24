@@ -19,44 +19,44 @@ all:
   children:
     maas_region_controller:
       hosts:
-        maas-poc-reg01:
-          ansible_host: 44.10.4.200
-          ansible_user: silver
+        maas-aio-01:
+          ansible_host: 10.0.20.100
+          ansible_user: root
         # maas-region01:
         # maas-region02:
         # maas-region03:
 
     maas_rack_controller:
       hosts:
-        maas-poc-reg01: {}
+        maas-aio-01: {}
       # maas-region01:
       # maas-rack01:
       # maas-rack02:
 
     maas_postgres:
       hosts:
-        maas-poc-reg01: {}
+        maas-aio-01: {}
       # maas-pg01:
       # maas-pg02:
       # maas-pg03:
 
     maas_postgres_primary:
       hosts:
-        maas-poc-reg01: {}
+        maas-aio-01: {}
 
     # maas_proxy:
     #   hosts:
-    #     maas-poc-reg01: {}
+    #     maas-aio-01: {}
 
     # maas_postgres_proxy:
     #   hosts:
-    #     maas-poc-reg01: {}
+    #     maas-aio-01: {}
 
     # maas_pacemaker:
     #   children:
     #     maas_corosync:
     #       hosts:
-    #         maas-poc-reg01: {}
+    #         maas-aio-01: {}
     #         maas-pg01:
     #         maas-pg02:
     #         maas-pg03:
