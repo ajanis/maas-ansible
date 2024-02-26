@@ -4,7 +4,7 @@ maas_installation_type: snap
 maas_snap_channel: stable # if using snap, then the channel. ie: stable, beta, edge
 snap_update: false
 maas_deb_state: present # if using deb, the state for install
-maas_aio_ip: 44.10.4.200
+maas_aio_ip: 44.10.4.100
 maas_aio_domain: maas-poc-reg01.charterlab.com
 maas_url: "{{ 'https' if enable_tls else 'http' }}://{{ maas_aio_ip }}:5240/MAAS"
 maas_aio_upstream_dns: 10.240.64.124
