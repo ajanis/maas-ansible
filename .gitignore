@@ -7,3 +7,4 @@ packer-maas
 maas-prometheus-alert-rules
 maas-loki-alert-rules
 .python-version
+/maas-docs/physical.md
