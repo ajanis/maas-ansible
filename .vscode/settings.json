@@ -8,18 +8,4 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true
   },
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible-lint-config.json": [
-      "file:///workspaces/maas-ansible/roles/maas_region_controller/tasks/install_maas.yaml",
-      "file:///workspaces/maas-ansible/roles/o11y_agent/tasks/main.yaml"
-    ],
-    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/execution-environment.json": [],
-    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks": [
-      "file:///workspaces/maas-ansible/teardown.yaml",
-      "file:///workspaces/maas-ansible/roles/maas_postgres/tasks/write_postgres_config.yaml",
-      "file:///workspaces/maas-ansible/roles/maas_rack_controller/tasks/main.yaml",
-      "file:///workspaces/maas-ansible/roles/maas_pacemaker/tasks/main.yaml"
-    ],
-    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/vars.json": "file:///workspaces/maas-ansible/inventory/group_vars/all/20-database"
-  }
 }
