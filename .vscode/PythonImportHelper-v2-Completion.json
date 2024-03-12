@@ -1,0 +1,1017 @@
+[
+    {
+        "label": "absolute_import",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "unicode_literals",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "absolute_import",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "unicode_literals",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "absolute_import",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "unicode_literals",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "absolute_import",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "unicode_literals",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "codecs",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "codecs",
+        "description": "codecs",
+        "detail": "codecs",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "block",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "block",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "curtin",
+        "description": "curtin",
+        "isExtraImport": true,
+        "detail": "curtin",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "requirements",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requirements",
+        "description": "requirements",
+        "detail": "requirements",
+        "documentation": {}
+    },
+    {
+        "label": "importlib.metadata",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib.metadata",
+        "description": "importlib.metadata",
+        "detail": "importlib.metadata",
+        "documentation": {}
+    },
+    {
+        "label": "get_block_devices",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_block_devices(target):\n    \"\"\"Returns list of block devices for the given target.\"\"\"\n    devs = block.get_devices_for_mp(target)\n    blockdevs = set()\n    for maybepart in devs:\n        (blockdev, part) = block.get_blockdev_for_partition(maybepart)\n        blockdevs.add(blockdev)\n    return list(blockdevs)\ndef get_root_info(target):\n    \"\"\"Returns the root partitions information.\"\"\"",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_root_info",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_root_info(target):\n    \"\"\"Returns the root partitions information.\"\"\"\n    rootpath = block.get_devices_for_mp(target)[0]\n    rootdev = os.path.basename(rootpath)\n    blocks = block._lsblock()\n    return blocks[rootdev]\ndef read_file(path):\n    \"\"\"Returns content of a file.\"\"\"\n    with codecs.open(path, encoding='utf-8') as stream:\n        return stream.read()",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "read_file",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def read_file(path):\n    \"\"\"Returns content of a file.\"\"\"\n    with codecs.open(path, encoding='utf-8') as stream:\n        return stream.read()\ndef write_fstab(target, curtin_fstab):\n    \"\"\"Writes the new fstab, using the fstab provided\n    from curtin.\"\"\"\n    fstab_path = os.path.join(target, 'etc', 'fstab')\n    fstab_data = read_file(curtin_fstab)\n    with open(fstab_path, 'w') as stream:",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_fstab",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_fstab(target, curtin_fstab):\n    \"\"\"Writes the new fstab, using the fstab provided\n    from curtin.\"\"\"\n    fstab_path = os.path.join(target, 'etc', 'fstab')\n    fstab_data = read_file(curtin_fstab)\n    with open(fstab_path, 'w') as stream:\n        stream.write(FSTAB_PREPEND)\n        stream.write(fstab_data)\n        stream.write(FSTAB_APPEND)\ndef extract_kernel_params(data):",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "extract_kernel_params",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def extract_kernel_params(data):\n    \"\"\"Extracts the kernel parametes from the provided\n    grub config data.\"\"\"\n    match = re.search('^\\s+kernel (.+?)$', data, re.MULTILINE)\n    return match.group(0)\ndef strip_kernel_params(params, strip_params=[]):\n    \"\"\"Removes un-needed kernel parameters.\"\"\"\n    new_params = []\n    for param in params:\n        remove = False",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "strip_kernel_params",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def strip_kernel_params(params, strip_params=[]):\n    \"\"\"Removes un-needed kernel parameters.\"\"\"\n    new_params = []\n    for param in params:\n        remove = False\n        for strip in strip_params:\n            if param.startswith(strip):\n                remove = True\n                break\n        if remove is False:",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_boot_file",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_boot_file(target, filename):\n    \"\"\"Return the full filename of file in /boot on target.\"\"\"\n    boot_dir = os.path.join(target, 'boot')\n    files = [\n        fname\n        for fname in os.listdir(boot_dir)\n        if fname.startswith(filename)\n        ]\n    if not files:\n        return None",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_grub_conf",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_grub_conf(target, grub_root, extra=[]):\n    \"\"\"Writes a new /boot/grub/grub.conf with the correct\n    boot arguments.\"\"\"\n    root_info = get_root_info(target)\n    grub_path = os.path.join(target, 'boot', 'grub', 'grub.conf')\n    extra_opts = ' '.join(extra)\n    vmlinuz = get_boot_file(target, 'vmlinuz')\n    initrd = get_boot_file(target, 'initramfs')\n    with open(grub_path, 'w') as stream:\n        stream.write(",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_extra_kernel_parameters",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_extra_kernel_parameters():\n    \"\"\"Extracts the extra kernel commands from /proc/cmdline\n    that should be placed onto the host.\n    Any command following the '--' entry should be placed\n    onto the host.\n    \"\"\"\n    cmdline = read_file('/proc/cmdline')\n    cmdline = cmdline.split()\n    if '--' not in cmdline:\n        return []",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_grub_root",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_grub_root(target):\n    \"\"\"Extracts the grub root (hdX,X) from the grub command.\n    This is used so the correct root device is used to install\n    stage1/stage2 boot loader.\n    Note: grub-install normally does all of this for you, but\n    since the grub is older, it has an issue with the ISCSI\n    target as /dev/sda and cannot enumarate it with the BIOS.\n    \"\"\"\n    with util.RunInChroot(target) as in_chroot:\n        data = '\\n'.join([",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "grub_install",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def grub_install(target, root):\n    \"\"\"Installs grub onto the root.\"\"\"\n    root_dev = root.split(',')[0] + ')'\n    with util.RunInChroot(target) as in_chroot:\n        data = '\\n'.join([\n            'root %s' % root,\n            'setup %s' % root_dev,\n            'quit',\n            ]).encode('utf-8')\n        in_chroot(['grub', '--batch'],",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "set_autorelabel",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def set_autorelabel(target):\n    \"\"\"Creates file /.autorelabel.\n    This is used by SELinux to relabel all of the\n    files on the filesystem to have the correct\n    security context. Without this SSH login will\n    fail.\n    \"\"\"\n    path = os.path.join(target, '.autorelabel')\n    open(path, 'a').close()\ndef get_boot_mac():",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_boot_mac",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_boot_mac():\n    \"\"\"Return the mac address of the booting interface.\"\"\"\n    cmdline = read_file('/proc/cmdline')\n    cmdline = cmdline.split()\n    try:\n        bootif = [\n            option\n            for option in cmdline\n            if option.startswith('BOOTIF')\n            ][0]",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_interface_names",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_interface_names():\n    \"\"\"Return a dictionary mapping mac addresses to interface names.\"\"\"\n    sys_path = \"/sys/class/net\"\n    ifaces = {}\n    for iname in os.listdir(sys_path):\n        mac = read_file(os.path.join(sys_path, iname, \"address\"))\n        mac = mac.strip().lower()\n        ifaces[mac] = iname\n    return ifaces\ndef get_ipv4_config(iface, data):",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_ipv4_config",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_ipv4_config(iface, data):\n    \"\"\"Returns the contents of the interface file for ipv4.\"\"\"\n    config = [\n        'TYPE=\"Ethernet\"',\n        'NM_CONTROLLED=\"no\"',\n        'USERCTL=\"yes\"',\n        ]\n    if 'hwaddress' in data:\n        config.append('HWADDR=\"%s\"' % data['hwaddress'])\n    else:",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_interface_config",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_interface_config(target, iface, data):\n    \"\"\"Writes config for interface.\"\"\"\n    family = data['family']\n    if family != \"inet\":\n        # Only supporting ipv4 currently\n        print(\n            \"WARN: unsupported family %s, \"\n            \"failed to configure interface: %s\" (family, iface))\n        return\n    config = get_ipv4_config(iface, data)",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_network_config",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_network_config(target, mac):\n    \"\"\"Write network configuration for the given MAC address.\"\"\"\n    inames = get_interface_names()\n    iname = inames[mac.lower()]\n    write_interface_config(\n        target, iname, {\n            'family': 'inet',\n            'hwaddress': mac.upper(),\n            'auto': True,\n            'method': 'dhcp'",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "apply_networking",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def apply_networking(cfg, target, bootmac):\n    if 'network' in cfg and centos_apply_network_config:\n        centos_apply_network_config(cfg['network'], target)\n        return\n    if 'network' in cfg:\n        sys.stderr.write(\"WARN: network configuration provided, but \"\n                         \"no support for applying. Using basic config.\")\n    write_network_config(target, bootmac)\ndef handle_cloudconfig(cfg, target):\n    if not cfg.get('cloudconfig'):",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "handle_cloudconfig",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def handle_cloudconfig(cfg, target):\n    if not cfg.get('cloudconfig'):\n        return\n    if not write_files:\n        sys.stderr.write(\n            \"WARN: Unable to handle 'cloudconfig' section in config.\"\n            \"No 'write_files' found from curtin.\\n\")\n        return\n    base_dir = os.path.join(target, 'etc/cloud/cloud.cfg.d')\n    write_files(cfg['cloudconfig'], base_dir)",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def main():\n    state = util.load_command_environment()\n    target = state['target']\n    if target is None:\n        print(\"Target was not provided in the environment.\")\n        sys.exit(1)\n    fstab = state['fstab']\n    if fstab is None:\n        print(\"/etc/fstab output was not provided in the environment.\")\n        sys.exit(1)",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_files",
+        "kind": 5,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "write_files = None\ntry:\n    from curtin.futil import write_files\nexcept ImportError:\n    pass\ncentos_apply_network_config = None\ntry:\n    if 'CENTOS_APPLY_NETWORK_CONFIG' in curtin_features:\n        from curtin.commands.curthooks import centos_apply_network_config\nexcept ImportError:",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "centos_apply_network_config",
+        "kind": 5,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "centos_apply_network_config = None\ntry:\n    if 'CENTOS_APPLY_NETWORK_CONFIG' in curtin_features:\n        from curtin.commands.curthooks import centos_apply_network_config\nexcept ImportError:\n    pass\n\"\"\"\nCentOS 6\nCurrently Support:\n- Legacy boot",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "FSTAB_PREPEND",
+        "kind": 5,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "FSTAB_PREPEND = \"\"\"\\\n#\n# /etc/fstab\n# Created by MAAS fast-path installer.\n#\n# Accessible filesystems, by reference, are maintained under '/dev/disk'\n# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info\n#\n\"\"\"\nFSTAB_APPEND = \"\"\"\\",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "FSTAB_APPEND",
+        "kind": 5,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "FSTAB_APPEND = \"\"\"\\\ntmpfs                   /dev/shm                tmpfs   defaults        0 0\ndevpts                  /dev/pts                devpts  gid=5,mode=620  0 0\nsysfs                   /sys                    sysfs   defaults        0 0\nproc                    /proc                   proc    defaults        0 0\n\"\"\"\nGRUB_CONF = \"\"\"\\\n#\n# /boot/grub/grub.conf\n# Created by MAAS fast-path installer.",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "GRUB_CONF",
+        "kind": 5,
+        "importPath": "-f.centos6.curtin.curtin-hooks",
+        "description": "-f.centos6.curtin.curtin-hooks",
+        "peekOfCode": "GRUB_CONF = \"\"\"\\\n#\n# /boot/grub/grub.conf\n# Created by MAAS fast-path installer.\n#\ndefault 0\ntimeout 0\ntitle MAAS\n root {grub_root}\n kernel /boot/{vmlinuz} root=UUID={root_uuid} {extra_opts}",
+        "detail": "-f.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_datasource",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "def get_datasource(**kwargs):\n    \"\"\"Returns the format cloud-init datasource.\"\"\"\n    return DATASOURCE_LIST + DATASOURCE.format(**kwargs)\ndef load_config(path):\n    \"\"\"Loads the curtin config.\"\"\"\n    with open(path, 'r') as stream:\n        return json.load(stream)\ndef extract_maas_parameters(config):\n    \"\"\"Extracts the needed values from the debconf\n    entry.\"\"\"",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "load_config",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "def load_config(path):\n    \"\"\"Loads the curtin config.\"\"\"\n    with open(path, 'r') as stream:\n        return json.load(stream)\ndef extract_maas_parameters(config):\n    \"\"\"Extracts the needed values from the debconf\n    entry.\"\"\"\n    params = {}\n    for line in config.splitlines():\n        cloud, key, type, value = line.split()[:4]",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "extract_maas_parameters",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "def extract_maas_parameters(config):\n    \"\"\"Extracts the needed values from the debconf\n    entry.\"\"\"\n    params = {}\n    for line in config.splitlines():\n        cloud, key, type, value = line.split()[:4]\n        if key == \"cloud-init/maas-metadata-url\":\n            params['url'] = value\n        elif key == \"cloud-init/maas-metadata-credentials\":\n            values = value.split(\"&\")",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "get_maas_debconf_selections",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "def get_maas_debconf_selections(config):\n    \"\"\"Gets the debconf selections from the curtin config.\"\"\"\n    try:\n        return config['debconf_selections']['maas']\n    except KeyError:\n        return None\ndef write_datasource(target, data):\n    \"\"\"Writes the cloudinit config into\n    /etc/cloud/cloud.cfg.d/90_datasource.cfg.\"\"\"\n    path = os.path.join(",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "write_datasource",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "def write_datasource(target, data):\n    \"\"\"Writes the cloudinit config into\n    /etc/cloud/cloud.cfg.d/90_datasource.cfg.\"\"\"\n    path = os.path.join(\n        target, 'etc', 'cloud', 'cloud.cfg.d', '90_datasource.cfg')\n    with open(path, 'w') as stream:\n        stream.write(data + '\\n')\ndef main():\n    state = util.load_command_environment()\n    target = state['target']",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "def main():\n    state = util.load_command_environment()\n    target = state['target']\n    if target is None:\n        print(\"Target was not provided in the environment.\")\n        sys.exit(1)\n    config_f = state['config']\n    if config_f is None:\n        print(\"Config was not provided in the environment.\")\n        sys.exit(1)",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "DATASOURCE_LIST",
+        "kind": 5,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "DATASOURCE_LIST = \"\"\"\\\ndatasource_list: [ MAAS ]\n\"\"\"\nDATASOURCE = \"\"\"\\\ndatasource:\n  MAAS: {{consumer_key: {consumer_key}, metadata_url: '{url}',\n    token_key: {token_key}, token_secret: {token_secret}}}\n\"\"\"\ndef get_datasource(**kwargs):\n    \"\"\"Returns the format cloud-init datasource.\"\"\"",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "DATASOURCE",
+        "kind": 5,
+        "importPath": "-f.centos6.curtin.finalize",
+        "description": "-f.centos6.curtin.finalize",
+        "peekOfCode": "DATASOURCE = \"\"\"\\\ndatasource:\n  MAAS: {{consumer_key: {consumer_key}, metadata_url: '{url}',\n    token_key: {token_key}, token_secret: {token_secret}}}\n\"\"\"\ndef get_datasource(**kwargs):\n    \"\"\"Returns the format cloud-init datasource.\"\"\"\n    return DATASOURCE_LIST + DATASOURCE.format(**kwargs)\ndef load_config(path):\n    \"\"\"Loads the curtin config.\"\"\"",
+        "detail": "-f.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "CollectionDefinition",
+        "kind": 6,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "class CollectionDefinition:\n    \"\"\"This class represents the dependency metadata for a collection\n    should be replaced by logic to hit the Galaxy API if made available\n    \"\"\"\n    def __init__(self, collection_path):\n        self.reference_path = collection_path\n        meta_file = os.path.join(collection_path, 'meta', default_file)\n        if os.path.exists(meta_file):\n            with open(meta_file, 'r') as f:\n                self.raw = yaml.safe_load(f)",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "line_is_empty",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def line_is_empty(line):\n    return bool((not line.strip()) or line.startswith('#'))\ndef read_req_file(path):\n    \"\"\"Provide some minimal error and display handling for file reading\"\"\"\n    if not os.path.exists(path):\n        print('Expected requirements file not present at: {0}'.format(os.path.abspath(path)))\n    with open(path, 'r') as f:\n        return f.read()\ndef pip_file_data(path):\n    pip_content = read_req_file(path)",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "read_req_file",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def read_req_file(path):\n    \"\"\"Provide some minimal error and display handling for file reading\"\"\"\n    if not os.path.exists(path):\n        print('Expected requirements file not present at: {0}'.format(os.path.abspath(path)))\n    with open(path, 'r') as f:\n        return f.read()\ndef pip_file_data(path):\n    pip_content = read_req_file(path)\n    pip_lines = []\n    for line in pip_content.split('\\n'):",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "pip_file_data",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def pip_file_data(path):\n    pip_content = read_req_file(path)\n    pip_lines = []\n    for line in pip_content.split('\\n'):\n        if line_is_empty(line):\n            continue\n        if line.startswith('-r') or line.startswith('--requirement'):\n            _, new_filename = line.split(None, 1)\n            new_path = os.path.join(os.path.dirname(path or '.'), new_filename)\n            pip_lines.extend(pip_file_data(new_path))",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "bindep_file_data",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def bindep_file_data(path):\n    sys_content = read_req_file(path)\n    sys_lines = []\n    for line in sys_content.split('\\n'):\n        if line_is_empty(line):\n            continue\n        sys_lines.append(line)\n    return sys_lines\ndef process_collection(path):\n    \"\"\"Return a tuple of (python_dependencies, system_dependencies) for the",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "process_collection",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def process_collection(path):\n    \"\"\"Return a tuple of (python_dependencies, system_dependencies) for the\n    collection install path given.\n    Both items returned are a list of dependencies.\n    :param str path: root directory of collection (this would contain galaxy.yml file)\n    \"\"\"\n    CD = CollectionDefinition(path)\n    py_file = CD.get_dependency('python')\n    pip_lines = []\n    if py_file:",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "process",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def process(data_dir=base_collections_path, user_pip=None, user_bindep=None):\n    paths = []\n    path_root = os.path.join(data_dir, 'ansible_collections')\n    # build a list of all the valid collection paths\n    if os.path.exists(path_root):\n        for namespace in sorted(os.listdir(path_root)):\n            if not os.path.isdir(os.path.join(path_root, namespace)):\n                continue\n            for name in sorted(os.listdir(os.path.join(path_root, namespace))):\n                collection_dir = os.path.join(path_root, namespace, name)",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "has_content",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def has_content(candidate_file):\n    \"\"\"Beyond checking that the candidate exists, this also assures\n    that the file has something other than whitespace,\n    which can cause errors when given to pip.\n    \"\"\"\n    if not os.path.exists(candidate_file):\n        return False\n    with open(candidate_file, 'r') as f:\n        content = f.read()\n    return bool(content.strip().strip('\\n'))",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "simple_combine",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def simple_combine(reqs):\n    \"\"\"Given a dictionary of requirement lines keyed off collections,\n    return a list with the most basic of de-duplication logic,\n    and comments indicating the sources based off the collection keys\n    \"\"\"\n    consolidated = []\n    fancy_lines = []\n    for collection, lines in reqs.items():\n        for line in lines:\n            if line_is_empty(line):",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "parse_args",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def parse_args(args=sys.argv[1:]):\n    parser = argparse.ArgumentParser(\n        prog='introspect',\n        description=(\n            'ansible-builder introspection; injected and used during execution environment build'\n        )\n    )\n    subparsers = parser.add_subparsers(help='The command to invoke.', dest='action')\n    subparsers.required = True\n    create_introspect_parser(subparsers)",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "run_introspect",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def run_introspect(args, logger):\n    data = process(args.folder, user_pip=args.user_pip, user_bindep=args.user_bindep)\n    if args.sanitize:\n        logger.info('# Sanitized dependencies for %s', args.folder)\n        data_for_write = data\n        data['python'] = sanitize_requirements(data['python'])\n        data['system'] = simple_combine(data['system'])\n    else:\n        logger.info('# Dependency data for %s', args.folder)\n        data_for_write = data.copy()",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "create_introspect_parser",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def create_introspect_parser(parser):\n    introspect_parser = parser.add_parser(\n        'introspect',\n        help='Introspects collections in folder.',\n        description=(\n            'Loops over collections in folder and returns data about dependencies. '\n            'This is used internally and exposed here for verification. '\n            'This is targeted toward collection authors and maintainers.'\n        )\n    )",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "sanitize_requirements",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def sanitize_requirements(collection_py_reqs):\n    \"\"\"\n    Cleanup Python requirements by removing duplicates and excluded packages.\n    The user requirements file will go through the deduplication process, but\n    skips the special package exclusion process.\n    :param dict collection_py_reqs: A dict of lists of Python requirements, keyed\n        by fully qualified collection name. The special key `user` holds requirements\n        from the user specified requirements file from the ``--user-pip`` CLI option.\n    :returns: A finalized list of sanitized Python requirements.\n    \"\"\"",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "write_file",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def write_file(filename: str, lines: list) -> bool:\n    parent_dir = os.path.dirname(filename)\n    if parent_dir and not os.path.exists(parent_dir):\n        logger.warning('Creating parent directory for %s', filename)\n        os.makedirs(parent_dir)\n    new_text = '\\n'.join(lines)\n    if os.path.exists(filename):\n        with open(filename, 'r') as f:\n            if f.read() == new_text:\n                logger.debug(\"File %s is already up-to-date.\", filename)",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "def main():\n    args = parse_args()\n    if args.action == 'introspect':\n        run_introspect(args, logger)\n    logger.error(\"An error has occurred.\")\n    sys.exit(1)\nif __name__ == '__main__':\n    main()",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "base_collections_path",
+        "kind": 5,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "base_collections_path = '/usr/share/ansible/collections'\ndefault_file = 'execution-environment.yml'\nlogger = logging.getLogger(__name__)\ndef line_is_empty(line):\n    return bool((not line.strip()) or line.startswith('#'))\ndef read_req_file(path):\n    \"\"\"Provide some minimal error and display handling for file reading\"\"\"\n    if not os.path.exists(path):\n        print('Expected requirements file not present at: {0}'.format(os.path.abspath(path)))\n    with open(path, 'r') as f:",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "default_file",
+        "kind": 5,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "default_file = 'execution-environment.yml'\nlogger = logging.getLogger(__name__)\ndef line_is_empty(line):\n    return bool((not line.strip()) or line.startswith('#'))\ndef read_req_file(path):\n    \"\"\"Provide some minimal error and display handling for file reading\"\"\"\n    if not os.path.exists(path):\n        print('Expected requirements file not present at: {0}'.format(os.path.abspath(path)))\n    with open(path, 'r') as f:\n        return f.read()",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef line_is_empty(line):\n    return bool((not line.strip()) or line.startswith('#'))\ndef read_req_file(path):\n    \"\"\"Provide some minimal error and display handling for file reading\"\"\"\n    if not os.path.exists(path):\n        print('Expected requirements file not present at: {0}'.format(os.path.abspath(path)))\n    with open(path, 'r') as f:\n        return f.read()\ndef pip_file_data(path):",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "EXCLUDE_REQUIREMENTS",
+        "kind": 5,
+        "importPath": "context._build.scripts.introspect",
+        "description": "context._build.scripts.introspect",
+        "peekOfCode": "EXCLUDE_REQUIREMENTS = frozenset((\n    # obviously already satisfied or unwanted\n    'ansible', 'ansible-base', 'python', 'ansible-core',\n    # general python test requirements\n    'tox', 'pycodestyle', 'yamllint', 'pylint',\n    'flake8', 'pytest', 'pytest-xdist', 'coverage', 'mock', 'testinfra',\n    # test requirements highly specific to Ansible testing\n    'ansible-lint', 'molecule', 'galaxy-importer', 'voluptuous',\n    # already present in image for py3 environments\n    'yaml', 'pyyaml', 'json',",
+        "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "get_block_devices",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_block_devices(target):\n    \"\"\"Returns list of block devices for the given target.\"\"\"\n    devs = block.get_devices_for_mp(target)\n    blockdevs = set()\n    for maybepart in devs:\n        (blockdev, part) = block.get_blockdev_for_partition(maybepart)\n        blockdevs.add(blockdev)\n    return list(blockdevs)\ndef get_root_info(target):\n    \"\"\"Returns the root partitions information.\"\"\"",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_root_info",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_root_info(target):\n    \"\"\"Returns the root partitions information.\"\"\"\n    rootpath = block.get_devices_for_mp(target)[0]\n    rootdev = os.path.basename(rootpath)\n    blocks = block._lsblock()\n    return blocks[rootdev]\ndef read_file(path):\n    \"\"\"Returns content of a file.\"\"\"\n    with codecs.open(path, encoding='utf-8') as stream:\n        return stream.read()",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "read_file",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def read_file(path):\n    \"\"\"Returns content of a file.\"\"\"\n    with codecs.open(path, encoding='utf-8') as stream:\n        return stream.read()\ndef write_fstab(target, curtin_fstab):\n    \"\"\"Writes the new fstab, using the fstab provided\n    from curtin.\"\"\"\n    fstab_path = os.path.join(target, 'etc', 'fstab')\n    fstab_data = read_file(curtin_fstab)\n    with open(fstab_path, 'w') as stream:",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_fstab",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_fstab(target, curtin_fstab):\n    \"\"\"Writes the new fstab, using the fstab provided\n    from curtin.\"\"\"\n    fstab_path = os.path.join(target, 'etc', 'fstab')\n    fstab_data = read_file(curtin_fstab)\n    with open(fstab_path, 'w') as stream:\n        stream.write(FSTAB_PREPEND)\n        stream.write(fstab_data)\n        stream.write(FSTAB_APPEND)\ndef extract_kernel_params(data):",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "extract_kernel_params",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def extract_kernel_params(data):\n    \"\"\"Extracts the kernel parametes from the provided\n    grub config data.\"\"\"\n    match = re.search('^\\s+kernel (.+?)$', data, re.MULTILINE)\n    return match.group(0)\ndef strip_kernel_params(params, strip_params=[]):\n    \"\"\"Removes un-needed kernel parameters.\"\"\"\n    new_params = []\n    for param in params:\n        remove = False",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "strip_kernel_params",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def strip_kernel_params(params, strip_params=[]):\n    \"\"\"Removes un-needed kernel parameters.\"\"\"\n    new_params = []\n    for param in params:\n        remove = False\n        for strip in strip_params:\n            if param.startswith(strip):\n                remove = True\n                break\n        if remove is False:",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_boot_file",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_boot_file(target, filename):\n    \"\"\"Return the full filename of file in /boot on target.\"\"\"\n    boot_dir = os.path.join(target, 'boot')\n    files = [\n        fname\n        for fname in os.listdir(boot_dir)\n        if fname.startswith(filename)\n        ]\n    if not files:\n        return None",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_grub_conf",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_grub_conf(target, grub_root, extra=[]):\n    \"\"\"Writes a new /boot/grub/grub.conf with the correct\n    boot arguments.\"\"\"\n    root_info = get_root_info(target)\n    grub_path = os.path.join(target, 'boot', 'grub', 'grub.conf')\n    extra_opts = ' '.join(extra)\n    vmlinuz = get_boot_file(target, 'vmlinuz')\n    initrd = get_boot_file(target, 'initramfs')\n    with open(grub_path, 'w') as stream:\n        stream.write(",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_extra_kernel_parameters",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_extra_kernel_parameters():\n    \"\"\"Extracts the extra kernel commands from /proc/cmdline\n    that should be placed onto the host.\n    Any command following the '--' entry should be placed\n    onto the host.\n    \"\"\"\n    cmdline = read_file('/proc/cmdline')\n    cmdline = cmdline.split()\n    if '--' not in cmdline:\n        return []",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_grub_root",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_grub_root(target):\n    \"\"\"Extracts the grub root (hdX,X) from the grub command.\n    This is used so the correct root device is used to install\n    stage1/stage2 boot loader.\n    Note: grub-install normally does all of this for you, but\n    since the grub is older, it has an issue with the ISCSI\n    target as /dev/sda and cannot enumarate it with the BIOS.\n    \"\"\"\n    with util.RunInChroot(target) as in_chroot:\n        data = '\\n'.join([",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "grub_install",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def grub_install(target, root):\n    \"\"\"Installs grub onto the root.\"\"\"\n    root_dev = root.split(',')[0] + ')'\n    with util.RunInChroot(target) as in_chroot:\n        data = '\\n'.join([\n            'root %s' % root,\n            'setup %s' % root_dev,\n            'quit',\n            ]).encode('utf-8')\n        in_chroot(['grub', '--batch'],",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "set_autorelabel",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def set_autorelabel(target):\n    \"\"\"Creates file /.autorelabel.\n    This is used by SELinux to relabel all of the\n    files on the filesystem to have the correct\n    security context. Without this SSH login will\n    fail.\n    \"\"\"\n    path = os.path.join(target, '.autorelabel')\n    open(path, 'a').close()\ndef get_boot_mac():",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_boot_mac",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_boot_mac():\n    \"\"\"Return the mac address of the booting interface.\"\"\"\n    cmdline = read_file('/proc/cmdline')\n    cmdline = cmdline.split()\n    try:\n        bootif = [\n            option\n            for option in cmdline\n            if option.startswith('BOOTIF')\n            ][0]",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_interface_names",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_interface_names():\n    \"\"\"Return a dictionary mapping mac addresses to interface names.\"\"\"\n    sys_path = \"/sys/class/net\"\n    ifaces = {}\n    for iname in os.listdir(sys_path):\n        mac = read_file(os.path.join(sys_path, iname, \"address\"))\n        mac = mac.strip().lower()\n        ifaces[mac] = iname\n    return ifaces\ndef get_ipv4_config(iface, data):",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_ipv4_config",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def get_ipv4_config(iface, data):\n    \"\"\"Returns the contents of the interface file for ipv4.\"\"\"\n    config = [\n        'TYPE=\"Ethernet\"',\n        'NM_CONTROLLED=\"no\"',\n        'USERCTL=\"yes\"',\n        ]\n    if 'hwaddress' in data:\n        config.append('HWADDR=\"%s\"' % data['hwaddress'])\n    else:",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_interface_config",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_interface_config(target, iface, data):\n    \"\"\"Writes config for interface.\"\"\"\n    family = data['family']\n    if family != \"inet\":\n        # Only supporting ipv4 currently\n        print(\n            \"WARN: unsupported family %s, \"\n            \"failed to configure interface: %s\" (family, iface))\n        return\n    config = get_ipv4_config(iface, data)",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_network_config",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def write_network_config(target, mac):\n    \"\"\"Write network configuration for the given MAC address.\"\"\"\n    inames = get_interface_names()\n    iname = inames[mac.lower()]\n    write_interface_config(\n        target, iname, {\n            'family': 'inet',\n            'hwaddress': mac.upper(),\n            'auto': True,\n            'method': 'dhcp'",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "apply_networking",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def apply_networking(cfg, target, bootmac):\n    if 'network' in cfg and centos_apply_network_config:\n        centos_apply_network_config(cfg['network'], target)\n        return\n    if 'network' in cfg:\n        sys.stderr.write(\"WARN: network configuration provided, but \"\n                         \"no support for applying. Using basic config.\")\n    write_network_config(target, bootmac)\ndef handle_cloudconfig(cfg, target):\n    if not cfg.get('cloudconfig'):",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "handle_cloudconfig",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def handle_cloudconfig(cfg, target):\n    if not cfg.get('cloudconfig'):\n        return\n    if not write_files:\n        sys.stderr.write(\n            \"WARN: Unable to handle 'cloudconfig' section in config.\"\n            \"No 'write_files' found from curtin.\\n\")\n        return\n    base_dir = os.path.join(target, 'etc/cloud/cloud.cfg.d')\n    write_files(cfg['cloudconfig'], base_dir)",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "def main():\n    state = util.load_command_environment()\n    target = state['target']\n    if target is None:\n        print(\"Target was not provided in the environment.\")\n        sys.exit(1)\n    fstab = state['fstab']\n    if fstab is None:\n        print(\"/etc/fstab output was not provided in the environment.\")\n        sys.exit(1)",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "write_files",
+        "kind": 5,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "write_files = None\ntry:\n    from curtin.futil import write_files\nexcept ImportError:\n    pass\ncentos_apply_network_config = None\ntry:\n    if 'CENTOS_APPLY_NETWORK_CONFIG' in curtin_features:\n        from curtin.commands.curthooks import centos_apply_network_config\nexcept ImportError:",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "centos_apply_network_config",
+        "kind": 5,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "centos_apply_network_config = None\ntry:\n    if 'CENTOS_APPLY_NETWORK_CONFIG' in curtin_features:\n        from curtin.commands.curthooks import centos_apply_network_config\nexcept ImportError:\n    pass\n\"\"\"\nCentOS 6\nCurrently Support:\n- Legacy boot",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "FSTAB_PREPEND",
+        "kind": 5,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "FSTAB_PREPEND = \"\"\"\\\n#\n# /etc/fstab\n# Created by MAAS fast-path installer.\n#\n# Accessible filesystems, by reference, are maintained under '/dev/disk'\n# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info\n#\n\"\"\"\nFSTAB_APPEND = \"\"\"\\",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "FSTAB_APPEND",
+        "kind": 5,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "FSTAB_APPEND = \"\"\"\\\ntmpfs                   /dev/shm                tmpfs   defaults        0 0\ndevpts                  /dev/pts                devpts  gid=5,mode=620  0 0\nsysfs                   /sys                    sysfs   defaults        0 0\nproc                    /proc                   proc    defaults        0 0\n\"\"\"\nGRUB_CONF = \"\"\"\\\n#\n# /boot/grub/grub.conf\n# Created by MAAS fast-path installer.",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "GRUB_CONF",
+        "kind": 5,
+        "importPath": "packer-maas.centos6.curtin.curtin-hooks",
+        "description": "packer-maas.centos6.curtin.curtin-hooks",
+        "peekOfCode": "GRUB_CONF = \"\"\"\\\n#\n# /boot/grub/grub.conf\n# Created by MAAS fast-path installer.\n#\ndefault 0\ntimeout 0\ntitle MAAS\n root {grub_root}\n kernel /boot/{vmlinuz} root=UUID={root_uuid} {extra_opts}",
+        "detail": "packer-maas.centos6.curtin.curtin-hooks",
+        "documentation": {}
+    },
+    {
+        "label": "get_datasource",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "def get_datasource(**kwargs):\n    \"\"\"Returns the format cloud-init datasource.\"\"\"\n    return DATASOURCE_LIST + DATASOURCE.format(**kwargs)\ndef load_config(path):\n    \"\"\"Loads the curtin config.\"\"\"\n    with open(path, 'r') as stream:\n        return json.load(stream)\ndef extract_maas_parameters(config):\n    \"\"\"Extracts the needed values from the debconf\n    entry.\"\"\"",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "load_config",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "def load_config(path):\n    \"\"\"Loads the curtin config.\"\"\"\n    with open(path, 'r') as stream:\n        return json.load(stream)\ndef extract_maas_parameters(config):\n    \"\"\"Extracts the needed values from the debconf\n    entry.\"\"\"\n    params = {}\n    for line in config.splitlines():\n        cloud, key, type, value = line.split()[:4]",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "extract_maas_parameters",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "def extract_maas_parameters(config):\n    \"\"\"Extracts the needed values from the debconf\n    entry.\"\"\"\n    params = {}\n    for line in config.splitlines():\n        cloud, key, type, value = line.split()[:4]\n        if key == \"cloud-init/maas-metadata-url\":\n            params['url'] = value\n        elif key == \"cloud-init/maas-metadata-credentials\":\n            values = value.split(\"&\")",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "get_maas_debconf_selections",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "def get_maas_debconf_selections(config):\n    \"\"\"Gets the debconf selections from the curtin config.\"\"\"\n    try:\n        return config['debconf_selections']['maas']\n    except KeyError:\n        return None\ndef write_datasource(target, data):\n    \"\"\"Writes the cloudinit config into\n    /etc/cloud/cloud.cfg.d/90_datasource.cfg.\"\"\"\n    path = os.path.join(",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "write_datasource",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "def write_datasource(target, data):\n    \"\"\"Writes the cloudinit config into\n    /etc/cloud/cloud.cfg.d/90_datasource.cfg.\"\"\"\n    path = os.path.join(\n        target, 'etc', 'cloud', 'cloud.cfg.d', '90_datasource.cfg')\n    with open(path, 'w') as stream:\n        stream.write(data + '\\n')\ndef main():\n    state = util.load_command_environment()\n    target = state['target']",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "def main():\n    state = util.load_command_environment()\n    target = state['target']\n    if target is None:\n        print(\"Target was not provided in the environment.\")\n        sys.exit(1)\n    config_f = state['config']\n    if config_f is None:\n        print(\"Config was not provided in the environment.\")\n        sys.exit(1)",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "DATASOURCE_LIST",
+        "kind": 5,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "DATASOURCE_LIST = \"\"\"\\\ndatasource_list: [ MAAS ]\n\"\"\"\nDATASOURCE = \"\"\"\\\ndatasource:\n  MAAS: {{consumer_key: {consumer_key}, metadata_url: '{url}',\n    token_key: {token_key}, token_secret: {token_secret}}}\n\"\"\"\ndef get_datasource(**kwargs):\n    \"\"\"Returns the format cloud-init datasource.\"\"\"",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    },
+    {
+        "label": "DATASOURCE",
+        "kind": 5,
+        "importPath": "packer-maas.centos6.curtin.finalize",
+        "description": "packer-maas.centos6.curtin.finalize",
+        "peekOfCode": "DATASOURCE = \"\"\"\\\ndatasource:\n  MAAS: {{consumer_key: {consumer_key}, metadata_url: '{url}',\n    token_key: {token_key}, token_secret: {token_secret}}}\n\"\"\"\ndef get_datasource(**kwargs):\n    \"\"\"Returns the format cloud-init datasource.\"\"\"\n    return DATASOURCE_LIST + DATASOURCE.format(**kwargs)\ndef load_config(path):\n    \"\"\"Loads the curtin config.\"\"\"",
+        "detail": "packer-maas.centos6.curtin.finalize",
+        "documentation": {}
+    }
+]

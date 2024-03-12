@@ -6,7 +6,6 @@ ARG HOME="/home/${USER}"
 ARG PYENV_ROOT="${HOME}/.pyenv"
 
 ENV PYTHON_VERSION="3.12"
-ENV VENV_NAME="maas-ansible"
 ENV TERM="xterm"
 ENV SHELL="/bin/zsh"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${HOME}/.local/bin:$PATH"
@@ -29,10 +28,9 @@ COPY --chown="${USER}" pipfiles/requirements.txt "/tmp/requirements.txt"
 
 RUN curl -k https://pyenv.run | bash
 RUN pyenv install ${PYTHON_VERSION} \
-    && pyenv virtualenv ${PYTHON_VERSION} ${VENV_NAME} \
-    && pyenv global ${VENV_NAME} \
-    && pyenv local ${VENV_NAME} \
-    && echo "${VENV_NAME}" > "${WORKDIR}/.python-version"
+    && pyenv global ${PYTHON_VERSION} \
+    && pyenv local ${PYTHON_VERSION} \
+    && echo "${PYTHON_VERSION}" > "${WORKDIR}/.python-version"
 RUN pip install --upgrade -r /tmp/ansible.txt \
     && pip install --upgrade  --no-cache-dir -r /tmp/requirements.txt \
     && chown -R ${USER}:${USER} ${PYENV_ROOT}
