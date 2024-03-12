@@ -20,8 +20,8 @@ all:
     maas_region_controller:
       hosts:
         maas-poc-reg01:
-          ansible_host: 44.10.4.100
-          ansible_user: silver
+          ansible_host: 44.10.4.101
+          ansible_user: ajanis
         # maas-region01:
         # maas-region02:
         # maas-region03:
