@@ -41,7 +41,6 @@ ruamel.yaml.clib
 setuptools
 subprocess-tee
 tomlkit
-trunk
 urllib3
 userpath
 wcmatch
@@ -50,4 +49,3 @@ yamllint
 pytest-testinfra
 pytest-xdist
 mypy
-

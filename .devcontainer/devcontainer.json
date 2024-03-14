@@ -35,10 +35,6 @@
     },
     "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
       "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/npm-package:1": {
-      "package": "@fabiospampinato/bump",
-      "version": "latest"
     }
   },
   // Configure tool-specific properties.
@@ -47,7 +43,6 @@
     "vscode": {
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        "kuscamara.hyper-dark-material",
         "atommaterial.a-file-icon-vscode",
         "blipn.terminal-icon",
         "TravisMichette.tm-ansible-snippets",
@@ -73,11 +68,9 @@
         "zeshuaro.vscode-python-poetry",
         "ryu1kn.partial-diff",
         "yzhang.markdown-all-in-one",
-        "Boto3typed.boto3-ide",
         "bierner.markdown-footnotes",
         "bierner.markdown-mermaid",
         "bierner.markdown-checkbox",
-        "trunk.io",
         "tal7aouy.icons",
         "rexebin.dracula"
       ],
@@ -110,7 +103,6 @@
             "source.fixAll": "always"
           }
         },
-        "editor.defaultFormatter": "trunk.io",
         "http.proxyStrictSSL": false,
         "terminal.explorerKind": "integrated",
         "ansible.validation.lint.enabled": true,
