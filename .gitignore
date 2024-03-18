@@ -3,7 +3,8 @@
 /02-inventory-proxmox.yml
 maas_local
 .DS_Store
-packer-maas
-maas-prometheus-alert-rules
-maas-loki-alert-rules
+#packer-maas
+#maas-prometheus-alert-rules
+#maas-loki-alert-rules
 .python-version
+/maas-docs/physical.md

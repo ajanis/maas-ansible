@@ -1,191 +1,180 @@
 {
-    // A name for the dev container which can be displayed to the user.
-    "name": "Ansible MAAS",
-
-    "build": {
-      "dockerfile": "Dockerfile"
+  // A name for the dev container which can be displayed to the user.
+  "name": "Ansible MAAS",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // The path of the workspace folder inside the container.
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "vscode",
+  // Remote environment variables to set for processes spawned in the container including lifecycle scripts and any remote editor/IDE server process.
+  "remoteEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
+  "containerEnv": {
+    "INSTALL_AWS": "${localEnv:INSTALL_AWS:-false}"
+  },
+  // Mount points to set up when creating the container. See Docker's documentation for the --mount option for the supported syntax.
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
+  ],
+  // Features to add to the dev container.
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": true,
+      "installDockerBuildx": true,
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
     },
-	  
-    // The path of the workspace folder inside the container.
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "remoteUser": "vscode",
-    // Remote environment variables to set for processes spawned in the container including lifecycle scripts and any remote editor/IDE server process.
-    "remoteEnv": {
-      "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "plugins": "ssh-agent npm",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions",
+      "username": "vscode",
+      "version": "latest"
     },
-    "containerEnv": {
-      "INSTALL_AWS": "${localEnv:INSTALL_AWS:-false}"
-    },
-    // Mount points to set up when creating the container. See Docker's documentation for the --mount option for the supported syntax.
-    "mounts": [
-      "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
-      "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
-    ],
-    // Features to add to the dev container.
-    "features": {
-      "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
-        "moby": true,
-        "installDockerBuildx": true,
-        "version": "latest",
-        "dockerDashComposeVersion": "v2"
-      },
-      "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
-        "plugins": "ssh-agent npm",
-        "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions",
-        "username": "vscode",
-        "version": "latest"
-      },
-      "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
-        "version": "latest"
-      },
-        "ghcr.io/devcontainers-contrib/features/npm-package:1": {
-          "package": "@fabiospampinato/bump",
-          "version": "latest"
-        }
-    },
-    // Configure tool-specific properties.
-    "customizations": {
-      // Configure properties specific to VS Code.
-      "vscode": {
-        // Add the IDs of extensions you want installed when the container is created.
-        "extensions": [
-            "kuscamara.hyper-dark-material",
-            "atommaterial.a-file-icon-vscode",
-            "blipn.terminal-icon",
-            "TravisMichette.tm-ansible-snippets",
-            "redhat.ansible",
-            "redhat.vscode-yaml",
-            "wolfmah.ansible-vault-inline",
-            "ms-vscode-remote.remote-containers",
-            "ms-vscode-remote.remote-ssh",
-            "ms-vscode-remote.remote-ssh-edit",
-            "ms-vscode.remote-server",
-            "ms-vscode.remote-explorer",
-            "ms-vscode.remote-repositories",
-            "ms-vscode.live-server",
-            "ms-azuretools.vscode-docker",
-            "GitHub.remotehub",
-            "GitHub.codespaces",
-            "felipecaputo.git-project-manager",
-            "maciejdems.add-to-gitignore",
-            "huizhou.githd",
-            "mhutchie.git-graph",
-            "ms-python.python",
-            "Artymaury.template-finder",
-            "zeshuaro.vscode-python-poetry",
-            "ryu1kn.partial-diff",
-            "yzhang.markdown-all-in-one",
-            "Boto3typed.boto3-ide",
-            "bierner.markdown-footnotes",
-            "bierner.markdown-mermaid",
-            "bierner.markdown-checkbox",
-            "trunk.io",
-            "tal7aouy.icons",
-            "rexebin.dracula"
-        ],
-        // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
-        "settings": {
-          "[python]": {
-            "editor.formatOnSave": true,
-            "editor.codeActionsOnSave": {
-              "source.fixAll": "always",
-              "source.organizeImports": "always"
-            }
-          },
-          "[ansible]": {
-            "editor.detectIndentation": true,
-            "editor.insertSpaces": true,
-            "editor.tabSize": 2,
-            "editor.quickSuggestions": {
-              "comments": true,
-              "other": true,
-              "strings": true
-            },
-            "editor.autoIndent": "advanced",
-            "editor.formatOnSave": true,
-            "editor.codeActionsOnSave": {
-              "source.fixAll": "always"
-            }
-          },
-          "[ansible-jinja]": {
-            "editor.codeActionsOnSave": {
-              "source.fixAll": "always"
-            }
-          },
-          "editor.defaultFormatter": "trunk.io",
-          "http.proxyStrictSSL": false,
-          "terminal.explorerKind": "integrated",
-          "ansible.validation.lint.enabled": true,
-          "terminal.integrated.scrollback": 50000,
-          "terminal.integrated.smoothScrolling": true,
-          "ansible.validation.lint.path": "/home/vscode/.pyenv/shims/ansible-lint",
-          "ansible.ansible.path": "/home/vscode/.pyenv/shims/ansible",
-          "ansible.ansibleNavigator.path": "/home/vscode/.pyenv/shims/ansible-navigator",
-          "ansible.validation.enabled": true,
-          "ansible.ansible.reuseTerminal": true,
-          "ansible.executionEnvironment.enabled": false,
-          "ansibleServer.trace.server": "messages",
-          "ansibleVaultInline.keyfile": ".vault",
-          "github.gitProtocol": "ssh",
-          "git.allowForcePush": true,
-          "git.autofetch": true,
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
+      "version": "latest"
+    }
+  },
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "atommaterial.a-file-icon-vscode",
+        "blipn.terminal-icon",
+        "TravisMichette.tm-ansible-snippets",
+        "redhat.ansible",
+        "redhat.vscode-yaml",
+        "wolfmah.ansible-vault-inline",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit",
+        "ms-vscode.remote-server",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.remote-repositories",
+        "ms-vscode.live-server",
+        "ms-azuretools.vscode-docker",
+        "GitHub.remotehub",
+        "GitHub.codespaces",
+        "felipecaputo.git-project-manager",
+        "maciejdems.add-to-gitignore",
+        "huizhou.githd",
+        "mhutchie.git-graph",
+        "ms-python.python",
+        "Artymaury.template-finder",
+        "zeshuaro.vscode-python-poetry",
+        "ryu1kn.partial-diff",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-footnotes",
+        "bierner.markdown-mermaid",
+        "bierner.markdown-checkbox",
+        "tal7aouy.icons",
+        "rexebin.dracula"
+      ],
+      // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
+      "settings": {
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "always",
+            "source.organizeImports": "always"
+          }
+        },
+        "[ansible]": {
+          "editor.detectIndentation": true,
+          "editor.insertSpaces": true,
           "editor.tabSize": 2,
-          "editor.fontFamily": "JetBrainsMono Nerd Font Propo, VictorMono Nerd Font Propo",
-          "github-enterprise.uri": "https://github.com",
-          "css.lint.fontFaceProperties": "ignore",
-          "less.lint.fontFaceProperties": "ignore",
-          "scss.lint.fontFaceProperties": "ignore",
-          "a-file-icon-vscode.folderTheme": "specific",
-          "a-file-icon-vscode.folderColor": "#939293",
-          "a-file-icon-vscode.arrowTheme": "material",
-          "a-file-icon-vscode.opacity": 1,
-          "templateFinder.extension.activated": true,
-          "terminal.integrated.automationShell.linux": "/usr/bin/zsh",
-          "terminal.integrated.defaultProfile.linux": "zsh",
-          "terminal.integrated.profiles.linux": {
-            "bash": {
-              "path": "/usr/bin/bash",
-              "icon": "terminal-bash"
-            },
-            "zsh": {
-              "path": "/usr/bin/zsh",
-              "icon": "terminal-ubuntu"
-            },
-            "fish": {
-              "path": "fish"
-            },
-            "tmux": {
-              "path": "tmux",
-              "icon": "terminal-tmux"
-            },
-            "pwsh": {
-              "path": "pwsh",
-              "icon": "terminal-powershell"
-            }
+          "editor.quickSuggestions": {
+            "comments": true,
+            "other": true,
+            "strings": true
           },
-          "a-file-icon-vscode.activeIconPacks": [
-            "angular",
-            "ngrx",
-            "nest",
-            "react",
-            "redux",
-            "recoil",
-            "vue",
-            "vuex",
-            "rails",
-            "phalcon",
-            "volt"
-          ]
-        }
+          "editor.autoIndent": "advanced",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "always"
+          }
+        },
+        "[ansible-jinja]": {
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "always"
+          }
+        },
+        "http.proxyStrictSSL": false,
+        "terminal.explorerKind": "integrated",
+        "ansible.validation.lint.enabled": true,
+        "terminal.integrated.scrollback": 50000,
+        "terminal.integrated.smoothScrolling": true,
+        "ansible.validation.lint.path": "/home/vscode/.pyenv/shims/ansible-lint",
+        "ansible.ansible.path": "/home/vscode/.pyenv/shims/ansible",
+        "ansible.ansibleNavigator.path": "/home/vscode/.pyenv/shims/ansible-navigator",
+        "ansible.validation.enabled": true,
+        "ansible.ansible.reuseTerminal": true,
+        "ansible.executionEnvironment.enabled": false,
+        "ansibleServer.trace.server": "messages",
+        "ansibleVaultInline.keyfile": ".vault",
+        "github.gitProtocol": "ssh",
+        "git.allowForcePush": true,
+        "git.autofetch": true,
+        "editor.tabSize": 2,
+        "editor.fontFamily": "JetBrainsMono Nerd Font Propo, VictorMono Nerd Font Propo",
+        "github-enterprise.uri": "https://github.com",
+        "css.lint.fontFaceProperties": "ignore",
+        "less.lint.fontFaceProperties": "ignore",
+        "scss.lint.fontFaceProperties": "ignore",
+        "a-file-icon-vscode.folderTheme": "specific",
+        "a-file-icon-vscode.folderColor": "#939293",
+        "a-file-icon-vscode.arrowTheme": "material",
+        "a-file-icon-vscode.opacity": 1,
+        "templateFinder.extension.activated": true,
+        "terminal.integrated.automationShell.linux": "/usr/bin/zsh",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/usr/bin/bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "/usr/bin/zsh",
+            "icon": "terminal-ubuntu"
+          },
+          "fish": {
+            "path": "fish"
+          },
+          "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+          },
+          "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+          }
+        },
+        "a-file-icon-vscode.activeIconPacks": [
+          "angular",
+          "ngrx",
+          "nest",
+          "react",
+          "redux",
+          "recoil",
+          "vue",
+          "vuex",
+          "rails",
+          "phalcon",
+          "volt"
+        ]
       }
-    },
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
-    // Use 'postCreateCommand' to run commands after the container is created.
-    // "postCreateCommand": "cat ${localWorkspaceFolder}/.devcontainer/scripts/post-create.sh | bash",
-    // Use 'postAttachCommand' to run commands when attaching to the container.
-    "postAttachCommand": "ansible-galaxy install -r collections/requirements.yml -f; sudo chmod 0777 /etc/resolv.conf; grep -q '10.0.10.222' /etc/resolv.conf || echo 'nameserver 10.0.10.222'>>/etc/resolv.conf; grep -q 'home.prettybaked.com' /etc/resolv.conf || echo 'search home.prettybaked.com'>>/etc/resolv.conf"
-    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-    // "remoteUser": "root"
-  }
-  
+    }
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "cat ${localWorkspaceFolder}/.devcontainer/scripts/post-create.sh | bash",
+  // Use 'postAttachCommand' to run commands when attaching to the container.
+  "postAttachCommand": "ansible-galaxy install -r collections/requirements.yml -f; sudo chmod 0777 /etc/resolv.conf; grep -q '10.0.10.222' /etc/resolv.conf || echo 'nameserver 10.0.10.222'>>/etc/resolv.conf; grep -q 'home.prettybaked.com' /etc/resolv.conf || echo 'search home.prettybaked.com'>>/etc/resolv.conf"
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
