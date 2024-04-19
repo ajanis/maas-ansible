@@ -20,7 +20,6 @@ markdown-it-py
 MarkupSafe
 mccabe
 mdurl
-mypy-extensions
 packaging
 pathspec
 pipx
@@ -48,4 +47,3 @@ wrapt
 yamllint
 pytest-testinfra
 pytest-xdist
-mypy
