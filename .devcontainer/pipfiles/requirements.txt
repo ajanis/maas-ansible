@@ -20,7 +20,6 @@ markdown-it-py
 MarkupSafe
 mccabe
 mdurl
-mypy-extensions
 packaging
 pathspec
 pipx
@@ -41,7 +40,6 @@ ruamel.yaml.clib
 setuptools
 subprocess-tee
 tomlkit
-trunk
 urllib3
 userpath
 wcmatch
@@ -49,4 +47,3 @@ wrapt
 yamllint
 pytest-testinfra
 pytest-xdist
-mypy

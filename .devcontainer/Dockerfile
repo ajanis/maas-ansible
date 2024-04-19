@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/devcontainers/base:jammy
-
+WORKDIR /workspaces/${localWorkspaceFolderBasename}
 ARG DEBIAN_FRONTEND=noninteractive
 ARG USER=vscode
 ARG HOME="/home/${USER}"
@@ -17,26 +17,26 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update --no-install-recommends \
     zlib1g-dev libreadline-dev libbz2-dev libsqlite3-dev libcap-dev \
     libxml2-dev libxmlsec1-dev libffi-dev libtinfo5 liblzma-dev libpq-dev \
     musl-dev libonig5 libtool inetutils-ping dnsutils bind9-dnsutils \
-    docker.io redis redis-sentinel mypy
+    docker.io redis redis-sentinel mypy \
+    && rm -rf /var/lib/apt/lists/*
 
-WORKDIR "${LOCAL_WORKSPACE_FOLDER}"
 
 COPY --chown="${USER}" rcfiles/.zshrc "${HOME}/.zshrc"
 COPY --chown="${USER}" rcfiles/.p10k.zsh "${HOME}/.p10k.zsh"
 COPY --chown="${USER}" pipfiles/ansible.txt "/tmp/ansible.txt"
 COPY --chown="${USER}" pipfiles/requirements.txt "/tmp/requirements.txt"
 
-RUN curl -k https://pyenv.run | bash
-RUN pyenv install ${PYTHON_VERSION} \
+RUN curl -k https://pyenv.run | bash \
+    && pyenv install ${PYTHON_VERSION} \
     && pyenv global ${PYTHON_VERSION} \
     && pyenv local ${PYTHON_VERSION} \
-    && echo "${PYTHON_VERSION}" > "${WORKDIR}/.python-version"
-RUN pip install --upgrade -r /tmp/ansible.txt \
+    && echo "${PYTHON_VERSION}" > "${WORKDIR}/.python-version" \
+    && pip install --upgrade -r /tmp/ansible.txt \
     && pip install --upgrade  --no-cache-dir -r /tmp/requirements.txt \
-    && chown -R ${USER}:${USER} ${PYENV_ROOT}
-RUN git clone https://github.com/romkatv/powerlevel10k.git ${HOME}/.oh-my-zsh/custom/themes/powerlevel10k \
-    && chown -R ${USER}:${USER} ${HOME}
-RUN rm -f /tmp/requirements.txt /tmp/ansible.txt
+    && chown -R ${USER}:${USER} ${PYENV_ROOT} \
+    && git clone https://github.com/romkatv/powerlevel10k.git ${HOME}/.oh-my-zsh/custom/themes/powerlevel10k \
+    && chown -R ${USER}:${USER} ${HOME} \
+    && rm -f /tmp/requirements.txt /tmp/ansible.txt
 
 
 # DOCKER INIT
