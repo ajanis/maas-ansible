@@ -64,7 +64,6 @@
         "huizhou.githd",
         "mhutchie.git-graph",
         "ms-python.python",
-        "Artymaury.template-finder",
         "zeshuaro.vscode-python-poetry",
         "ryu1kn.partial-diff",
         "yzhang.markdown-all-in-one",
@@ -72,7 +71,7 @@
         "bierner.markdown-mermaid",
         "bierner.markdown-checkbox",
         "tal7aouy.icons",
-        "rexebin.dracula"
+        "IkBenGeenRobot.ansible-variable-lookup"
       ],
       // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
       "settings": {
@@ -129,7 +128,6 @@
         "a-file-icon-vscode.folderColor": "#939293",
         "a-file-icon-vscode.arrowTheme": "material",
         "a-file-icon-vscode.opacity": 1,
-        "templateFinder.extension.activated": true,
         "terminal.integrated.automationShell.linux": "/usr/bin/zsh",
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
