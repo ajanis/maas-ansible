@@ -2,9 +2,9 @@
 ansible_connection: local
 ansible_python_interpreter: /home/vscode/.pyenv/shims/python3
 
-o11y_enable: false
-o11y_prometheus_url: "http://{{ maas_aio_ip }}:9090/api/v1/write"
-o11y_loki_url: "http://{{ maas_aio_ip }}:3100/loki/api/v1/push"
+o11y_enable: true
+o11y_prometheus_url: "http://{{ maas_metrics_host }}:9090/api/v1/write"
+o11y_loki_url: "http://{{ maas_metrics_host }}:3100/loki/api/v1/push"
 o11y_alertrules_dest: ./maas_local/alertrules
 
 maas_backup_download_path: ./maas_local/backups
