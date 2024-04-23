@@ -55,11 +55,6 @@ all:
               3639373337376535310a643533613065393166383932656166643230626336656361373161623066
               62333135616132613763383434636562623634643166623163636239336266663031
 
-  hosts:
-    localhost:
-      ansible_connection: local
-      ansible_python_interpreter: /home/vscode/.pyenv/shims/python3
-
   children:
     maas_region_controller:
       hosts:
