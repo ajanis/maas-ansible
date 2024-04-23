@@ -1,7 +1,7 @@
 ---
 maas_version: 3.5
 maas_installation_type: snap
-maas_snap_channel: stable # if using snap, then the channel. ie: stable, beta, edge
+maas_snap_channel: candidate # if using snap, then the channel. ie: stable, beta, edge
 snap_update: true
 maas_deb_state: present # if using deb, the state for install
 maas_metrics_host: 44.10.4.101
