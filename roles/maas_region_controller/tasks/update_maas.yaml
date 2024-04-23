@@ -67,14 +67,14 @@
     loop_var: rack_controller
   no_log: true
 
-# - name: update_maas | Refresh MAAS API
-#   ansible.builtin.shell:
-#     cmd: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} refresh"
-#   environment:
-#     http_proxy: ""
-#     https_proxy: ""
-#     no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
-#   register: maas_api_refresh
-#   until: maas_api_refresh is success
-#   changed_when: maas_api_refresh is changed
-#   run_once: true
+- name: update_maas | Refresh MAAS API
+  ansible.builtin.shell:
+    cmd: "{{ 'maas' if maas_installation_type | lower == 'snap' else 'maas-region' }} refresh"
+  environment:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: localhost,hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
+  register: maas_api_refresh
+  until: maas_api_refresh is success
+  changed_when: maas_api_refresh is changed
+  run_once: true

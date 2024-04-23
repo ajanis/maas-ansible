@@ -39,9 +39,13 @@
   register: maas_admin_api_key
   changed_when: maas_admin_api_key is success
 
+- name: Debug task
+  ansible.builtin.debug:
+    var: maas_admin_api_key
+
 - name: Login in MAAS
   ansible.builtin.shell:
-    cmd: maas login {{ admin_username }} {{ maas_url }} {{ maas_admin_api_key.stdout }}
+    cmd: maas login {{ admin_username }} {{ maas_url }} {{ maas_admin_api_key.stdout_lines | first }}
   environment:
     http_proxy: ""
     https_proxy: ""
