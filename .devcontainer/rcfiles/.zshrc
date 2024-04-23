@@ -1,18 +1,23 @@
 # USER CONFIGS
 function encrypt() {
   if [[ -n $1 ]]; then
-  export VARNAME=$1
+    export VARNAME=$1
   elif [[ -z $1 ]]; then
-  read -s "VARNAME?Name of variable : "
+    read -s "VARNAME?Name of variable or path to file : "
   fi
-  if [[ -f $2 ]]; then
-      echo Encrypting contents of file: ${2:a}
-      ENCRYPTSTRING=$(<$2:a)
-      else
-  read -s "ENCRYPTSTRING?Value to encrypt for $VARNAME : "
+  if [[ -f $VARNAME ]]; then
+    echo -e "
+    Encrypting file '${VARNAME}'..."
+    ansible-vault encrypt $VARNAME
+    echo -e "
+    ...Done
+    Encrypted File Contents :
+    "
+    cat $VARNAME
+  else
+    read -s "ENCRYPTSTRING?Value to encrypt for $VARNAME : "
+    command pbcopy >/dev/null 2>&1 && echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $VARNAME | tee >(pbcopy) || echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $VARNAME
   fi
-  echo
-  echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $VARNAME | tee >(pbcopy)
 }
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
