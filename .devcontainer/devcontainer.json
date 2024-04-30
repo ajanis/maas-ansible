@@ -71,7 +71,8 @@
         "bierner.markdown-mermaid",
         "bierner.markdown-checkbox",
         "tal7aouy.icons",
-        "IkBenGeenRobot.ansible-variable-lookup"
+        "IkBenGeenRobot.ansible-variable-lookup",
+        "yzane.markdown-pdf"
       ],
       // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
       "settings": {
