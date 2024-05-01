@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>debirf-unpack.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///workspaces/maas-ansible/R%3A%5C2.Travail%5C1.Enseignement%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css"><link rel="stylesheet" href="file:///workspaces/maas-ansible/D%3A%5Crdaros%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="unpack-the-debirf-iso">Unpack the debirf ISO</h1>
+<h2 id="unpack-the-contents-of-the-debirf-live-iso">Unpack the contents of the debirf live ISO:</h2>
+<ul>
+<li>
+<p>Mount the image</p>
+<pre class="hljs"><code><div>sudo mount -o loop debirf-live_bullseye_amd64.iso /mnt/iso
+</div></code></pre>
+</li>
+<li>
+<p>Create a destination for the compressed files</p>
+<pre class="hljs"><code><div>mkdir ~/debirf
+</div></code></pre>
+</li>
+<li>
+<p>Copy the initrd file to the new directory</p>
+<pre class="hljs"><code><div>cp /mnt/iso/debirf-live_bullseye_6.0.0-0.deb11.6-amd64.cgz ~/debirf
+</div></code></pre>
+<pre class="hljs"><code><div>cd ~/debirf
+</div></code></pre>
+</li>
+<li>
+<p>Change the extension of the file to be recognized by gzip</p>
+<pre class="hljs"><code><div>mv debirf-live_bullseye_6.0.0-0.deb11.6-amd64.cgz debirf-live_bullseye_6.0.0-0.deb11.6-amd64.gz
+</div></code></pre>
+</li>
+<li>
+<p>Uncompress the file</p>
+<pre class="hljs"><code><div>gunzip debirf-live_bullseye_6.0.0-0.deb11.6-amd64.gz
+</div></code></pre>
+</li>
+<li>
+<p>Unpack the cpio file</p>
+<pre class="hljs"><code><div>cpio -idv &lt; debirf-live_bullseye_6.0.0-0.deb11.6-amd64
+</div></code></pre>
+</li>
+<li>
+<p>Change the extension of rootfs to be recognized by unxz</p>
+<pre class="hljs"><code><div>mv rootfs.cxz rootfs.xz
+</div></code></pre>
+</li>
+<li>
+<p>Uncompress the rootfs file</p>
+<pre class="hljs"><code><div>unxz rootfs.xz
+</div></code></pre>
+</li>
+<li>
+<p>Create a new directory to store the rootfs</p>
+<pre class="hljs"><code><div>mkdir rootdir
+</div></code></pre>
+<pre class="hljs"><code><div>cd rootdir
+</div></code></pre>
+</li>
+<li>
+<p>Unpack the cpio file</p>
+<pre class="hljs"><code><div>cpio -idv &lt; ../rootfs
+</div></code></pre>
+</li>
+</ul>
+<h1 id="try-the-deb-live-in-a-vm">Try the deb live in a VM</h1>
+<h2 id="boot-with-the-debirf-live-image">Boot with the debirf-live image</h2>
+<ul>
+<li>Login with the default root:install account</li>
+<li>Create the /data directory</li>
+<li>Transfer the APOLLO_PLATFORM iso into /data</li>
+<li>Run the ostree-production list-isos to identify the file</li>
+</ul>
+<pre class="hljs"><code><div>0 debirf-live:~# ostree-production list-isos
+I: List of ISO files under '/data' (product_code='' version=''):
+<span class="hljs-meta">	&gt;</span><span class="bash"> APOLLO_PLATFORM-release-3.21.3.0-7+auto15.iso</span>
+I: Cleanup
+</div></code></pre>
+<h2 id="apply-the-image-to-the-disk">Apply the image to the disk</h2>
+<pre class="hljs"><code><div>1 debirf-live:~# ostree-production -D /dev/sda from  /data/APOLLO_PLATFORM-release-3.21.3.0-7+auto15.iso
+I: ---------------------------------------------------------------------------
+I: Directly using '/data/APOLLO_PLATFORM-release-3.21.3.0-7+auto15.iso'
+I: ---------------------------------------------------------------------------
+I: Handling product_code=APOLLO_PLATFORM version=3.21.3.0-7+auto15
+Version: 3.21.3.0-7+auto15
+I: Unexposing /tmp/APOLLO_PLATFORM-nsg-upgrade/iso-mounts/APOLLO_PLATFORM-3.21.3.0-7+auto15
+I: Exposing ISO: 3.21.3.0-7+auto15 (from /data/APOLLO_PLATFORM-release-3.21.3.0-7+auto15.iso)
+I: Exposed  ISO: 3.21.3.0-7+auto15 (under /tmp/APOLLO_PLATFORM-nsg-upgrade/iso-mounts/APOLLO_PLATFORM-3.21.3.0-7+auto15)
+I: Production to device '/dev/sda'
+
+STEP-1 ============================================================= Unmounting previous /mnt/passive
+
+N: apollo-env(umount): skip -- already unmounted
+
+STEP-2 ============================================================= Partitioning disk and create file-systems
+
+I: --------------------------------------------------------- REMOVE_ALL
+I: --------------------------------------------------------- WIPE PREVIOUS FILESYSTEM
+I: --------------------------------------------------------- CREATE PARTITIONS (msdos)
+Information: You may need to update /etc/fstab.
+
+Information: You may need to update /etc/fstab.
+
+Information: You may need to update /etc/fstab.
+
+Information: You may need to update /etc/fstab.
+
+Information: You may need to update /etc/fstab.
+
+Information: You may need to update /etc/fstab.
+
+I: --------------------------------------------------------- CREATE_ALL (LVM)
+  Physical volume "/dev/sda3" successfully created.
+  Volume group "cos-slice-vg" successfully created
+  Logical volume "root1" created.
+  Logical volume "root2" created.
+  Logical volume "common" created.
+  Logical volume "confd" created.
+  Logical volume "docker" created.
+I: --------------------------------------------------------- CREATE_ALL (FILE-SYSTEMS)
+mkfs.fat 4.2 (2021-01-31)
+mke2fs 1.46.2 (28-Feb-2021)
+/dev/sda2 contains a ext3 file system labelled 'GRUBPC'
+	created on Tue Apr 23 20:31:14 2024
+Creating filesystem with 488448 1k blocks and 122400 inodes
+Filesystem UUID: e7c244c4-99c0-416c-9a20-cf90ab81281e
+Superblock backups stored on blocks:
+	8193, 24577, 40961, 57345, 73729, 204801, 221185, 401409
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+mke2fs 1.46.2 (28-Feb-2021)
+Creating filesystem with 434176 4k blocks and 108640 inodes
+Filesystem UUID: d4114381-5bb2-4289-b947-8d96a9ddadce
+Superblock backups stored on blocks:
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+mke2fs 1.46.2 (28-Feb-2021)
+Creating filesystem with 434176 4k blocks and 108640 inodes
+Filesystem UUID: 1815dd30-6d1c-4633-b39d-6836a185263c
+Superblock backups stored on blocks:
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+mke2fs 1.46.2 (28-Feb-2021)
+Creating filesystem with 315392 1k blocks and 78936 inodes
+Filesystem UUID: d88c0936-5617-4eb5-b91f-cacbf818c2e8
+Superblock backups stored on blocks:
+	8193, 24577, 40961, 57345, 73729, 204801, 221185
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+mke2fs 1.46.2 (28-Feb-2021)
+Creating filesystem with 2416640 4k blocks and 605024 inodes
+Filesystem UUID: fc81f783-53ef-4e41-b005-1d2c15999940
+Superblock backups stored on blocks:
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+mke2fs 1.46.2 (28-Feb-2021)
+Creating filesystem with 585728 4k blocks and 146592 inodes
+Filesystem UUID: fc97fc34-af12-4a41-97ed-73234d8c34da
+Superblock backups stored on blocks:
+	32768, 98304, 163840, 229376, 294912
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+I: --------------------------------------------------------- READY
+  LV     VG           Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  common cos-slice-vg -wi-a----- 308.00m
+  confd  cos-slice-vg -wi-a-----   2.23g
+  docker cos-slice-vg -wi-a-----  &lt;9.22g
+  root1  cos-slice-vg -wi-a-----  &lt;1.66g
+  root2  cos-slice-vg -wi-a-----  &lt;1.66g
+
+STEP-3 ============================================================= ROOTFS1 -- Mounting
+
+I: Found disks:
+/dev/disk/by-id/ata-VMware_Virtual_IDE_CDROM_Drive_00000000000000000001
+/dev/disk/by-id/dm-name-cos--slice--vg-common
+/dev/disk/by-id/dm-name-cos--slice--vg-confd
+/dev/disk/by-id/dm-name-cos--slice--vg-docker
+/dev/disk/by-id/dm-name-cos--slice--vg-root1
+/dev/disk/by-id/dm-name-cos--slice--vg-root2
+/dev/disk/by-id/dm-uuid-LVM-bCUwiDLYkH0OVrcfQIJ1PJL0Bto46REC1ETLVkEz1XapkyV3VuYnWJpW2TWAd0nz
+/dev/disk/by-id/dm-uuid-LVM-bCUwiDLYkH0OVrcfQIJ1PJL0Bto46REC5lT9ZpQAj5GBy7aLPc6uFcoUXewEk9qc
+/dev/disk/by-id/dm-uuid-LVM-bCUwiDLYkH0OVrcfQIJ1PJL0Bto46RECNLILKPxBMPc0GVO3Ji2CwX4Hyi1rq5dp
+/dev/disk/by-id/dm-uuid-LVM-bCUwiDLYkH0OVrcfQIJ1PJL0Bto46RECQ0d4p6FBF6YLJe2icAX1LfuRf9MZNiPo
+/dev/disk/by-id/dm-uuid-LVM-bCUwiDLYkH0OVrcfQIJ1PJL0Bto46RECdg4bxGoOxoGmBVgeiK1NAzUKbtBTattn
+/dev/disk/by-id/lvm-pv-uuid-A83I6e-23Ps-ayZv-ivXO-GSgl-rLPv-AQzgOT
+E: No known /dev/disk/by-id
+
+STEP-4 ============================================================= ROOTFS1 -- Syncing ISO contents
+
+I: -------------------- Running pre upgrade scripts (/tmp/APOLLO_PLATFORM-nsg-upgrade/nsg-upgrade/root/usr/share/ostree-upgrade/run-scripts/pre.d)
+I: -------------------- Finished pre upgrade scripts
+
+I: -------------------- transfer begin --------------
+I: Fetching '/tmp/APOLLO_PLATFORM-nsg-upgrade/iso-mounts/APOLLO_PLATFORM-3.21.3.0-7+auto15/rootfs/usr/share/product-defs/product.conf'
+I: Project='APOLLO_PLATFORM'
+</div></code></pre>
+
+</body>
+
+</html>
