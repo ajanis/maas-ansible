@@ -1,5 +1,5 @@
 {
-  "ansible.python.interpreterPath": "/home/vscode/.pyenv/versions/3.12.3/bin/python",
+  "ansible.python.interpreterPath": "/usr/local/bin/python3",
   "ansible.ansible.path": "ansible",
   "ansible.ansibleNavigator.path": "ansible-navigator",
   "ansible.validation.lint.path": "ansible-lint",
