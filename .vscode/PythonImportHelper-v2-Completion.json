@@ -63,6 +63,516 @@
         "documentation": {}
     },
     {
+        "label": "glob",
+        "importPath": "glob",
+        "description": "glob",
+        "isExtraImport": true,
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "importPath": "glob",
+        "description": "glob",
+        "isExtraImport": true,
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "check_output",
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "isExtraImport": true,
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "tarfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tarfile",
+        "description": "tarfile",
+        "detail": "tarfile",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
+        "label": "mock",
+        "importPath": "unittest",
+        "description": "unittest",
+        "isExtraImport": true,
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "contextlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "aiohttp",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
+        "label": "web",
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "isExtraImport": true,
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
+        "label": "web",
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "isExtraImport": true,
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
+        "label": "ClientSession",
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "isExtraImport": true,
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
+        "label": "web",
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "isExtraImport": true,
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
+        "label": "prometheus_client",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "prometheus_client",
+        "description": "prometheus_client",
+        "detail": "prometheus_client",
+        "documentation": {}
+    },
+    {
+        "label": "REGISTRY",
+        "importPath": "prometheus_client",
+        "description": "prometheus_client",
+        "isExtraImport": true,
+        "detail": "prometheus_client",
+        "documentation": {}
+    },
+    {
+        "label": "generate_latest",
+        "importPath": "prometheus_client",
+        "description": "prometheus_client",
+        "isExtraImport": true,
+        "detail": "prometheus_client",
+        "documentation": {}
+    },
+    {
+        "label": "Histogram",
+        "importPath": "prometheus_client",
+        "description": "prometheus_client",
+        "isExtraImport": true,
+        "detail": "prometheus_client",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio.subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio.subprocess",
+        "description": "asyncio.subprocess",
+        "detail": "asyncio.subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "textwrap",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "textwrap",
+        "description": "textwrap",
+        "detail": "textwrap",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "Mock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "Mock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "Mock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "Mock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "quote",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "netaddr",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "netaddr",
+        "description": "netaddr",
+        "detail": "netaddr",
+        "documentation": {}
+    },
+    {
+        "label": "IPAddress",
+        "importPath": "netaddr",
+        "description": "netaddr",
+        "isExtraImport": true,
+        "detail": "netaddr",
+        "documentation": {}
+    },
+    {
+        "label": "IPAddress",
+        "importPath": "netaddr",
+        "description": "netaddr",
+        "isExtraImport": true,
+        "detail": "netaddr",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "dataclasses",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "partial",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "partial",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "islice",
+        "importPath": "itertools",
+        "description": "itertools",
+        "isExtraImport": true,
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "repeat",
+        "importPath": "itertools",
+        "description": "itertools",
+        "isExtraImport": true,
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "NamedTuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "message_from_string",
+        "importPath": "email",
+        "description": "email",
+        "isExtraImport": true,
+        "detail": "email",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "aiofiles",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "aiofiles",
+        "description": "aiofiles",
+        "detail": "aiofiles",
+        "documentation": {}
+    },
+    {
+        "label": "pkg_resources",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pkg_resources",
+        "description": "pkg_resources",
+        "detail": "pkg_resources",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth1Client",
+        "importPath": "aioauth_client",
+        "description": "aioauth_client",
+        "isExtraImport": true,
+        "detail": "aioauth_client",
+        "documentation": {}
+    },
+    {
+        "label": "Signature",
+        "importPath": "aioauth_client",
+        "description": "aioauth_client",
+        "isExtraImport": true,
+        "detail": "aioauth_client",
+        "documentation": {}
+    },
+    {
+        "label": "uvloop",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvloop",
+        "description": "uvloop",
+        "detail": "uvloop",
+        "documentation": {}
+    },
+    {
+        "label": "CancelledError",
+        "importPath": "asyncio.exceptions",
+        "description": "asyncio.exceptions",
+        "isExtraImport": true,
+        "detail": "asyncio.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
         "label": "absolute_import",
         "importPath": "__future__",
         "description": "__future__",
@@ -158,15 +668,6 @@
         "description": "curtin",
         "isExtraImport": true,
         "detail": "curtin",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
         "documentation": {}
     },
     {
@@ -338,6 +839,1059 @@
         "description": "context._build.scripts.introspect",
         "peekOfCode": "EXCLUDE_REQUIREMENTS = frozenset((\n    # obviously already satisfied or unwanted\n    'ansible', 'ansible-base', 'python', 'ansible-core',\n    # general python test requirements\n    'tox', 'pycodestyle', 'yamllint', 'pylint',\n    'flake8', 'pytest', 'pytest-xdist', 'coverage', 'mock', 'testinfra',\n    # test requirements highly specific to Ansible testing\n    'ansible-lint', 'molecule', 'galaxy-importer', 'voluptuous',\n    # already present in image for py3 environments\n    'yaml', 'pyyaml', 'json',",
         "detail": "context._build.scripts.introspect",
+        "documentation": {}
+    },
+    {
+        "label": "Group",
+        "kind": 6,
+        "importPath": "maas-loki-alert-rules.bin.group",
+        "description": "maas-loki-alert-rules.bin.group",
+        "peekOfCode": "class Group:\n    alerts = {\"name\": \"alerts\", \"rules\": []}\n    def __init__(self, snippet_path, out_path):\n        self.snippet_path = snippet_path\n        self.out_path = out_path\n    def load_snippets(self):\n        for snippet in glob(self.snippet_path):\n            with open(snippet) as f:\n                snippet_content = yaml.safe_load(f.read())\n                self.add_snippet(snippet_content)",
+        "detail": "maas-loki-alert-rules.bin.group",
+        "documentation": {}
+    },
+    {
+        "label": "TestGroup",
+        "kind": 6,
+        "importPath": "maas-loki-alert-rules.bin.group",
+        "description": "maas-loki-alert-rules.bin.group",
+        "peekOfCode": "class TestGroup(Group):\n    tests = {\"rule_files\": [], \"tests\": []}\n    def __init__(self, snippet_path, test_out_path, out_path):\n        self.tests[\"rule_files\"].append(out_path)\n        super().__init__(snippet_path, test_out_path)\n    def add_snippet(self, snippet):\n        self.tests[\"tests\"].extend(snippet)\n    def data(self):\n        return self.tests\ndef main():",
+        "detail": "maas-loki-alert-rules.bin.group",
+        "documentation": {}
+    },
+    {
+        "label": "str_presenter",
+        "kind": 2,
+        "importPath": "maas-loki-alert-rules.bin.group",
+        "description": "maas-loki-alert-rules.bin.group",
+        "peekOfCode": "def str_presenter(dumper, data):\n    if len(data.splitlines()) > 1:\n        return dumper.represent_scalar(\"tag:yaml.org,2002:str\", data, style=\"|\")\n    new_line = data.rstrip()\n    return dumper.represent_scalar(\"tag:yaml.org,2002:str\", new_line)\nyaml.add_representer(str, str_presenter)\nyaml.representer.SafeRepresenter.add_representer(str, str_presenter)\nclass Group:\n    alerts = {\"name\": \"alerts\", \"rules\": []}\n    def __init__(self, snippet_path, out_path):",
+        "detail": "maas-loki-alert-rules.bin.group",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "maas-loki-alert-rules.bin.group",
+        "description": "maas-loki-alert-rules.bin.group",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(\n        description=\"Builds a groups file for direct loki use of rules\"\n    )\n    parser.add_argument(\"--rules\", help=\"blob path for rules files to be loaded from\")\n    parser.add_argument(\"--tests\", help=\"blob path for test files to be loaded from\")\n    parser.add_argument(\"--out\", help=\"full path to output the file to\")\n    parser.add_argument(\"--test_out\", help=\"full path to output the test file to\")\n    args = parser.parse_args(sys.argv[1:])\n    group = Group(args.rules, args.out)",
+        "detail": "maas-loki-alert-rules.bin.group",
+        "documentation": {}
+    },
+    {
+        "label": "mock_event_time",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.fixtures",
+        "description": "maas-performance.maasperformance.testing.fixtures",
+        "peekOfCode": "def mock_event_time(mocker):\n    return mocker.patch.object(event.time, 'time')\n@pytest.fixture\ndef fs_root(tmp_path, mocker):\n    for sub_path in [Path('etc/dhcp'), Path('var/lib/dhcp')]:\n        full_path = tmp_path / sub_path\n        full_path.mkdir(parents=True)\n    yield tmp_path\n@pytest.fixture\ndef machine(tmpdir, event_loop, fs_root):",
+        "detail": "maas-performance.maasperformance.testing.fixtures",
+        "documentation": {}
+    },
+    {
+        "label": "fs_root",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.fixtures",
+        "description": "maas-performance.maasperformance.testing.fixtures",
+        "peekOfCode": "def fs_root(tmp_path, mocker):\n    for sub_path in [Path('etc/dhcp'), Path('var/lib/dhcp')]:\n        full_path = tmp_path / sub_path\n        full_path.mkdir(parents=True)\n    yield tmp_path\n@pytest.fixture\ndef machine(tmpdir, event_loop, fs_root):\n    machine = Machine(event_loop, ParentNetworkInterface('eth0'), 'fake0')\n    machine.root_path = fs_root\n    yield machine",
+        "detail": "maas-performance.maasperformance.testing.fixtures",
+        "documentation": {}
+    },
+    {
+        "label": "machine",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.fixtures",
+        "description": "maas-performance.maasperformance.testing.fixtures",
+        "peekOfCode": "def machine(tmpdir, event_loop, fs_root):\n    machine = Machine(event_loop, ParentNetworkInterface('eth0'), 'fake0')\n    machine.root_path = fs_root\n    yield machine\ndef create_subprocess_mock(module=asyncio):\n    \"\"\"Return a fixture for mocking create_subprocess_exec.\"\"\"\n    @pytest.fixture\n    def subprocess_mock(mocker, tmpdir):\n        yield mocker.patch.object(\n            module, 'create_subprocess_exec', new=FakeCreateSubProcess())",
+        "detail": "maas-performance.maasperformance.testing.fixtures",
+        "documentation": {}
+    },
+    {
+        "label": "create_subprocess_mock",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.fixtures",
+        "description": "maas-performance.maasperformance.testing.fixtures",
+        "peekOfCode": "def create_subprocess_mock(module=asyncio):\n    \"\"\"Return a fixture for mocking create_subprocess_exec.\"\"\"\n    @pytest.fixture\n    def subprocess_mock(mocker, tmpdir):\n        yield mocker.patch.object(\n            module, 'create_subprocess_exec', new=FakeCreateSubProcess())\n    return subprocess_mock\ndef create_check_output_mock(module=subprocess, output=\"\"):\n    \"\"\"Return a fixture for mocking check_output.\"\"\"\n    @pytest.fixture",
+        "detail": "maas-performance.maasperformance.testing.fixtures",
+        "documentation": {}
+    },
+    {
+        "label": "create_check_output_mock",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.fixtures",
+        "description": "maas-performance.maasperformance.testing.fixtures",
+        "peekOfCode": "def create_check_output_mock(module=subprocess, output=\"\"):\n    \"\"\"Return a fixture for mocking check_output.\"\"\"\n    @pytest.fixture\n    def check_output_mock(mocker, tmpdir):\n        yield mocker.patch.object(\n            module, 'check_output', new=FakeCheckOutput(output))\n    return check_output_mock\n@pytest.fixture\ndef tar_file_http_response():\n    buf = BytesIO()",
+        "detail": "maas-performance.maasperformance.testing.fixtures",
+        "documentation": {}
+    },
+    {
+        "label": "tar_file_http_response",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.fixtures",
+        "description": "maas-performance.maasperformance.testing.fixtures",
+        "peekOfCode": "def tar_file_http_response():\n    buf = BytesIO()\n    with tarfile.open(fileobj=buf, mode=\"w\") as tar:\n        data = \"{\\\"foo\\\": \\\"bar\\\"}\"\n        info = tarfile.TarInfo(\"index.json\")\n        info.size = len(data)\n        tar.addfile(info, BytesIO(initial_bytes=data.encode(\"ascii\")))\n    return buf.getvalue().decode(\"ascii\")",
+        "detail": "maas-performance.maasperformance.testing.fixtures",
+        "documentation": {}
+    },
+    {
+        "label": "FakeSocket",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.network",
+        "description": "maas-performance.maasperformance.testing.network",
+        "peekOfCode": "class FakeSocket:\n    \"\"\"A fake implementation of a socket.\n    It implements as much as the socket.socket API that is needed for\n    the unit tests.\n    It only implements being used as a context manager.\n    \"\"\"\n    def __init__(self):\n        self.family = None\n        self.type = None\n        self.entered = False",
+        "detail": "maas-performance.maasperformance.testing.network",
+        "documentation": {}
+    },
+    {
+        "label": "assert_valid_generated_mac",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.network",
+        "description": "maas-performance.maasperformance.testing.network",
+        "peekOfCode": "def assert_valid_generated_mac(mac_address):\n    \"\"\"Assert that a generated mac is valid.\"\"\"\n    mac_parts = mac_address.split(':')\n    assert mac_parts[:3] == ['02', '00', '00']\n    for mac_part in mac_parts[3:]:\n        assert len(mac_part) == 2\n        assert 0 <= int(mac_part, 16) <= 0xff\nclass FakeSocket:\n    \"\"\"A fake implementation of a socket.\n    It implements as much as the socket.socket API that is needed for",
+        "detail": "maas-performance.maasperformance.testing.network",
+        "documentation": {}
+    },
+    {
+        "label": "fake_socket",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.network",
+        "description": "maas-performance.maasperformance.testing.network",
+        "peekOfCode": "def fake_socket():\n    \"\"\"Replace socket.socket with a FakeSocket.\"\"\"\n    return mock.patch.object(socket, 'socket', new=FakeSocket())",
+        "detail": "maas-performance.maasperformance.testing.network",
+        "documentation": {}
+    },
+    {
+        "label": "MetricChange",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.prometheus",
+        "description": "maas-performance.maasperformance.testing.prometheus",
+        "peekOfCode": "class MetricChange:\n    \"\"\"Keeps track of how much a Prometheus metric changed.\"\"\"\n    increase = None\n@contextlib.contextmanager\ndef track_metric(name, labels=None):\n    \"\"\"Track how much a given metric changed.\n    It's to be used like this:\n        with track_metric('my_metric_count') as metric:\n            func()\n        assert metric.increase == 1.0, 'func() didn't record metric'",
+        "detail": "maas-performance.maasperformance.testing.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "PromRegTarget",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.prometheus",
+        "description": "maas-performance.maasperformance.testing.prometheus",
+        "peekOfCode": "class PromRegTarget:\n    \"\"\"Representation of a Promethues target in the promreg server.\n    It only has a comment, since the host is stored outside of this class.\n    \"\"\"\n    def __init__(self, comment=None):\n        self.comment = comment\nclass PromRegHandlers:\n    \"\"\"Handlers for simulating a prometheus-registration server.\n    @ivar auth_token: The authentication token that has be to set for\n        every request.",
+        "detail": "maas-performance.maasperformance.testing.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "PromRegHandlers",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.prometheus",
+        "description": "maas-performance.maasperformance.testing.prometheus",
+        "peekOfCode": "class PromRegHandlers:\n    \"\"\"Handlers for simulating a prometheus-registration server.\n    @ivar auth_token: The authentication token that has be to set for\n        every request.\n    @ivar targets: A dict of the registered targers (host -> PromRegTarget).\n    @ivar deleted_targes: A dict of all the targets that have been\n        deleted. (host -> PromRegTarget).\n    \"\"\"\n    def __init__(self, auth_token):\n        self.auth_token = auth_token",
+        "detail": "maas-performance.maasperformance.testing.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "track_metric",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.prometheus",
+        "description": "maas-performance.maasperformance.testing.prometheus",
+        "peekOfCode": "def track_metric(name, labels=None):\n    \"\"\"Track how much a given metric changed.\n    It's to be used like this:\n        with track_metric('my_metric_count') as metric:\n            func()\n        assert metric.increase == 1.0, 'func() didn't record metric'\n    \"\"\"\n    before_value = REGISTRY.get_sample_value(name, labels=labels) or 0.0\n    metric_change = MetricChange()\n    yield metric_change",
+        "detail": "maas-performance.maasperformance.testing.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "create_promreg_app",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.testing.prometheus",
+        "description": "maas-performance.maasperformance.testing.prometheus",
+        "peekOfCode": "def create_promreg_app(handlers):\n    \"\"\"Create a web application for a fake prometheus-registration server.\"\"\"\n    app = web.Application()\n    app.add_routes(\n        [\n            web.get('/targets/', handlers.list_targets),\n            web.post('/targets/{host}', handlers.register_target),\n            web.delete('/targets/{host}', handlers.unregister_target)\n        ])\n    return app",
+        "detail": "maas-performance.maasperformance.testing.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "FakeCreateSubProcess",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.subprocess",
+        "description": "maas-performance.maasperformance.testing.subprocess",
+        "peekOfCode": "class FakeCreateSubProcess:\n    \"\"\"A fake that can replace asyncio.create_subprocess_exec.\n    By default it allows any executables and will return a successful\n    process execution.\n    It's possible to customize the fake processes by command name by\n    setting them in the fake_processes dict. This is useful for commands\n    that are expected to have side effects.\n    @ivar fake_processes: A dict with the command name as the key and a\n        FakeAsyncSubprocess instance as the value. Subprocess calls\n        where the command name is the first argument will use this fake",
+        "detail": "maas-performance.maasperformance.testing.subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "FakeAsyncSubprocess",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.subprocess",
+        "description": "maas-performance.maasperformance.testing.subprocess",
+        "peekOfCode": "class FakeAsyncSubprocess:\n    \"\"\"A fake processes that can be returned by create_subprocess_exec.\n    By default it fakes a successful call, but the return code can be\n    modified using the returncode attribute.\n    @ivar final_returncode: The return code that should be returned by wait()\n    \"\"\"\n    def __init__(self, returncode=0):\n        self.final_returncode = returncode\n        self.returncode = None\n        self.stdout = None",
+        "detail": "maas-performance.maasperformance.testing.subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "FakeIpSubprocess",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.subprocess",
+        "description": "maas-performance.maasperformance.testing.subprocess",
+        "peekOfCode": "class FakeIpSubprocess(FakeAsyncSubprocess):\n    \"\"\"A fake ip subprocess.\n    It handles returning the specified output. If the output is a string, it's\n    retured as it is, if it's an object, it's json-encoded.\n    \"\"\"\n    def __init__(self, output=''):\n        super().__init__()\n        self.output = output\n    def call(self, args, stdout=None, stderr=None):\n        super().call(args, stdout=stdout, stderr=stderr)",
+        "detail": "maas-performance.maasperformance.testing.subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "FakeDhclientSubprocess",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.subprocess",
+        "description": "maas-performance.maasperformance.testing.subprocess",
+        "peekOfCode": "class FakeDhclientSubprocess(FakeAsyncSubprocess):\n    \"\"\"A fake dhclient subprocess.\n    It handles requesting and releasing an IP. If an IP is requested, a\n    leases file will be written to the path passed in with -lf.\n    @ivar ip_address: The IP address that should be written to the\n        leases file.\n    @ivar next_server: The server from which the PXE files should be\n        requested from.\n    \"\"\"\n    def __init__(self):",
+        "detail": "maas-performance.maasperformance.testing.subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "FakeCurlSubprocess",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.subprocess",
+        "description": "maas-performance.maasperformance.testing.subprocess",
+        "peekOfCode": "class FakeCurlSubprocess(FakeAsyncSubprocess):\n    \"\"\"A fake curl subprocess.\n    It fakes getting files from a MAAS server.\n    It's set up to allow the PXE files being downloaded, and can be\n    customized to provide specific pxelinux.cfg contents as well as\n    which paths to provide.\n    @ivar requested_urls: A list of string URLs that were requested\n        using the fake. 2-tuples of (url, returncode)\n    @ivar ip_address: The IP address of the MAAS server.\n    @ivar kernel_protocol: The scheme (http,tftp) to get the kernel.",
+        "detail": "maas-performance.maasperformance.testing.subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "FakeCheckOutput",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.testing.subprocess",
+        "description": "maas-performance.maasperformance.testing.subprocess",
+        "peekOfCode": "class FakeCheckOutput:\n    def __init__(self, output):\n        self._output = output\n    def __call__(self, *args, **kwargs):\n        return self._output",
+        "detail": "maas-performance.maasperformance.testing.subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "TestBMC",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_bmc",
+        "description": "maas-performance.maasperformance.tests.test_bmc",
+        "peekOfCode": "class TestBMC:\n    @pytest.mark.asyncio\n    async def test_bmc_power_on(self):\n        manager = Mock()\n        manager.power_commands = asyncio.Queue()\n        bmc = BMC(manager)\n        uuid = random.randint(1, 512)\n        await bmc.power_on(uuid)\n        result = await manager.power_commands.get()\n        assert isinstance(result, PowerCommand)",
+        "detail": "maas-performance.maasperformance.tests.test_bmc",
+        "documentation": {}
+    },
+    {
+        "label": "TestDHCPEvents",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_event",
+        "description": "maas-performance.maasperformance.tests.test_event",
+        "peekOfCode": "class TestDHCPEvents:\n    @pytest.mark.parametrize('event_type', ['request', 'release'])\n    def test_dhcp_request_started(self, event_type, mock_event_time, caplog):\n        parent_iface = create_mock_parent_interface()\n        machine = Machine(None, parent_iface, 'eth0')\n        mock_event_time.return_value = 12345\n        event_func = getattr(event, f'dhcp_{event_type}_started')\n        with caplog.at_level(logging.INFO):\n            event_func(machine)\n        assert machine.last_event_time[f'dhcp_{event_type}_start'] == 12345",
+        "detail": "maas-performance.maasperformance.tests.test_event",
+        "documentation": {}
+    },
+    {
+        "label": "TestFileTransferEvents",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_event",
+        "description": "maas-performance.maasperformance.tests.test_event",
+        "peekOfCode": "class TestFileTransferEvents:\n    def test_file_transfer_started(self, mock_event_time, caplog):\n        parent_iface = create_mock_parent_interface()\n        machine = Machine(None, parent_iface, 'eth0')\n        mock_event_time.return_value = 12345\n        url = urlparse('tftp://some-host/my-file')\n        with caplog.at_level(logging.INFO):\n            event.file_transfer_started(machine, url)\n        assert (\n            machine.last_event_time[f'file_transfer_start_{url.geturl()}'] ==",
+        "detail": "maas-performance.maasperformance.tests.test_event",
+        "documentation": {}
+    },
+    {
+        "label": "create_mock_parent_interface",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.tests.test_event",
+        "description": "maas-performance.maasperformance.tests.test_event",
+        "peekOfCode": "def create_mock_parent_interface():\n    parent_iface = Mock()\n    def _get_client_interface(x):\n        iface = Mock()\n        iface.name = x\n        iface.__str__ = lambda _: iface.name\n        return iface\n    parent_iface.get_client_interface = _get_client_interface\n    return parent_iface\nclass TestDHCPEvents:",
+        "detail": "maas-performance.maasperformance.tests.test_event",
+        "documentation": {}
+    },
+    {
+        "label": "TestMachine",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_machine",
+        "description": "maas-performance.maasperformance.tests.test_machine",
+        "peekOfCode": "class TestMachine:\n    def test_init(self):\n        loop = object()\n        parent_iface = ParentNetworkInterface('eth0')\n        machine = Machine(loop, parent_iface, 'fake0')\n        assert machine.loop is loop\n        assert machine.parent_iface == parent_iface\n        assert machine.client_iface.name == 'fake0'\n        assert machine.last_event_time == {}\n        assert machine.cleanups == []",
+        "detail": "maas-performance.maasperformance.tests.test_machine",
+        "documentation": {}
+    },
+    {
+        "label": "TestMachineManager",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_machine",
+        "description": "maas-performance.maasperformance.tests.test_machine",
+        "peekOfCode": "class TestMachineManager:\n    @pytest.mark.parametrize('is_bridge', [True, False])\n    def test_init(self, mocker, is_bridge):\n        mocker.patch.object(\n            machine_module, 'interface_is_bridge').return_value = is_bridge\n        manager = MachineManager('eth0', 50)\n        assert manager.parent_iface.name == 'eth0'\n        assert manager.parent_iface.is_bridge == is_bridge\n        assert manager.number_of_machines == 50\n        assert manager.machines == []",
+        "detail": "maas-performance.maasperformance.tests.test_machine",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess_mock",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_machine",
+        "description": "maas-performance.maasperformance.tests.test_machine",
+        "peekOfCode": "subprocess_mock = create_subprocess_mock()\ncheck_output_mock = create_check_output_mock(\n    module=process,\n    output=\"\"\"\n[\n    {\n        \"ifindex\":1,\n        \"ifname\":\"eth0\",\n        \"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\n        \"mtu\":1500,",
+        "detail": "maas-performance.maasperformance.tests.test_machine",
+        "documentation": {}
+    },
+    {
+        "label": "check_output_mock",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_machine",
+        "description": "maas-performance.maasperformance.tests.test_machine",
+        "peekOfCode": "check_output_mock = create_check_output_mock(\n    module=process,\n    output=\"\"\"\n[\n    {\n        \"ifindex\":1,\n        \"ifname\":\"eth0\",\n        \"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\n        \"mtu\":1500,\n        \"qdisc\":\"mq\",",
+        "detail": "maas-performance.maasperformance.tests.test_machine",
+        "documentation": {}
+    },
+    {
+        "label": "TestGetSourceaddress",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network",
+        "description": "maas-performance.maasperformance.tests.test_network",
+        "peekOfCode": "class TestGetSourceaddress:\n    def test_real(self):\n        own_ip = get_source_address(IPAddress('127.0.0.1'))\n        assert own_ip == IPAddress('127.0.0.1')\n    def test_external_ipv4(self):\n        with fake_socket() as sock:\n            own_ip = get_source_address(IPAddress('1.2.3.4'))\n        assert own_ip == IPAddress(sock.ipv4_host)\n    def test_external_ipv6(self):\n        with fake_socket() as sock:",
+        "detail": "maas-performance.maasperformance.tests.test_network",
+        "documentation": {}
+    },
+    {
+        "label": "TestNetworkClient",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network",
+        "description": "maas-performance.maasperformance.tests.test_network",
+        "peekOfCode": "class TestNetworkClient:\n    @pytest.mark.asyncio\n    async def test_get_curl_file(self, subprocess_mock):\n        machine = Mock()\n        machine.last_event_time = {}\n        client = NetworkClient(machine)\n        try:\n            await client.get_curl_file(\"http://foo/\")\n        except ProcessError:\n            pass",
+        "detail": "maas-performance.maasperformance.tests.test_network",
+        "documentation": {}
+    },
+    {
+        "label": "TestPlaintextSignature",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network",
+        "description": "maas-performance.maasperformance.tests.test_network",
+        "peekOfCode": "class TestPlaintextSignature:\n    def test_sign(self):\n        sig = PlaintextSignature()\n        key = sig.sign(\"foo\", \"GET\", \"http://bar/\", \"secret\")\n        assert key == \"foo&secret\"\nclass MockableRequest:\n    def mock_request(self, client, mocker, response=\"\", status=None):\n        class MockRequest:\n            args = None\n            kwargs = None",
+        "detail": "maas-performance.maasperformance.tests.test_network",
+        "documentation": {}
+    },
+    {
+        "label": "MockableRequest",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network",
+        "description": "maas-performance.maasperformance.tests.test_network",
+        "peekOfCode": "class MockableRequest:\n    def mock_request(self, client, mocker, response=\"\", status=None):\n        class MockRequest:\n            args = None\n            kwargs = None\n            async def __call__(self, *args, **kwargs):\n                self.args = args\n                self.kwargs = kwargs\n                if status:\n                    return status, response",
+        "detail": "maas-performance.maasperformance.tests.test_network",
+        "documentation": {}
+    },
+    {
+        "label": "TestMetadataClient",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network",
+        "description": "maas-performance.maasperformance.tests.test_network",
+        "peekOfCode": "class TestMetadataClient(MockableRequest):\n    def test_authenticated_False_without_consumer_key(self):\n        client = MetadataClient(Mock(), {\"metadata_url\": \"http://foo/\"})\n        assert client.authenticated is False\n    def test_authenticated_True_with_consumer_key(self):\n        client = MetadataClient(\n            Mock(), {\n                \"metadata_url\": \"http://foo/\",\n                \"consumer_key\": \"bar\"\n            })",
+        "detail": "maas-performance.maasperformance.tests.test_network",
+        "documentation": {}
+    },
+    {
+        "label": "TestRegisterMachine",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network",
+        "description": "maas-performance.maasperformance.tests.test_network",
+        "peekOfCode": "class TestRegisterMachine(MockableRequest):\n    async def test_register_machine(self, mocker):\n        network = NetworkClient(Mock())\n        mock_request = self.mock_request(network, mocker, status=200)\n        api_url = \"http://foo/\"\n        hostname = \"test.hostname\"\n        architecture = \"amd64\"\n        subarchitecture = \"generic\"\n        power_type = \"ipmi\"\n        power_parameters = {",
+        "detail": "maas-performance.maasperformance.tests.test_network",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess_mock",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_network",
+        "description": "maas-performance.maasperformance.tests.test_network",
+        "peekOfCode": "subprocess_mock = create_subprocess_mock()\nclass TestGetSourceaddress:\n    def test_real(self):\n        own_ip = get_source_address(IPAddress('127.0.0.1'))\n        assert own_ip == IPAddress('127.0.0.1')\n    def test_external_ipv4(self):\n        with fake_socket() as sock:\n            own_ip = get_source_address(IPAddress('1.2.3.4'))\n        assert own_ip == IPAddress(sock.ipv4_host)\n    def test_external_ipv6(self):",
+        "detail": "maas-performance.maasperformance.tests.test_network",
+        "documentation": {}
+    },
+    {
+        "label": "TestInterfaceIsBridge",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "class TestInterfaceIsBridge:\n    @pytest.mark.parametrize(\n        'output,iface,is_bridge', [\n            (IP_OUTPUT_BRIDGE, 'br0', True),\n            (IP_OUTPUT_ETH, 'eth0', False),\n            (IP_OUTPUT_VETH, 'veth0', False),\n        ])\n    def test_interface_is_bridge(self, mocker, output, iface, is_bridge):\n        mock_check_output = mocker.patch.object(process, 'check_output')\n        mock_check_output.return_value = json.dumps(output)",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "TestGenerateMacAddress",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "class TestGenerateMacAddress:\n    def test_generate_mac_address(self):\n        mac = generate_mac_address()\n        assert_valid_generated_mac(mac)\nclass TestParentNetworkInterface:\n    def test_get_client_interface(self):\n        parent_iface = ParentNetworkInterface('eth0')\n        client_iface = parent_iface.get_client_interface('fake0')\n        assert client_iface.name == 'fake0'\n        assert client_iface.parent is parent_iface",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "TestParentNetworkInterface",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "class TestParentNetworkInterface:\n    def test_get_client_interface(self):\n        parent_iface = ParentNetworkInterface('eth0')\n        client_iface = parent_iface.get_client_interface('fake0')\n        assert client_iface.name == 'fake0'\n        assert client_iface.parent is parent_iface\n        assert_valid_generated_mac(client_iface.mac_address)\nclass TestNetworkInterface:\n    def test_ethpair_name(self):\n        parent_iface = ParentNetworkInterface('br0', is_bridge=True)",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "TestNetworkInterface",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "class TestNetworkInterface:\n    def test_ethpair_name(self):\n        parent_iface = ParentNetworkInterface('br0', is_bridge=True)\n        client_iface = parent_iface.get_client_interface('fake0')\n        assert client_iface.ethpair_name == 'fake0-nic'\n    async def test_create_no_bridge(self, subprocess_mock):\n        parent_iface = ParentNetworkInterface('eth0')\n        client_iface = parent_iface.get_client_interface('fake0')\n        await client_iface.create()\n        assert subprocess_mock.calls == [",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "IP_OUTPUT_BRIDGE",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "IP_OUTPUT_BRIDGE = [{'ifname': 'br0', 'linkinfo': {'info_kind': 'bridge'}}]\nIP_OUTPUT_ETH = [{'ifname': 'eth0'}]\nIP_OUTPUT_VETH = [{'ifname': 'veth0', 'linkinfo': {'info_kind': 'veth'}}]\nsubprocess_mock = create_subprocess_mock()\nclass TestInterfaceIsBridge:\n    @pytest.mark.parametrize(\n        'output,iface,is_bridge', [\n            (IP_OUTPUT_BRIDGE, 'br0', True),\n            (IP_OUTPUT_ETH, 'eth0', False),\n            (IP_OUTPUT_VETH, 'veth0', False),",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "IP_OUTPUT_ETH",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "IP_OUTPUT_ETH = [{'ifname': 'eth0'}]\nIP_OUTPUT_VETH = [{'ifname': 'veth0', 'linkinfo': {'info_kind': 'veth'}}]\nsubprocess_mock = create_subprocess_mock()\nclass TestInterfaceIsBridge:\n    @pytest.mark.parametrize(\n        'output,iface,is_bridge', [\n            (IP_OUTPUT_BRIDGE, 'br0', True),\n            (IP_OUTPUT_ETH, 'eth0', False),\n            (IP_OUTPUT_VETH, 'veth0', False),\n        ])",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "IP_OUTPUT_VETH",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "IP_OUTPUT_VETH = [{'ifname': 'veth0', 'linkinfo': {'info_kind': 'veth'}}]\nsubprocess_mock = create_subprocess_mock()\nclass TestInterfaceIsBridge:\n    @pytest.mark.parametrize(\n        'output,iface,is_bridge', [\n            (IP_OUTPUT_BRIDGE, 'br0', True),\n            (IP_OUTPUT_ETH, 'eth0', False),\n            (IP_OUTPUT_VETH, 'veth0', False),\n        ])\n    def test_interface_is_bridge(self, mocker, output, iface, is_bridge):",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess_mock",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_network_interface",
+        "description": "maas-performance.maasperformance.tests.test_network_interface",
+        "peekOfCode": "subprocess_mock = create_subprocess_mock()\nclass TestInterfaceIsBridge:\n    @pytest.mark.parametrize(\n        'output,iface,is_bridge', [\n            (IP_OUTPUT_BRIDGE, 'br0', True),\n            (IP_OUTPUT_ETH, 'eth0', False),\n            (IP_OUTPUT_VETH, 'veth0', False),\n        ])\n    def test_interface_is_bridge(self, mocker, output, iface, is_bridge):\n        mock_check_output = mocker.patch.object(process, 'check_output')",
+        "detail": "maas-performance.maasperformance.tests.test_network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "TestPromRegClientRequest",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_prometheus",
+        "description": "maas-performance.maasperformance.tests.test_prometheus",
+        "peekOfCode": "class TestPromRegClientRequest:\n    async def test_request_passthrough_method(self, request_session_mock):\n        client = PromRegClient(\n            'http://base.example.com', 'my-token', aiohttp.ClientSession())\n        result = await client._request('MYMETHOD', '/my-path')\n        assert result['method'] == 'MYMETHOD'\n    @pytest.mark.parametrize(\n        'base_path,expected_url', [\n            ('', 'http://base.example.com/my-path'),\n            ('/', 'http://base.example.com/my-path'),",
+        "detail": "maas-performance.maasperformance.tests.test_prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "TestPromRegClient",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_prometheus",
+        "description": "maas-performance.maasperformance.tests.test_prometheus",
+        "peekOfCode": "class TestPromRegClient:\n    async def test_init(self):\n        client = PromRegClient(\n            'http://base.example.com', 'my-token', aiohttp.ClientSession())\n        assert client.base_url == 'http://base.example.com'\n        assert client.auth_token == 'my-token'\n    async def test_list_targets_emtpy(self, aiohttp_server):\n        handlers = PromRegHandlers('my-token')\n        app = create_promreg_app(handlers)\n        server = await aiohttp_server(app)",
+        "detail": "maas-performance.maasperformance.tests.test_prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "request_session_mock",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.tests.test_prometheus",
+        "description": "maas-performance.maasperformance.tests.test_prometheus",
+        "peekOfCode": "def request_session_mock(mocker):\n    async def fake_request(method, url, *args, headers=None, **kwargs):\n        return {\n            'method': method,\n            'url': url,\n            'headers': headers,\n            'args': args,\n            'kwargs': kwargs,\n        }\n    request_mock = mocker.patch('aiohttp.ClientSession.request')",
+        "detail": "maas-performance.maasperformance.tests.test_prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "TestConfigureLogging",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_server",
+        "description": "maas-performance.maasperformance.tests.test_server",
+        "peekOfCode": "class TestConfigureLogging:\n    def test_no_verbose(self, capsys, reset_logging_handlers, mocker):\n        args = parse_args(['iface'])\n        configure_logging(args)\n        info_ts = 1554472581.0\n        mocker.patch('time.time').side_effect = [info_ts]\n        logging.info('Info message')\n        logging.debug('Debug message')\n        captured = capsys.readouterr()\n        date_fmt = '%Y-%m-%d %H:%M:%S,%f'",
+        "detail": "maas-performance.maasperformance.tests.test_server",
+        "documentation": {}
+    },
+    {
+        "label": "TestMain",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_server",
+        "description": "maas-performance.maasperformance.tests.test_server",
+        "peekOfCode": "class TestMain:\n    def test_defaults(self, reset_logging_handlers, mocker):\n        mocker.patch('uvloop.install')\n        run_app_mock = mocker.patch('aiohttp.web.run_app')\n        mocker.patch.object(machine_module, 'interface_is_bridge')\n        main(['iface'])\n        [call] = run_app_mock.mock_calls\n        name, args, kwargs = call\n        assert name == ''\n        assert len(args) == 1",
+        "detail": "maas-performance.maasperformance.tests.test_server",
+        "documentation": {}
+    },
+    {
+        "label": "reset_logging_handlers",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.tests.test_server",
+        "description": "maas-performance.maasperformance.tests.test_server",
+        "peekOfCode": "def reset_logging_handlers():\n    existing_handlers = set(logging.getLogger().handlers)\n    yield\n    for handler in logging.getLogger().handlers:\n        if handler not in existing_handlers:\n            logging.getLogger().removeHandler(handler)\nclass TestConfigureLogging:\n    def test_no_verbose(self, capsys, reset_logging_handlers, mocker):\n        args = parse_args(['iface'])\n        configure_logging(args)",
+        "detail": "maas-performance.maasperformance.tests.test_server",
+        "documentation": {}
+    },
+    {
+        "label": "TestStatus",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "class TestStatus:\n    async def test_status(\n            self, subprocess_mock, aiohttp_client, check_output_mock,\n            event_loop):\n        app = create_app(number=2, loop=event_loop)\n        client = await aiohttp_client(app)\n        app['machine-manager'].running = False\n        await app['machine-manager'].finished\n        resp = await client.get('/status')\n        assert resp.status == 200",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "TestMetrics",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "class TestMetrics:\n    async def test_content_type(\n            self, subprocess_mock, check_output_mock, aiohttp_client):\n        app = create_app(number=2)\n        client = await aiohttp_client(app)\n        resp = await client.get('/metrics')\n        assert resp.status == 200\n        assert (\n            resp.headers['Content-Type'] ==\n            prometheus_client.CONTENT_TYPE_LATEST)",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "TestCreateWebApp",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "class TestCreateWebApp:\n    def test_create_web_app_sets_port(self, check_output_mock):\n        args = parse_args(['--port', '1234', '--number', '5', 'myif0'])\n        app = create_web_app(args)\n        assert app['port'] == '1234'\n    def test_create_web_app_creates_machine_manager(self, check_output_mock):\n        args = parse_args(['--port', '1234', '--number', '5', 'parent0'])\n        app = create_web_app(args)\n        manager = app['machine-manager']\n        assert manager.parent_iface.name == 'parent0'",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "TestStartMachinesLoop",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "class TestStartMachinesLoop:\n    async def test_start_machines_loop_inits_manager(\n            self, subprocess_mock, event_loop, check_output_mock):\n        args = parse_args(['--port', '1234', '--number', '5', 'parent0'])\n        app = create_web_app(args, loop=event_loop)\n        await start_machines_loop(app)\n        manager = app['machine-manager']\n        assert len(manager.machines) == 5\n        for machine in manager.machines.values():\n            assert machine.loop is event_loop",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "TestCleanUpMachines",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "class TestCleanUpMachines:\n    async def test_cleans_up_machines(\n            self, subprocess_mock, event_loop, check_output_mock):\n        args = parse_args(['--port', '1234', '--number', '5', 'parent0'])\n        app = create_web_app(args, loop=event_loop)\n        await start_machines_loop(app)\n        await app['bmc-task']\n        await clean_up_machines(app)\n        assert app['manager-task'].done()\n        manager = app['machine-manager']",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "def create_app(port=1234, iface='eth0', number=1, loop=None):\n    args = parse_args(['--port', str(port), '--number', str(number), iface])\n    return create_web_app(args, loop=loop)\nclass TestStatus:\n    async def test_status(\n            self, subprocess_mock, aiohttp_client, check_output_mock,\n            event_loop):\n        app = create_app(number=2, loop=event_loop)\n        client = await aiohttp_client(app)\n        app['machine-manager'].running = False",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess_mock",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "subprocess_mock = create_subprocess_mock(module=asyncio)\ncheck_output_mock = create_check_output_mock(\n    module=process,\n    output=\"\"\"\n[\n    {\n        \"ifindex\":1,\n        \"ifname\":\"parent0\",\n        \"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\n        \"mtu\":1500,",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "check_output_mock",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.tests.test_web",
+        "description": "maas-performance.maasperformance.tests.test_web",
+        "peekOfCode": "check_output_mock = create_check_output_mock(\n    module=process,\n    output=\"\"\"\n[\n    {\n        \"ifindex\":1,\n        \"ifname\":\"parent0\",\n        \"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\n        \"mtu\":1500,\n        \"qdisc\":\"mq\",",
+        "detail": "maas-performance.maasperformance.tests.test_web",
+        "documentation": {}
+    },
+    {
+        "label": "PowerState",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.bmc",
+        "description": "maas-performance.maasperformance.bmc",
+        "peekOfCode": "class PowerState:\n    ON = 'On'\n    OFF = 'Off'\n    CYCLE = 'Cycle'\nclass PowerCommand:\n    def __init__(self, machine_uuid, power_state):\n        self.machine_uuid = machine_uuid\n        self.new_power_state = power_state\nclass BMC:\n    def __init__(self, machines_manager):",
+        "detail": "maas-performance.maasperformance.bmc",
+        "documentation": {}
+    },
+    {
+        "label": "PowerCommand",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.bmc",
+        "description": "maas-performance.maasperformance.bmc",
+        "peekOfCode": "class PowerCommand:\n    def __init__(self, machine_uuid, power_state):\n        self.machine_uuid = machine_uuid\n        self.new_power_state = power_state\nclass BMC:\n    def __init__(self, machines_manager):\n        self.machines_manager = machines_manager\n    def init(self, loop):\n        self.loop = loop\n        task = asyncio.ensure_future(",
+        "detail": "maas-performance.maasperformance.bmc",
+        "documentation": {}
+    },
+    {
+        "label": "BMC",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.bmc",
+        "description": "maas-performance.maasperformance.bmc",
+        "peekOfCode": "class BMC:\n    def __init__(self, machines_manager):\n        self.machines_manager = machines_manager\n    def init(self, loop):\n        self.loop = loop\n        task = asyncio.ensure_future(\n            self._start_all_machines(), loop=self.loop)\n        task.add_done_callback(raise_exception_cb)\n        return task\n    async def _start_all_machines(self):",
+        "detail": "maas-performance.maasperformance.bmc",
+        "documentation": {}
+    },
+    {
+        "label": "Factory",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class Factory:\n    random_letters = map(\n        random.choice, repeat(string.ascii_letters + string.digits))\n    random_letters_with_spaces = map(\n        random.choice, repeat(string.ascii_letters + string.digits + \" \"))\n    random_octet = partial(random.randint, 0, 255)\n    random_octets = iter(random_octet, None)\n    def make_mac_address(self, delimiter=\":\"):\n        assert isinstance(delimiter, str)\n        octets = islice(self.random_octets, 6)",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDPartition",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDPartition:\n    id: str\n    read_only: bool = False\n@dataclasses.dataclass\nclass LXDDisk:\n    id: str\n    size: int = 250 * GB\n    partitions: List[LXDPartition] = dataclasses.field(default_factory=list)\n    type: str = \"sata\"\n    read_only: bool = False",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDDisk",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDDisk:\n    id: str\n    size: int = 250 * GB\n    partitions: List[LXDPartition] = dataclasses.field(default_factory=list)\n    type: str = \"sata\"\n    read_only: bool = False\n    removable: bool = False\n    rpm: int = 0\n    numa_node: int = 0\n@dataclasses.dataclass",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDVlan",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDVlan:\n    lower_device: str\n    vid: int\n@dataclasses.dataclass\nclass LXDBridge:\n    upper_devices: List[str] = dataclasses.field(default_factory=list)\n@dataclasses.dataclass\nclass LXDBond:\n    lower_devices: List[str] = dataclasses.field(default_factory=list)\n@dataclasses.dataclass",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDBridge",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDBridge:\n    upper_devices: List[str] = dataclasses.field(default_factory=list)\n@dataclasses.dataclass\nclass LXDBond:\n    lower_devices: List[str] = dataclasses.field(default_factory=list)\n@dataclasses.dataclass\nclass LXDAddress:\n    address: str\n    netmask: str\n    family: str = \"inet\"",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDBond",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDBond:\n    lower_devices: List[str] = dataclasses.field(default_factory=list)\n@dataclasses.dataclass\nclass LXDAddress:\n    address: str\n    netmask: str\n    family: str = \"inet\"\n    scope: str = \"global\"\n@dataclasses.dataclass\nclass LXDNetwork:",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDAddress",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDAddress:\n    address: str\n    netmask: str\n    family: str = \"inet\"\n    scope: str = \"global\"\n@dataclasses.dataclass\nclass LXDNetwork:\n    name: str\n    hwaddr: str\n    type: str = \"broadcast\"",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDNetwork",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDNetwork:\n    name: str\n    hwaddr: str\n    type: str = \"broadcast\"\n    state: str = \"up\"\n    addresses: List[LXDAddress] = dataclasses.field(default_factory=list)\n    vlan: Optional[LXDVlan] = None\n    bridge: Optional[LXDBridge] = None\n    bond: Optional[LXDBond] = None\n@dataclasses.dataclass",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDNetworkPort",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDNetworkPort:\n    id: str\n    port: int\n    address: str = dataclasses.field(default_factory=factory.make_mac_address)\n    protocol: str = \"ethernet\"\n    supported_modes: List[str] = dataclasses.field(\n        default_factory=lambda: [\"10000baseT/Full\"])\n    supported_ports: List[str] = dataclasses.field(\n        default_factory=lambda: [\"fibre\"])\n    port_type: str = \"fibre\"",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "LXDNetworkCard",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class LXDNetworkCard:\n    pci_address: str\n    vendor: str = \"My Corporation\"\n    vendor_id: str = \"1234\"\n    product: str = \"My Gigabit Network Connection\"\n    product_id: str = \"5678\"\n    firmware_version: str = \"1.63, 0x800009fa\"\n    numa_node: int = 0\n    driver: str = \"mydriver\"\n    driver_version: str = \"1.2.3\"",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "FakeCommissioningData",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "class FakeCommissioningData:\n    \"\"\"Helper to generate commissioning output programtically.\n    Instead of hardcoding the commissioning data, taking care of\n    including all the possible keys and values, this class allows you to\n    tell which interface you want the machine to have, and you only have\n    to specify what's important for the tests. The helper will ensure\n    that all the other keys are there with a sane value and in the right\n    format.\n    \"\"\"\n    def __init__(",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "GB",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "GB = 1000 * 1000 * 1000\nclass Factory:\n    random_letters = map(\n        random.choice, repeat(string.ascii_letters + string.digits))\n    random_letters_with_spaces = map(\n        random.choice, repeat(string.ascii_letters + string.digits + \" \"))\n    random_octet = partial(random.randint, 0, 255)\n    random_octets = iter(random_octet, None)\n    def make_mac_address(self, delimiter=\":\"):\n        assert isinstance(delimiter, str)",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "factory",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.commissioning",
+        "description": "maas-performance.maasperformance.commissioning",
+        "peekOfCode": "factory = Factory()\n@dataclasses.dataclass\nclass LXDPartition:\n    id: str\n    read_only: bool = False\n@dataclasses.dataclass\nclass LXDDisk:\n    id: str\n    size: int = 250 * GB\n    partitions: List[LXDPartition] = dataclasses.field(default_factory=list)",
+        "detail": "maas-performance.maasperformance.commissioning",
+        "documentation": {}
+    },
+    {
+        "label": "__all__",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.conftest",
+        "description": "maas-performance.maasperformance.conftest",
+        "peekOfCode": "__all__ = ['fs_root', 'machine', 'mock_event_time', \"tar_file_http_response\"]",
+        "detail": "maas-performance.maasperformance.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "dhcp_request_started",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.event",
+        "description": "maas-performance.maasperformance.event",
+        "peekOfCode": "def dhcp_request_started(machine):\n    \"\"\"Record that a DHCP request was started.\"\"\"\n    machine.last_event_time['dhcp_request_start'] = time.time()\n    logging.info(f'dhcp_request_start,{machine.client_iface}')\ndef dhcp_request_ended(machine):\n    \"\"\"Record that a DHCP request was ended.\n    It's assumed that the machine has a dhcp_request_start event already\n    recorded.\n    \"\"\"\n    when = time.time()",
+        "detail": "maas-performance.maasperformance.event",
+        "documentation": {}
+    },
+    {
+        "label": "dhcp_request_ended",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.event",
+        "description": "maas-performance.maasperformance.event",
+        "peekOfCode": "def dhcp_request_ended(machine):\n    \"\"\"Record that a DHCP request was ended.\n    It's assumed that the machine has a dhcp_request_start event already\n    recorded.\n    \"\"\"\n    when = time.time()\n    dhcp_start_time = machine.last_event_time['dhcp_request_start']\n    latency = when - dhcp_start_time\n    logging.info(f'dhcp_request_end,{machine.client_iface},{latency}')\n    prometheus.dhcp_latency.labels(type='request').observe(latency)",
+        "detail": "maas-performance.maasperformance.event",
+        "documentation": {}
+    },
+    {
+        "label": "dhcp_release_started",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.event",
+        "description": "maas-performance.maasperformance.event",
+        "peekOfCode": "def dhcp_release_started(machine):\n    \"\"\"Record that a DHCP release was started.\"\"\"\n    machine.last_event_time['dhcp_release_start'] = time.time()\n    logging.info(f'dhcp_release_start,{machine.client_iface}')\ndef dhcp_release_ended(machine):\n    \"\"\"Record that a DHCP release was ended.\n    It's assumed that the machine has a dhcp_release_start event already\n    recorded.\n    \"\"\"\n    when = time.time()",
+        "detail": "maas-performance.maasperformance.event",
+        "documentation": {}
+    },
+    {
+        "label": "dhcp_release_ended",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.event",
+        "description": "maas-performance.maasperformance.event",
+        "peekOfCode": "def dhcp_release_ended(machine):\n    \"\"\"Record that a DHCP release was ended.\n    It's assumed that the machine has a dhcp_release_start event already\n    recorded.\n    \"\"\"\n    when = time.time()\n    start_time = machine.last_event_time['dhcp_release_start']\n    latency = when - start_time\n    logging.info(f'dhcp_release_end,{machine.client_iface},{latency}')\n    prometheus.dhcp_latency.labels(type='release').observe(latency)",
+        "detail": "maas-performance.maasperformance.event",
+        "documentation": {}
+    },
+    {
+        "label": "file_transfer_started",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.event",
+        "description": "maas-performance.maasperformance.event",
+        "peekOfCode": "def file_transfer_started(machine, url):\n    \"\"\"Record that a file transfer was started.\"\"\"\n    event_name = f'file_transfer_start_{url.geturl()}'\n    machine.last_event_time[event_name] = time.time()\n    logging.info(event_name)\ndef file_transfer_ended(machine, url, result_code):\n    \"\"\"Record that a file transfer was ended.\n    It's assumed that the machine has a file_transfer_started event\n    already recorded.\n    \"\"\"",
+        "detail": "maas-performance.maasperformance.event",
+        "documentation": {}
+    },
+    {
+        "label": "file_transfer_ended",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.event",
+        "description": "maas-performance.maasperformance.event",
+        "peekOfCode": "def file_transfer_ended(machine, url, result_code):\n    \"\"\"Record that a file transfer was ended.\n    It's assumed that the machine has a file_transfer_started event\n    already recorded.\n    \"\"\"\n    when = time.time()\n    start_time = machine.last_event_time[f'file_transfer_start_{url.geturl()}']\n    event_name = f'file_transfer_end_{url.geturl()}'\n    latency = when - start_time\n    logging.info(f'{event_name},{latency},{result_code}')",
+        "detail": "maas-performance.maasperformance.event",
+        "documentation": {}
+    },
+    {
+        "label": "_events",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.event",
+        "description": "maas-performance.maasperformance.event",
+        "peekOfCode": "_events = {}\ndef dhcp_request_started(machine):\n    \"\"\"Record that a DHCP request was started.\"\"\"\n    machine.last_event_time['dhcp_request_start'] = time.time()\n    logging.info(f'dhcp_request_start,{machine.client_iface}')\ndef dhcp_request_ended(machine):\n    \"\"\"Record that a DHCP request was ended.\n    It's assumed that the machine has a dhcp_request_start event already\n    recorded.\n    \"\"\"",
+        "detail": "maas-performance.maasperformance.event",
+        "documentation": {}
+    },
+    {
+        "label": "MachineManager",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.machine",
+        "description": "maas-performance.maasperformance.machine",
+        "peekOfCode": "class MachineManager:\n    \"\"\"A collection of Machines.\n    This keeps track of and controls all the machines that are to be\n    simulated.\n    It has a separate init() method that is to be called with the async\n    loop to be used, that is to be called after the manager has been\n    created.\n    init() creates and returns a background task that contains the\n    _run() method. This will create network interfaces for all the\n    machines and simulate PXE booting them in parallel.",
+        "detail": "maas-performance.maasperformance.machine",
+        "documentation": {}
+    },
+    {
+        "label": "Machine",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.machine",
+        "description": "maas-performance.maasperformance.machine",
+        "peekOfCode": "class Machine:\n    \"\"\"A simulated machine that can PXE boot.\n    It tries to simulate a real machine PXE booting. It gets the IP, and\n    download all the files that a real machine would download when PXE\n    booting.\n    The only file it will save to disk is pxelinux.cfg, so that it can\n    get the URL for the kernel and initrd. All the others are discarded,\n    since it has no use of them, and saving them to disk would mean that\n    disk IO would be the bottleneck.\n    It uses dhclient to get the IP, so that its network interface will",
+        "detail": "maas-performance.maasperformance.machine",
+        "documentation": {}
+    },
+    {
+        "label": "now",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.machine",
+        "description": "maas-performance.maasperformance.machine",
+        "peekOfCode": "def now():\n    \"\"\"Return the current time.\n    This is to allow the current time to be more easily mocked.\n    \"\"\"\n    return time.time()\nclass MachineManager:\n    \"\"\"A collection of Machines.\n    This keeps track of and controls all the machines that are to be\n    simulated.\n    It has a separate init() method that is to be called with the async",
+        "detail": "maas-performance.maasperformance.machine",
+        "documentation": {}
+    },
+    {
+        "label": "NetworkClient",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.network",
+        "description": "maas-performance.maasperformance.network",
+        "peekOfCode": "class NetworkClient:\n    def __init__(self, machine):\n        self.machine = machine\n    async def get_curl_file(self, url, save_to='/dev/null'):\n        \"\"\"Download a file using cURL.\n        It accepts any URL which will be passed on to cURL, which\n        supports a wide range of different schemes.\n        \"\"\"\n        parsed_url = urlparse(url)\n        event.file_transfer_started(self.machine, parsed_url)",
+        "detail": "maas-performance.maasperformance.network",
+        "documentation": {}
+    },
+    {
+        "label": "PlaintextSignature",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.network",
+        "description": "maas-performance.maasperformance.network",
+        "peekOfCode": "class PlaintextSignature(Signature):\n    \"\"\"PLAINTEXT signature-method.\"\"\"\n    name = 'PLAINTEXT'\n    def sign(\n            self,\n            consumer_secret,\n            method,\n            url,\n            oauth_token_secret=None,\n            **params):",
+        "detail": "maas-performance.maasperformance.network",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth1ClientBase",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.network",
+        "description": "maas-performance.maasperformance.network",
+        "peekOfCode": "class OAuth1ClientBase(OAuth1Client):\n    def __init__(self, network, source, endpoint_key, *args, **kwargs):\n        self.network = network\n        endpoint_url = self._get_endpoint_full_url(source[endpoint_key])\n        super().__init__(\n            *args,\n            signature=PlaintextSignature(),\n            base_url=endpoint_url,\n            consumer_key=source.get('consumer_key'),\n            consumer_secret='',",
+        "detail": "maas-performance.maasperformance.network",
+        "documentation": {}
+    },
+    {
+        "label": "MetadataClient",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.network",
+        "description": "maas-performance.maasperformance.network",
+        "peekOfCode": "class MetadataClient(OAuth1ClientBase):\n    def __init__(self, network, source, *args, **kwargs):\n        super().__init__(network, source, 'metadata_url', *args, **kwargs)\n    @property\n    def authenticated(self):\n        return self.consumer_key is not None\n    async def signal(\n            self,\n            status,\n            error=None,",
+        "detail": "maas-performance.maasperformance.network",
+        "documentation": {}
+    },
+    {
+        "label": "ReportingClient",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.network",
+        "description": "maas-performance.maasperformance.network",
+        "peekOfCode": "class ReportingClient(OAuth1ClientBase):\n    def __init__(self, network, source, *args, **kwargs):\n        super().__init__(network, source, 'endpoint', *args, **kwargs)\n    async def report(self, report):\n        await self.request('post', '', data=json.dumps(report))\nasync def register_machine(\n        network, api_url, hostname, architecture, subarchitecture, power_type,\n        power_parameters, mac_address):\n    params = aiohttp.FormData()\n    params.add_field('hostname', hostname)",
+        "detail": "maas-performance.maasperformance.network",
+        "documentation": {}
+    },
+    {
+        "label": "get_source_address",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.network",
+        "description": "maas-performance.maasperformance.network",
+        "peekOfCode": "def get_source_address(destination_ip: IPAddress):\n    \"\"\"Returns the local source address for the specified IPAddress.\n    @param destination_ip: Can be an IP address in string format, an IPNetwork,\n        or an IPAddress object.\n    @return the local IP address that would be used for communication with the\n        specified destination.\n    \"\"\"\n    af = socket.AF_INET if destination_ip.version == 4 else socket.AF_INET6\n    with socket.socket(af, socket.SOCK_DGRAM) as sock:\n        peername = str(destination_ip)",
+        "detail": "maas-performance.maasperformance.network",
+        "documentation": {}
+    },
+    {
+        "label": "MD_VERSION",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.network",
+        "description": "maas-performance.maasperformance.network",
+        "peekOfCode": "MD_VERSION = '2012-03-01'\nclass PlaintextSignature(Signature):\n    \"\"\"PLAINTEXT signature-method.\"\"\"\n    name = 'PLAINTEXT'\n    def sign(\n            self,\n            consumer_secret,\n            method,\n            url,\n            oauth_token_secret=None,",
+        "detail": "maas-performance.maasperformance.network",
+        "documentation": {}
+    },
+    {
+        "label": "ParentNetworkInterface",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.network_interface",
+        "description": "maas-performance.maasperformance.network_interface",
+        "peekOfCode": "class ParentNetworkInterface(NamedTuple):\n    \"\"\"A parent network interface.\n    This is used for creating sub-interfaces with different MAC addresses which\n    are passed to machines.\n    \"\"\"\n    name: str\n    is_bridge: bool = False\n    def get_client_interface(self, name: str):\n        \"\"\"Return a NetworkInterface to be aused for a client Machine.\"\"\"\n        return NetworkInterface(name, generate_mac_address(), self)",
+        "detail": "maas-performance.maasperformance.network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "NetworkInterface",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.network_interface",
+        "description": "maas-performance.maasperformance.network_interface",
+        "peekOfCode": "class NetworkInterface(NamedTuple):\n    \"\"\"A network interface realted to a parent one.\n    It can be used as a PXE boot interfacein a Machine.\n    \"\"\"\n    name: str\n    mac_address: str\n    parent: ParentNetworkInterface\n    async def create(self):\n        \"\"\"Create the machine's network interface on the host.\"\"\"\n        if self.parent.is_bridge:",
+        "detail": "maas-performance.maasperformance.network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "interface_is_bridge",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.network_interface",
+        "description": "maas-performance.maasperformance.network_interface",
+        "peekOfCode": "def interface_is_bridge(iface: str):\n    \"\"\"Return whether an interface is a bridge.\"\"\"\n    output = exec_sync_process('ip', '--json', '-d', 'link', 'show', iface)\n    data = json.loads(output)\n    return data[0].get('linkinfo', {}).get('info_kind') == 'bridge'\ndef generate_mac_address() -> str:\n    \"\"\"Generate a unique MAC address.\n    The generated MAC is not 100% guaranteed to be unique, but\n    collisions should be very rare.\n    \"\"\"",
+        "detail": "maas-performance.maasperformance.network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "generate_mac_address",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.network_interface",
+        "description": "maas-performance.maasperformance.network_interface",
+        "peekOfCode": "def generate_mac_address() -> str:\n    \"\"\"Generate a unique MAC address.\n    The generated MAC is not 100% guaranteed to be unique, but\n    collisions should be very rare.\n    \"\"\"\n    return \"02:00:00:{:02x}:{:02x}:{:02x}\".format(\n        random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))\nclass ParentNetworkInterface(NamedTuple):\n    \"\"\"A parent network interface.\n    This is used for creating sub-interfaces with different MAC addresses which",
+        "detail": "maas-performance.maasperformance.network_interface",
+        "documentation": {}
+    },
+    {
+        "label": "ProcessError",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.process",
+        "description": "maas-performance.maasperformance.process",
+        "peekOfCode": "class ProcessError(Exception):\n    \"\"\"Process failed.\"\"\"\n    def __init__(self, args, returncode, error):\n        super().__init__(\n            f'Command {args} exited with return code {returncode}: {error}')\n        self.args = args\n        self.returncode = returncode\n        self.error = error\nasync def exec_process(*args: str) -> str:\n    \"\"\"Execute a process asynchronously, returning its stdout.\"\"\"",
+        "detail": "maas-performance.maasperformance.process",
+        "documentation": {}
+    },
+    {
+        "label": "exec_sync_process",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.process",
+        "description": "maas-performance.maasperformance.process",
+        "peekOfCode": "def exec_sync_process(*args: str) -> str:\n    \"\"\"Execute a process synchronously, returning its stdout.\"\"\"\n    return check_output(args)",
+        "detail": "maas-performance.maasperformance.process",
+        "documentation": {}
+    },
+    {
+        "label": "PromRegClient",
+        "kind": 6,
+        "importPath": "maas-performance.maasperformance.prometheus",
+        "description": "maas-performance.maasperformance.prometheus",
+        "peekOfCode": "class PromRegClient:\n    \"\"\"Client for talking to a prometheus-registration server.\n    @param base_url: The URL to the prometheus-registration server.\n    @param auth_token: The token to be used for authentiation with the server.\n    @param session: An aiohttp.ClientSession to be used for\n        communicating with the server.\n    \"\"\"\n    def __init__(self, base_url, auth_token, session):\n        self.base_url = base_url\n        self.auth_token = auth_token",
+        "detail": "maas-performance.maasperformance.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_metrics",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.prometheus",
+        "description": "maas-performance.maasperformance.prometheus",
+        "peekOfCode": "def get_current_metrics():\n    \"\"\"Return the current Prometheus metrics as a string body.\n    This is to be used by the /metrics endpoint to export the metrics to\n    Prometheus.\n    It's defined here, to ensure that all the metrics below get\n    registered when the /metrics endpoint generates the export.\n    \"\"\"\n    return generate_latest()\nclass PromRegClient:\n    \"\"\"Client for talking to a prometheus-registration server.",
+        "detail": "maas-performance.maasperformance.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "dhcp_latency",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.prometheus",
+        "description": "maas-performance.maasperformance.prometheus",
+        "peekOfCode": "dhcp_latency = Histogram(\n    'client_dhcp_latency', 'Time it took complete a DHCP request.', ['type'])\ntransfer_latency = Histogram(\n    'client_file_transfer_latency', 'Time it took to transfer a file.',\n    ['filename', 'scheme', 'result'])",
+        "detail": "maas-performance.maasperformance.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "transfer_latency",
+        "kind": 5,
+        "importPath": "maas-performance.maasperformance.prometheus",
+        "description": "maas-performance.maasperformance.prometheus",
+        "peekOfCode": "transfer_latency = Histogram(\n    'client_file_transfer_latency', 'Time it took to transfer a file.',\n    ['filename', 'scheme', 'result'])",
+        "detail": "maas-performance.maasperformance.prometheus",
+        "documentation": {}
+    },
+    {
+        "label": "parse_args",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.server",
+        "description": "maas-performance.maasperformance.server",
+        "peekOfCode": "def parse_args(raw_args):\n    \"\"\"Create a parser and parse the argument strings.\"\"\"\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('iface', help='Interface where the PXE network is')\n    parser.add_argument(\n        '-n',\n        '--number',\n        help='Number of machines to simulate',\n        type=int,\n        default=1)",
+        "detail": "maas-performance.maasperformance.server",
+        "documentation": {}
+    },
+    {
+        "label": "configure_logging",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.server",
+        "description": "maas-performance.maasperformance.server",
+        "peekOfCode": "def configure_logging(args):\n    \"\"\"Set up logging to stdout.\n    By default we'll log INFO and above, but if -v is specified, we log\n    DEBUG as well.\n    \"\"\"\n    logging_level = logging.INFO\n    if args.verbose:\n        logging_level = logging.DEBUG\n    logger = logging.getLogger()\n    handler = logging.StreamHandler(sys.stdout)",
+        "detail": "maas-performance.maasperformance.server",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.server",
+        "description": "maas-performance.maasperformance.server",
+        "peekOfCode": "def main(raw_args=sys.argv[1:]):\n    \"\"\"Configure the logging and run the web app.\n    When the web app is run, a task for starting the machines manager is\n    also created.\n    \"\"\"\n    args = parse_args(raw_args)\n    configure_logging(args)\n    uvloop.install()\n    app = create_web_app(args)\n    web.run_app(app, port=args.port)",
+        "detail": "maas-performance.maasperformance.server",
+        "documentation": {}
+    },
+    {
+        "label": "raise_exception_cb",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.utils",
+        "description": "maas-performance.maasperformance.utils",
+        "peekOfCode": "def raise_exception_cb(future):\n    \"\"\"Callback to raise the exception from a future, if any.\n    This is intended to be passed to Future.add_done_callback().\n    Nothing is raised if the future was canceled.\n    \"\"\"\n    try:\n        err = future.exception()\n    except asyncio.CancelledError:\n        return\n    if err:",
+        "detail": "maas-performance.maasperformance.utils",
+        "documentation": {}
+    },
+    {
+        "label": "create_web_app",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.web",
+        "description": "maas-performance.maasperformance.web",
+        "peekOfCode": "def create_web_app(args, loop=None):\n    \"\"\"Create the web application and set it up to be started.\n    A MachineManager is created, will start when the web app starts.\n    \"\"\"\n    app = web.Application(loop=loop)\n    app['port'] = args.port\n    app['machine-manager'] = MachineManager(args.iface, args.number)\n    app['bmc'] = BMC(app['machine-manager'])\n    set_up_routes(app)\n    app.on_startup.append(start_machines_loop)",
+        "detail": "maas-performance.maasperformance.web",
+        "documentation": {}
+    },
+    {
+        "label": "set_up_routes",
+        "kind": 2,
+        "importPath": "maas-performance.maasperformance.web",
+        "description": "maas-performance.maasperformance.web",
+        "peekOfCode": "def set_up_routes(app):\n    \"\"\"Set up the web app endpoints.\"\"\"\n    app.add_routes(\n        [\n            web.get('/status', status),\n            web.get('/metrics', metrics),\n            web.get('/redfish/v1/Systems', redfish_systems),\n            web.get('/redfish/v1/Systems/{uuid}', get_redfish_system),\n            web.get('/redfish/v1/Systems/{uuid}/', get_redfish_system),\n            web.patch('/redfish/v1/Systems/{uuid}', modify_redfish_system),",
+        "detail": "maas-performance.maasperformance.web",
+        "documentation": {}
+    },
+    {
+        "label": "install_requires",
+        "kind": 5,
+        "importPath": "maas-performance.setup",
+        "description": "maas-performance.setup",
+        "peekOfCode": "install_requires = (\n    'aiodns',  # Optional dep to speed up aiohttp\n    'aiofiles',\n    'aioauth_client',\n    'aiohttp',\n    'cchardet',  # Optional dep to speed up aiohttp\n    'netaddr',\n    'prometheus_client',\n    'pyyaml',\n    'uvloop',",
+        "detail": "maas-performance.setup",
+        "documentation": {}
+    },
+    {
+        "label": "extras_require_test",
+        "kind": 5,
+        "importPath": "maas-performance.setup",
+        "description": "maas-performance.setup",
+        "peekOfCode": "extras_require_test = (\n    'asynctest',\n    'pytest',\n    'pytest-aiohttp',\n    'pytest-asyncio',\n    'pytest-cov',\n    'pytest-mock',\n    'pytest-sugar',\n    'pytest-xdist',\n)",
+        "detail": "maas-performance.setup",
+        "documentation": {}
+    },
+    {
+        "label": "extras_require_dev",
+        "kind": 5,
+        "importPath": "maas-performance.setup",
+        "description": "maas-performance.setup",
+        "peekOfCode": "extras_require_dev = (\n    'flake8',\n    'ipdb',\n    'ipython',\n    'isort',\n    'mypy',\n    'yapf',\n)\nsetup(\n    name='maasperformance',",
+        "detail": "maas-performance.setup",
+        "documentation": {}
+    },
+    {
+        "label": "Group",
+        "kind": 6,
+        "importPath": "maas-prometheus-alert-rules.bin.group",
+        "description": "maas-prometheus-alert-rules.bin.group",
+        "peekOfCode": "class Group:\n    alerts = {\"name\": \"alerts\", \"rules\": []}\n    def __init__(self, snippet_path, out_path):\n        self.snippet_path = snippet_path\n        self.out_path = out_path\n    def load_snippets(self):\n        for snippet in glob(self.snippet_path):\n            with open(snippet) as f:\n                snippet_content = yaml.load(f.read(), Loader=yaml.FullLoader)\n                self.add_snippet(snippet_content)",
+        "detail": "maas-prometheus-alert-rules.bin.group",
+        "documentation": {}
+    },
+    {
+        "label": "TestGroup",
+        "kind": 6,
+        "importPath": "maas-prometheus-alert-rules.bin.group",
+        "description": "maas-prometheus-alert-rules.bin.group",
+        "peekOfCode": "class TestGroup(Group):\n    tests = {\"rule_files\": [], \"tests\": []}\n    def __init__(self, snippet_path, test_out_path, out_path):\n        self.tests[\"rule_files\"].append(out_path)\n        super().__init__(snippet_path, test_out_path)\n    def add_snippet(self, snippet):\n        self.tests[\"tests\"].extend(snippet)\n    def data(self):\n        return self.tests\ndef main():",
+        "detail": "maas-prometheus-alert-rules.bin.group",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "maas-prometheus-alert-rules.bin.group",
+        "description": "maas-prometheus-alert-rules.bin.group",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(description=\"Builds a groups file for direct prometheus use of rules\")\n    parser.add_argument(\"--rules\", help=\"blob path for rules files to be loaded from\")\n    parser.add_argument(\"--tests\", help=\"blob path for test files to be loaded from\")\n    parser.add_argument(\"--out\", help=\"full path to output the file to\")\n    parser.add_argument(\"--test_out\", help=\"full path to output the test file to\")\n    args = parser.parse_args(sys.argv[1:])\n    group = Group(args.rules, args.out)\n    group.load_snippets()\n    group.to_yaml()",
+        "detail": "maas-prometheus-alert-rules.bin.group",
         "documentation": {}
     },
     {
