@@ -6,7 +6,7 @@
 	url = https://github.com/canonical/maas-prometheus-alert-rules.git
 [submodule "packer-maas"]
 	path = packer-maas
-	url = https://github.com/canonical/packer-maas.git
+	url = https://github.com/ajanis/packer-maas.git
 [submodule "maas-performance"]
 	path = maas-performance
 	url = https://git.launchpad.net/~maas-committers/maas/+git/maas-performance
