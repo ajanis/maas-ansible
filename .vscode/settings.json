@@ -8,4 +8,6 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true
   },
+  "ansible.lightspeed.suggestions.enabled": true,
+  "ansible.ansible.reuseTerminal": true,
 }

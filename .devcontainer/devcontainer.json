@@ -71,7 +71,9 @@
         "bierner.markdown-mermaid",
         "bierner.markdown-checkbox",
         "IkBenGeenRobot.ansible-variable-lookup",
-        "yzane.markdown-pdf"
+        "yzane.markdown-pdf",
+        "szTheory.vscode-packer-powertools",
+        "4ops.packer"
       ],
       // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
       "settings": {
