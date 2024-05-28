@@ -6,8 +6,8 @@ all:
     maas_snap_channel: stable # if using snap, then the channel. ie: stable, beta, edge
     snap_update: false
     maas_deb_state: present # if using deb, the state for install
-    maas_metrics_host: 44.10.4.101
-    maas_aio_ip: 44.10.4.101
+    maas_metrics_host: 44.10.4.200
+    maas_aio_ip: 44.10.4.200
     maas_aio_domain: maas.spoc.charterlab.com
     maas_url: "{{ 'https' if enable_tls else 'http' }}://{{ maas_aio_ip }}:5240/MAAS"
     maas_aio_upstream_dns: 10.240.64.124
@@ -58,8 +58,8 @@ all:
   children:
     maas_region_controller:
       hosts:
-        maas-poc-reg01:
-          ansible_host: 44.10.4.101
+        maas-sandbox-aio01:
+          ansible_host: 44.10.4.200
           ansible_user: ajanis
         # maas-region01:
         # maas-region02:
@@ -67,21 +67,21 @@ all:
 
     maas_rack_controller:
       hosts:
-        maas-poc-reg01: {}
+        maas-sandbox-aio01: {}
       # maas-region01:
       # maas-rack01:
       # maas-rack02:
 
     maas_postgres:
       hosts:
-        maas-poc-reg01: {}
+        maas-sandbox-aio01: {}
       # maas-pg01:
       # maas-pg02:
       # maas-pg03:
 
     maas_postgres_primary:
       hosts:
-        maas-poc-reg01: {}
+        maas-sandbox-aio01: {}
 
     # maas_proxy:
     #   hosts:
