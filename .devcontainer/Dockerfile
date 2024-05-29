@@ -19,6 +19,8 @@ RUN DEBIAN_FRONTEND=noninteractive sudo apt-get update --no-install-recommends \
     docker.io redis redis-sentinel libgtk-3-dev libasound2-dev libxss-dev \
     && sudo rm -rf /var/lib/apt/lists/*
 
+COPY cacerts/cacert.pem /usr/local/share/ca-certificates/
+RUN sudo update-ca-certificates --fresh
 
 WORKDIR "/workspaces/${localWorkspaceFolderBasename}"
 
