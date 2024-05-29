@@ -73,7 +73,21 @@
         "IkBenGeenRobot.ansible-variable-lookup",
         "yzane.markdown-pdf",
         "szTheory.vscode-packer-powertools",
-        "4ops.packer"
+        "4ops.packer",
+        "ipierre1.ansible-vault-vscode",
+        "BlauweLucht.ansible-go-to-definition",
+        "TravisMichette.ansible-snippets",
+        "jeff-hykin.better-dockerfile-syntax",
+        "hongquan.dragon-jinja",
+        "waderyan.gitblame",
+        "davidmwhynot.markdown-higlightjs",
+        "darkriszty.markdown-table-prettify",
+        "DavidAnson.vscode-markdownlint",
+        "slightc.pip-manager",
+        "timonwong.shellcheck",
+        "mads-hartmann.bash-ide-vscode",
+        "chouzz.vscode-better-align",
+        "fabiospampinato.vscode-bump"
       ],
       // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
       "settings": {
