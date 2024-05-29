@@ -31,7 +31,7 @@
     - [Default Source](#default-source)
       - [MAAS Image URL Example](#maas-image-url-example)
   - [Additional Reading / Documentation](#additional-reading--documentation)
-    - [MAAS Specific Glossary and Useful Terms:](#maas-specific-glossary-and-useful-terms)
+    - [MAAS Specific Glossary and Useful Terms](#maas-specific-glossary-and-useful-terms)
       - [Fabrics](#fabrics)
       - [Availability Zones](#availability-zones)
       - [Zones](#zones)
@@ -270,7 +270,7 @@ A   MAAS Image Contains:
 
 ## Additional Reading / Documentation
 
-### MAAS Specific Glossary and Useful Terms:
+### MAAS Specific Glossary and Useful Terms
 
 Secure UEFI Boot
 PXE Boot instances
