@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>MAAS PoC SPOC Lab</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension davidmwhynot.markdown-higlightjs */
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #c678dd;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e06c75;
+}
+
+.hljs-literal {
+  color: #56b6c2;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  color: #98c379;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #e6c07b;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #d19a66;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #61aeee;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-dark">
+            <h1 id="maas-poc-spoc-lab">MAAS PoC SPOC Lab</h1>
+<ul>
+<li><a href="#maas-poc-spoc-lab">MAAS PoC SPOC Lab</a>
+<ul>
+<li><a href="#maas-infrastructure-as-code">MAAS Infrastructure-As-Code</a>
+<ul>
+<li><a href="#maas-ansible">MAAS-Ansible</a></li>
+<li><a href="#maas-packer">MAAS-Packer</a></li>
+<li><a href="#devcontainer--codespace-code-environment">Devcontainer / Codespace code environment</a></li>
+</ul>
+</li>
+<li><a href="#physical-hardware">Physical Hardware</a></li>
+<li><a href="#maas-deployments">MAAS Deployments</a>
+<ul>
+<li><a href="#maas-poc">MAAS PoC</a>
+<ul>
+<li><a href="#service--admin-info">Service / Admin Info</a>
+<ul>
+<li><a href="#maas-ui">MAAS UI</a></li>
+<li><a href="#metrics">Metrics</a></li>
+<li><a href="#vm-host-network">VM Host Network</a></li>
+<li><a href="#provisioning-network">Provisioning Network</a>
+<ul>
+<li><a href="#switch-pair">Switch Pair</a></li>
+<li><a href="#dhcp-helper">DHCP Helper</a></li>
+</ul>
+</li>
+<li><a href="#vcenter-url">vCenter URL</a></li>
+<li><a href="#http-console">HTTP Console</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#maas-sandbox-environment">MAAS [sandbox] Environment</a>
+<ul>
+<li><a href="#service--admin-info-1">Service / Admin Info</a>
+<ul>
+<li><a href="#maas-ui-1">MAAS UI</a></li>
+<li><a href="#metrics-1">Metrics</a></li>
+<li><a href="#vm-host-network-1">VM Host Network</a></li>
+<li><a href="#provisioning-network-1">Provisioning Network</a>
+<ul>
+<li><a href="#switch-pair-1">Switch Pair</a></li>
+<li><a href="#dhcp-helper-1">DHCP Helper</a></li>
+</ul>
+</li>
+<li><a href="#vsphere-url">vSphere URL</a></li>
+<li><a href="#http-console-1">HTTP Console</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#maas-aio-node-post-installation-steps">MAAS AiO Node Post-Installation Steps</a></li>
+<li><a href="#maas-images">MAAS Images</a>
+<ul>
+<li><a href="#default-source">Default Source</a>
+<ul>
+<li><a href="#maas-image-url-example">MAAS Image URL Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#additional-reading--documentation">Additional Reading / Documentation</a>
+<ul>
+<li><a href="#maas-specific-glossary-and-useful-terms">MAAS Specific Glossary and Useful Terms:</a>
+<ul>
+<li><a href="#fabrics">Fabrics</a></li>
+<li><a href="#availability-zones">Availability Zones</a></li>
+<li><a href="#zones">Zones</a></li>
+<li><a href="#spaces">Spaces</a></li>
+<li><a href="#regions">Regions</a></li>
+<li><a href="#controllers">Controllers</a>
+<ul>
+<li><a href="#region">Region</a></li>
+<li><a href="#rack">Rack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#maas-network-configuration-exports">MAAS Network Configuration Exports</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="maas-infrastructure-as-code">MAAS Infrastructure-As-Code</h2>
+<h3 id="maas-ansible">MAAS-Ansible</h3>
+<p>An ansible project with Inventory,Vars,Playbooks,Roles,Libraries and Documentation for deploying a custom configured MAAS environment has been included in the repo.</p>
+<p>The project includes everything needed to deploy:</p>
+<ul>
+<li>All-In-One Node</li>
+<li>Multiple-RegionD Hosts + HAProxy + EtcD, (n) RackD Hosts, HA PostgreSQL Cluster with Pacemaker</li>
+<li>Optional Observability Stack - enables /metrics endpoints for all MaaS services,  Grafana-Agent Metrics and Log collection, Prometheus metrics storage, Loki Log Storage, Grafana Visualization</li>
+</ul>
+<h3 id="maas-packer">MAAS-Packer</h3>
+<p>The MAAS-Packer repository for custom MAAS-compatible image builds has also been included in the repository.</p>
+<h3 id="devcontainer--codespace-code-environment">Devcontainer / Codespace code environment</h3>
+<p>A devcontainer has been created specifically for this environment, allowing anyone to get up and running almost immediately.</p>
+<p>If you have Docker-Desktop and check out the repository locally or into a docker-volume, a container with PyEnv (which will set up the correct python version and activate the environment automatically, then install all python dependencies, linters, formatters, ansible utilities,  helper scripts, and other configurations.  '</p>
+<p>You can also open the repository in a Codespace, which will build the identical container remotely for you.</p>
+<h2 id="physical-hardware">Physical Hardware</h2>
+<ul>
+<li><a href="MAAS%20PoC%20Hardware-Network%20Spreadsheet.pdf">Available Inventory</a></li>
+</ul>
+<h2 id="maas-deployments">MAAS Deployments</h2>
+<h3 id="maas-poc">MAAS PoC</h3>
+<h4 id="service--admin-info">Service / Admin Info</h4>
+<h5 id="maas-ui">MAAS UI</h5>
+<ul>
+<li>VM Hostname: maas-poc-reg01</li>
+<li>VM IP: 44.10.4.101/24</li>
+<li>Dashboard: <a href="http://44.10.4.101:5240/MAAS/">http://44.10.4.101:5240/MAAS/</a></li>
+</ul>
+<h5 id="metrics">Metrics</h5>
+<ul>
+<li>Grafana: <a href="http://44.10.4.101:3000">http://44.10.4.101:3000</a></li>
+</ul>
+<h5 id="vm-host-network">VM Host Network</h5>
+<ul>
+<li>Host IP: 44.10.4.101/24</li>
+<li>VLAN Name: VLAN1175-KMA1-RackN_PXE_Net</li>
+<li>VLAN ID: 1175</li>
+<li>Subnet: 44.10.4.0/24</li>
+<li>Gateway: 44.10.4.1</li>
+<li>Broadcast: 44.10.4.255</li>
+<li>Upstream DNS:  10.240.64.124</li>
+<li>Proxy URL: <a href="http://proxy4.spoc.charterlab.com:8080">http://proxy4.spoc.charterlab.com:8080</a></li>
+</ul>
+<h5 id="provisioning-network">Provisioning Network</h5>
+<ul>
+<li>VLAN ID: 77</li>
+<li>Subnet: 172.22.31.144/28</li>
+<li>Gateway: 172.22.31.145</li>
+<li>Broadcast: 172.22.31.159</li>
+<li>Dynamic Range (MAAS): 172.22.31.150-158</li>
+<li>MAAS Relay: Fabric0 Untagged -&gt; Fabric-77 Untagged</li>
+</ul>
+<h6 id="switch-pair">Switch Pair</h6>
+<ul>
+<li>lfs11s3 : 10.240.72.173</li>
+<li>lfs12s3 : 10.240.72.174</li>
+</ul>
+<h6 id="dhcp-helper">DHCP Helper</h6>
+<ul>
+<li>44.10.4.101</li>
+</ul>
+<h5 id="vcenter-url">vCenter URL</h5>
+<ul>
+<li><a href="https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2045452:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary">https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2045452:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary</a></li>
+</ul>
+<h5 id="http-console">HTTP Console</h5>
+<ul>
+<li><a href="https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&amp;vmName=maas-poc-aio01&amp;numMksConnections=1&amp;serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&amp;locale=en-US">https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&amp;vmName=maas-poc-aio01&amp;numMksConnections=1&amp;serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&amp;locale=en-US</a></li>
+</ul>
+<h3 id="maas-sandbox-environment">MAAS [sandbox] Environment</h3>
+<h4 id="service--admin-info-1">Service / Admin Info</h4>
+<h5 id="maas-ui-1">MAAS UI</h5>
+<ul>
+<li>VM Hostname: maas-sandbox-aio01</li>
+<li>VM IP: 44.10.4.200/24</li>
+<li>Dashboard: <a href="http://44.10.4.200:5240/MAAS/">http://44.10.4.200:5240/MAAS/</a></li>
+</ul>
+<h5 id="metrics-1">Metrics</h5>
+<ul>
+<li>Grafana: <a href="http://44.10.4.200:3000">http://44.10.4.200:3000</a></li>
+</ul>
+<h5 id="vm-host-network-1">VM Host Network</h5>
+<ul>
+<li>Host IP: 44.10.4.200/24</li>
+<li>VLAN Name: VLAN1175-KMA1-RackN_PXE_Net</li>
+<li>VLAN ID: 1175</li>
+<li>Subnet: 44.10.4.0/24</li>
+<li>Gateway: 44.10.4.1</li>
+<li>Broadcast: 44.10.4.255</li>
+<li>Upstream DNS:  10.240.64.124</li>
+<li>Proxy URL: <a href="http://proxy4.spoc.charterlab.com:8080">http://proxy4.spoc.charterlab.com:8080</a></li>
+</ul>
+<h5 id="provisioning-network-1">Provisioning Network</h5>
+<ul>
+<li>VLAN ID: 77</li>
+<li>Subnet:  172.22.34.16/28</li>
+<li>Gateway: 172.22.34.17</li>
+<li>Broadcast: 172.22.34.31</li>
+<li>Dynamic Range (MAAS): 172.22.34.20-30</li>
+<li>MAAS Relay: Fabric0 Untagged -&gt; Fabric-77 Untagged</li>
+</ul>
+<h6 id="switch-pair-1">Switch Pair</h6>
+<ul>
+<li>lfs81s1 : 10.240.72.198</li>
+<li>lfs82s1 : 10.240.72.199</li>
+</ul>
+<h6 id="dhcp-helper-1">DHCP Helper</h6>
+<ul>
+<li>44.10.4.200</li>
+</ul>
+<h5 id="vsphere-url">vSphere URL</h5>
+<ul>
+<li><a href="https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2042902:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary">https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2042902:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary</a></li>
+</ul>
+<h5 id="http-console-1">HTTP Console</h5>
+<ul>
+<li><a href="https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&amp;vmName=maas-poc-aio01&amp;numMksConnections=0&amp;serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&amp;locale=en-US">https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&amp;vmName=maas-poc-aio01&amp;numMksConnections=0&amp;serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&amp;locale=en-US</a></li>
+</ul>
+<h2 id="maas-aio-node-post-installation-steps">MAAS AiO Node Post-Installation Steps</h2>
+<ul>
+<li>
+<p>Enable SSH auth keys:
+sed -i -E 's/^#(PubKeyAuthentication.+$)/\1/' /etc/ssh/sshd_config
+systemctl restart sshd</p>
+</li>
+<li>
+<p>Apt sources:
+cat /etc/apt/sources.list.curtin.old &gt;&gt; /etc/apt/sources.list</p>
+</li>
+<li>
+<p>HTTP/S Proxies for apt and env:
+curl -f <a href="http://http.spoc.charterlab.com/software/bootstrap/proxy.sh">http://http.spoc.charterlab.com/software/bootstrap/proxy.sh</a> &gt;&gt; /etc/environment
+curl -f <a href="http://http.spoc.charterlab.com/software/bootstrap/apt.conf">http://http.spoc.charterlab.com/software/bootstrap/apt.conf</a> &gt;&gt; /etc/apt/apt.conf.d/98proxy</p>
+</li>
+<li>
+<p>Resize Partitions:</p>
+</li>
+</ul>
+<pre><code class="hljs">parted <span class="hljs-params">--align</span> opt <span class="hljs-params">--script</span> <span class="hljs-string">/dev/sda</span> resizepart 4 100%
+parted <span class="hljs-string">/dev/sda</span> print
+pvscan
+pvresize <span class="hljs-string">/dev/sda4</span>
+lvresize -L 5GiB <span class="hljs-string">/dev/vg_root/lv_tmp</span>
+lvresize -L 10GiB <span class="hljs-string">/dev/vg_root/lv_opt</span>
+lvresize -L 10GiB <span class="hljs-string">/dev/vg_root/lv_varlog</span>
+lvresize -L 40GiB <span class="hljs-string">/dev/vg_root/lv_root</span>
+lvresize -l +100%FREE <span class="hljs-string">/dev/vg_root/lv_var</span>
+resize2fs <span class="hljs-string">/dev/vg_root/lv_opt</span>
+resize2fs <span class="hljs-string">/dev/vg_root/lv_var</span>
+resize2fs <span class="hljs-string">/dev/vg_root/lv_varlog</span>
+resize2fs <span class="hljs-string">/dev/vg_root/lv_tmp</span>
+resize2fs <span class="hljs-string">/dev/vg_root/lv_root</span>
+</code></pre>
+<ul>
+<li>Add default route to Netplan:</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-comment"># This file is generated from information provided by the datasource.  Changes</span>
+<span class="hljs-comment"># to it will not persist across an instance reboot.  To disable cloud-init's</span>
+<span class="hljs-comment"># network configuration capabilities, write a file</span>
+<span class="hljs-comment"># /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:</span>
+<span class="hljs-comment"># network: {config: disabled}</span>
+<span class="hljs-attr">network:</span>
+    <span class="hljs-attr">version:</span> <span class="hljs-number">2</span>
+    <span class="hljs-attr">ethernets:</span>
+        <span class="hljs-attr">eth0:</span>
+            <span class="hljs-attr">dhcp6:</span> <span class="hljs-literal">no</span>
+            <span class="hljs-attr">dhcp4:</span> <span class="hljs-literal">no</span>
+            <span class="hljs-attr">addresses:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-string">"44.10.4.200/24"</span>
+            <span class="hljs-attr">routes:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">to:</span> <span class="hljs-string">default</span>
+                <span class="hljs-attr">via:</span> <span class="hljs-number">44.10</span><span class="hljs-number">.4</span><span class="hljs-number">.1</span>
+                <span class="hljs-attr">metric:</span> <span class="hljs-number">100</span>
+                <span class="hljs-attr">on-link:</span> <span class="hljs-literal">true</span>
+            <span class="hljs-attr">nameservers:</span>
+                <span class="hljs-attr">addresses:</span>
+                  <span class="hljs-bullet">-</span> <span class="hljs-number">10.240</span><span class="hljs-number">.64</span><span class="hljs-number">.124</span>
+
+    <span class="hljs-attr">vlans:</span>
+        <span class="hljs-attr">vlan77:</span>
+            <span class="hljs-attr">id:</span> <span class="hljs-number">77</span>
+            <span class="hljs-attr">dhcp6:</span> <span class="hljs-literal">no</span>
+            <span class="hljs-attr">dhcp4:</span> <span class="hljs-literal">no</span>
+            <span class="hljs-attr">link:</span> <span class="hljs-string">eth0</span>
+            <span class="hljs-attr">routes:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">to:</span> <span class="hljs-string">default</span>
+                <span class="hljs-attr">via:</span> <span class="hljs-number">44.10</span><span class="hljs-number">.4</span><span class="hljs-number">.200</span>
+                <span class="hljs-attr">metric:</span> <span class="hljs-number">200</span>
+</code></pre>
+<pre><code class="hljs"><span class="hljs-quote">&gt; netplan generate</span>
+<span class="hljs-quote">&gt; netplan apply</span>
+
+<span class="hljs-quote">&gt; apt-get update</span>
+<span class="hljs-quote">&gt; systemctl restart systemd-logind</span>
+<span class="hljs-quote">&gt; systemctl restart systemd-resolved</span>
+</code></pre>
+<h2 id="maas-images">MAAS Images</h2>
+<p>A   MAAS Image Contains:</p>
+<ul>
+<li>a bootloader^, which boots the computer to the point that an operating system can be loaded. MAAS currently uses one of three types of bootloaders: open firmware, PXE, and UEFI.</li>
+<li>a bootable kernel.</li>
+<li>an initial ramdisk.</li>
+<li>a squashfs filesystem.</li>
+</ul>
+<h3 id="default-source">Default Source</h3>
+<ul>
+<li><a href="http://images.maas.io/ephemeral-v3/candidate">http://images.maas.io/ephemeral-v3/candidate</a></li>
+</ul>
+<h4 id="maas-image-url-example">MAAS Image URL Example</h4>
+<ul>
+<li><a href="https://images.maas.io/ephemeral-v3/stable/streams/v1/com.ubuntu.maas:stable:1:bootloader-download.sjson">https://images.maas.io/ephemeral-v3/stable/streams/v1/com.ubuntu.maas:stable:1:bootloader-download.sjson</a></li>
+</ul>
+<h2 id="additional-reading--documentation">Additional Reading / Documentation</h2>
+<h3 id="maas-specific-glossary-and-useful-terms">MAAS Specific Glossary and Useful Terms:</h3>
+<p>Secure UEFI Boot
+PXE Boot instances
+Customize slightly
+Image cache
+Provisioning Scripts
+DHCP Snippets
+VLANs
+Subnets
+Customized configuration
+Power management / Integration</p>
+<h4 id="fabrics">Fabrics</h4>
+<p>A fabric connects VLANs. If you understand a VLAN, you know that they permit network connections only between specific switch ports or specifically identified ports (“tagged” ports). Consequently, it would be impossible for two VLANs to communicate with each other. A fabric makes these VLAN-to-VLAN connections possible.
+Take me on a quick, deep dive on fabrics
+We can illustrate a network fabric more easily by rewinding the term to one of its earliest uses: the early phone system. In a telephone switchboard, subscriber lines (customer phone numbers) ran in a grid pattern in the back of the switchboard, but they didn’t touch each other until the operator inserted the plugs of a patch cable to join them. With some “plugboards” (what a switchboard was actually called), an operator could conference multiple lines by adding more patch cords.
+These patch cords essentially acted like a VLAN, allowing only the subscribers whose lines were “patched in” to join the conversation.
+But the switchboard only covered one exchange, that is, one three-digit phone number prefix. If a subscriber wanted to conference someone from another exchange, there had to be patch from one exchange to another. This was handled by a long-distance operator. Each exchange had a more robust outgoing line, called a “trunk line,” that connected exchanges in some central place. The long-distance operators could bridge trunks in a specific way, involving a local operator in each of the “bridged” exchanges.
+By now, you’re probably starting to recognise a lot of network terms, which is completely appropriate. Almost all modern networking technology originated in the telephone system.
+Now imagine that you want to conference in six people, two in each of three distant exchanges. Each exchange operator had to patch two numbers and a trunk line. The long-distance operator had to patch three trunks in a specific way that prevented the conversation from going out to all numbers attached to the trunk.
+The details of the method aren’t particularly relevant here, but it usually involved a pair of “bridge clips” that connected non-adjacent wire-crossings, with an insulated portion that laid across wires that weren’t meant to be connected. It looked a lot like a little bridge when properly placed.
+Think of each of the local exchange conferences as a VLAN; the long-distance operator’s patch cables created what was called a “fabric.” Our use of fabric is exactly the same idea: some number of private “conversations” (connections) connected to each other so that specific people in each “group” can all talk to each other.
+You could describe a fabric as a VLAN namespace. It’s a switch or a combination of switches that use trunking to provide access to specific VLANs. MAAS creates a default fabric (‘fabric-0’) for each detected subnet during installation.
+The following conceptual diagram shows two fabrics in the same data centre or region, each using distinct VLAN ranges and their associated subnets:</p>
+<h4 id="availability-zones">Availability Zones</h4>
+<p>Availability zones in MAAS serve as logical partitions that let you group and isolate resources. Think of them as a way to organise your physical and virtual machines for optimal efficiency and fault tolerance.</p>
+<h4 id="zones">Zones</h4>
+<p>A physical zone, or just zone, is an organisational unit that contains nodes where each node is in one, and only one, zone. Later, while in production, a node can be taken (allocated) from a specific zone (or not from a specific zone). Since zones, by nature, are custom-designed (except for the ‘default’ zone), they provide more flexibility than a similar feature offered by a public cloud service (ex: availability zones).
+Some prime examples of zone usage include fault-tolerance, service performance, and power management.
+A newly installed MAAS comes with a default zone which contains all nodes unless you create a new zone. You can therefore safely ignore the entire concept if you’re not interested in leveraging zones.
+You cannot remove the ‘default’ zone or change its name.</p>
+<h4 id="spaces">Spaces</h4>
+<p>A space is a logical grouping of subnets that can communicate with one another. Spaces can be arranged to group subnets according to various parameters. One of the most common examples is a DMZ space, which might group subnets presenting a web interface to the public Internet. Behind this DMZ would be specific applications that aren’t allowed to interact directly with the user, but instead must interact with a Web UI in the DMZ space. MAAS does not create a default space during installation.
+Spaces facilitate machine allocation for Juju^. See Juju network spaces^ for more details.</p>
+<h4 id="regions">Regions</h4>
+<p>A region is an organisational unit one level above a zone. It contains all information about all machines running in any possible zones. In particular, the PostgreSQL database runs at this level and maintains state for all these machines.</p>
+<h4 id="controllers">Controllers</h4>
+<p>There are two types of controllers: a region controller and a rack controller. The region controller deals with operator requests while one or more rack controllers provide the high-bandwidth services to multiple server racks, as typically found in a data centre.</p>
+<h5 id="region">Region</h5>
+<p>A region controller consists of the following components:</p>
+<ul>
+<li>REST API server (TCP port 5240)</li>
+<li>PostgreSQL database</li>
+<li>DNS</li>
+<li>caching HTTP proxy</li>
+<li>web UI</li>
+</ul>
+<p>Think of a region controller can as being responsible for a data centre, or a single region. Multiple fabrics are used by MAAS to accommodate subdivisions within a single region, such as multiple floors in a data centre.</p>
+<h5 id="rack">Rack</h5>
+<p>A rack controller provides the following services:</p>
+<ul>
+<li>DHCP</li>
+<li>TFTP</li>
+<li>HTTP (for images)</li>
+<li>power management</li>
+</ul>
+<p>A rack controller is attached to each “fabric”. As the name implies, a typical setup is to have a rack controller in each data centre server rack. The rack controller will cache large items for performance, such as operating system install images, but maintains no independent state other than the credentials required to talk to the region controller.
+Both the region controller and the rack controller can be scaled-out as well as made highly available.</p>
+<h2 id="maas-network-configuration-exports">MAAS Network Configuration Exports</h2>
+<pre><code class="hljs"><span class="hljs-attr">Machine-readable output follows:</span>
+<span class="hljs-string">[</span>
+    <span class="hljs-string">{</span>
+        <span class="hljs-attr">"name":</span> <span class="hljs-string">"44.10.4.0/24"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"description":</span> <span class="hljs-string">"Default Subnet"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"vlan":</span> <span class="hljs-string">{</span>
+            <span class="hljs-attr">"vid":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"primary_rack":</span> <span class="hljs-string">"mrw8bs"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"id":</span> <span class="hljs-number">5001</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-vmware"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5001/"</span>
+        <span class="hljs-string">},</span>
+        <span class="hljs-attr">"cidr":</span> <span class="hljs-string">"44.10.4.0/24"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"rdns_mode":</span> <span class="hljs-number">2</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"gateway_ip":</span> <span class="hljs-string">"44.10.4.1"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"dns_servers":</span> <span class="hljs-string">[</span>
+            <span class="hljs-string">"44.10.4.200"</span>
+        <span class="hljs-string">],</span>
+        <span class="hljs-attr">"allow_dns":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"allow_proxy":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"active_discovery":</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"managed":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"disabled_boot_architectures":</span> <span class="hljs-string">[],</span>
+        <span class="hljs-attr">"id":</span> <span class="hljs-number">1</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/subnets/1/"</span>
+    <span class="hljs-string">},</span>
+    <span class="hljs-string">{</span>
+        <span class="hljs-attr">"name":</span> <span class="hljs-string">"r7525"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"description":</span> <span class="hljs-string">""</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"vlan":</span> <span class="hljs-string">{</span>
+            <span class="hljs-attr">"vid":</span> <span class="hljs-number">77</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-string">{</span>
+                <span class="hljs-attr">"vid":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"primary_rack":</span> <span class="hljs-string">"mrw8bs"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"id":</span> <span class="hljs-number">5001</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-vmware"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5001/"</span>
+            <span class="hljs-string">},</span>
+            <span class="hljs-attr">"primary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">35</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"id":</span> <span class="hljs-number">5055</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-r7525"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5055/"</span>
+        <span class="hljs-string">},</span>
+        <span class="hljs-attr">"cidr":</span> <span class="hljs-string">"172.22.34.16/28"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"rdns_mode":</span> <span class="hljs-number">2</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"gateway_ip":</span> <span class="hljs-string">"172.22.34.17"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"dns_servers":</span> <span class="hljs-string">[</span>
+            <span class="hljs-string">"44.10.4.200"</span>
+        <span class="hljs-string">],</span>
+        <span class="hljs-attr">"allow_dns":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"allow_proxy":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"active_discovery":</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"managed":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"disabled_boot_architectures":</span> <span class="hljs-string">[],</span>
+        <span class="hljs-attr">"id":</span> <span class="hljs-number">42</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/subnets/42/"</span>
+    <span class="hljs-string">}</span>
+<span class="hljs-string">]</span>
+
+<span class="hljs-attr">Machine-readable output follows:</span>
+<span class="hljs-string">[</span>
+    <span class="hljs-string">{</span>
+        <span class="hljs-attr">"class_type":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"id":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"name":</span> <span class="hljs-string">"fabric-vmware"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"vlans":</span> <span class="hljs-string">[</span>
+            <span class="hljs-string">{</span>
+                <span class="hljs-attr">"vid":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-vmware"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"id":</span> <span class="hljs-number">5001</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"primary_rack":</span> <span class="hljs-string">"mrw8bs"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5001/"</span>
+            <span class="hljs-string">}</span>
+        <span class="hljs-string">],</span>
+        <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/fabrics/0/"</span>
+    <span class="hljs-string">},</span>
+    <span class="hljs-string">{</span>
+        <span class="hljs-attr">"class_type":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"id":</span> <span class="hljs-number">35</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"name":</span> <span class="hljs-string">"fabric-r7525"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"vlans":</span> <span class="hljs-string">[</span>
+            <span class="hljs-string">{</span>
+                <span class="hljs-attr">"vid":</span> <span class="hljs-number">77</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-string">{</span>
+                    <span class="hljs-attr">"vid":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-vmware"</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"id":</span> <span class="hljs-number">5001</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"primary_rack":</span> <span class="hljs-string">"mrw8bs"</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                    <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5001/"</span>
+                <span class="hljs-string">},</span>
+                <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-r7525"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"id":</span> <span class="hljs-number">5055</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"primary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">35</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+                <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5055/"</span>
+            <span class="hljs-string">}</span>
+        <span class="hljs-string">],</span>
+        <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/fabrics/35/"</span>
+    <span class="hljs-string">}</span>
+<span class="hljs-string">]</span>
+
+<span class="hljs-attr">Machine-readable output follows:</span>
+<span class="hljs-string">[</span>
+    <span class="hljs-string">{</span>
+        <span class="hljs-attr">"vid":</span> <span class="hljs-number">77</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-string">{</span>
+            <span class="hljs-attr">"vid":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"primary_rack":</span> <span class="hljs-string">"mrw8bs"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"id":</span> <span class="hljs-number">5001</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-vmware"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+            <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5001/"</span>
+        <span class="hljs-string">},</span>
+        <span class="hljs-attr">"primary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">35</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"id":</span> <span class="hljs-number">5055</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-r7525"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5055/"</span>
+    <span class="hljs-string">}</span>
+<span class="hljs-string">]</span>
+
+<span class="hljs-attr">Machine-readable output follows:</span>
+<span class="hljs-string">[</span>
+    <span class="hljs-string">{</span>
+        <span class="hljs-attr">"vid":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"mtu":</span> <span class="hljs-number">1500</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"dhcp_on":</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"external_dhcp":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"relay_vlan":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"fabric":</span> <span class="hljs-string">"fabric-vmware"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"id":</span> <span class="hljs-number">5001</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"primary_rack":</span> <span class="hljs-string">"mrw8bs"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"name":</span> <span class="hljs-string">"untagged"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"fabric_id":</span> <span class="hljs-number">0</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"space":</span> <span class="hljs-string">"POC"</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"secondary_rack":</span> <span class="hljs-literal">null</span><span class="hljs-string">,</span>
+        <span class="hljs-attr">"resource_uri":</span> <span class="hljs-string">"/MAAS/api/2.0/vlans/5001/"</span>
+    <span class="hljs-string">}</span>
+<span class="hljs-string">]</span>
+</code></pre>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
