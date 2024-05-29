@@ -32,11 +32,10 @@ COPY --chown="${USER}" pipfiles/requirements.txt "/tmp/requirements.txt"
 
 RUN sudo update-ca-certificates --fresh
 
-RUN curl --insecure -f https://pyenv.run | bash
-
-RUN pyenv install ${PYTHON_VERSION} \
-    && pyenv global ${PYTHON_VERSION} \
-    && pyenv local ${PYTHON_VERSION} \
+RUN curl --insecure -f -S https://pyenv.run | bash \
+    && ${PYENV_ROOT}/bin/pyenv install ${PYTHON_VERSION} \
+    && ${PYENV_ROOT}/bin/pyenv global ${PYTHON_VERSION} \
+    && ${PYENV_ROOT}/bin/pyenv local ${PYTHON_VERSION} \
     && echo "${PYTHON_VERSION}" > "${WORKDIR}/.python-version" \
     && pip install --upgrade -r /tmp/ansible.txt \
     && pip install --upgrade  --no-cache-dir -r /tmp/requirements.txt \
