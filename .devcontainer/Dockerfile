@@ -24,13 +24,17 @@ RUN sudo update-ca-certificates --fresh
 
 WORKDIR "/workspaces/${localWorkspaceFolderBasename}"
 
+COPY cacerts/cacert.pem "/usr/local/share/ca-certificates/"
 COPY --chown="${USER}" rcfiles/.zshrc "${HOME}/.zshrc"
 COPY --chown="${USER}" rcfiles/.p10k.zsh "${HOME}/.p10k.zsh"
 COPY --chown="${USER}" pipfiles/ansible.txt "/tmp/ansible.txt"
 COPY --chown="${USER}" pipfiles/requirements.txt "/tmp/requirements.txt"
 
-RUN curl --insecure -f -k https://pyenv.run | bash \
-    && pyenv install ${PYTHON_VERSION} \
+RUN sudo update-ca-certificates --fresh
+
+RUN curl --insecure -f https://pyenv.run | bash
+
+RUN pyenv install ${PYTHON_VERSION} \
     && pyenv global ${PYTHON_VERSION} \
     && pyenv local ${PYTHON_VERSION} \
     && echo "${PYTHON_VERSION}" > "${WORKDIR}/.python-version" \
