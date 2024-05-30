@@ -19,9 +19,6 @@ RUN DEBIAN_FRONTEND=noninteractive sudo apt-get update --no-install-recommends \
     docker.io redis redis-sentinel libgtk-3-dev libasound2-dev libxss-dev \
     && sudo rm -rf /var/lib/apt/lists/*
 
-COPY cacerts/cacert.pem /usr/local/share/ca-certificates/
-RUN sudo update-ca-certificates --fresh
-
 WORKDIR "/workspaces/${localWorkspaceFolderBasename}"
 
 COPY cacerts/cacert.pem "/usr/local/share/ca-certificates/"
@@ -32,9 +29,7 @@ COPY --chown="${USER}" pipfiles/requirements.txt "/tmp/requirements.txt"
 
 RUN sudo update-ca-certificates --fresh
 
-RUN wget --no-check-certificate https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer \
-    && chmod +x pyenv-installer \
-    && ./pyenv-installer
+RUN  curl --insecure -f -S https://pyenv.run | bash
 RUN  pyenv install ${PYTHON_VERSION}
 RUN  pyenv global ${PYTHON_VERSION}
 RUN  pyenv local ${PYTHON_VERSION}
