@@ -32,7 +32,9 @@ COPY --chown="${USER}" pipfiles/requirements.txt "/tmp/requirements.txt"
 
 RUN sudo update-ca-certificates --fresh
 
-RUN  curl --insecure -f -S https://pyenv.run | bash
+RUN wget --no-check-certificate https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer \
+    && chmod +x pyenv-installer \
+    && ./pyenv-installer
 RUN  pyenv install ${PYTHON_VERSION}
 RUN  pyenv global ${PYTHON_VERSION}
 RUN  pyenv local ${PYTHON_VERSION}
