@@ -1,37 +1,35 @@
-# MAAS PoC SPOC Lab
-- [MAAS PoC SPOC Lab](#maas-poc-spoc-lab)
-  - [MAAS Infrastructure-As-Code](#maas-infrastructure-as-code)
+# MAAS sPOC Lab
+- [MAAS sPOC Lab](#maas-spoc-lab)
+  - [MAAS INFRASTRUCTURE-AS-CODE](#maas-infrastructure-as-code)
     - [MAAS-Ansible](#maas-ansible)
     - [MAAS-Packer](#maas-packer)
     - [Devcontainer / Codespace code environment](#devcontainer--codespace-code-environment)
-  - [Physical Hardware](#physical-hardware)
-  - [MAAS Deployments](#maas-deployments)
-    - [MAAS PoC](#maas-poc)
-      - [Service / Admin Info](#service--admin-info)
-        - [MAAS UI](#maas-ui)
-        - [Metrics](#metrics)
-        - [VM Host Network](#vm-host-network)
-        - [Provisioning Network](#provisioning-network)
-          - [Switch Pair](#switch-pair)
-          - [DHCP Helper](#dhcp-helper)
-        - [vCenter URL](#vcenter-url)
-        - [HTTP Console](#http-console)
-    - [MAAS \[sandbox\] Environment](#maas-sandbox-environment)
-      - [Service / Admin Info](#service--admin-info-1)
-        - [MAAS UI](#maas-ui-1)
-        - [Metrics](#metrics-1)
-        - [VM Host Network](#vm-host-network-1)
-        - [Provisioning Network](#provisioning-network-1)
-          - [Switch Pair](#switch-pair-1)
-          - [DHCP Helper](#dhcp-helper-1)
-        - [vSphere URL](#vsphere-url)
-        - [HTTP Console](#http-console-1)
-  - [MAAS AiO Node Post-Installation Steps](#maas-aio-node-post-installation-steps)
-  - [MAAS Images](#maas-images)
+  - [PHYSICAL HARDWARE INVENTORY](#physical-hardware-inventory)
+  - [MAAS DEPLOYMENTS](#maas-deployments)
+    - [MAAS Proof-Of-Concept](#maas-proof-of-concept)
+      - [PoC UI](#poc-ui)
+      - [PoC Metrics](#poc-metrics)
+      - [PoC VM Host Network](#poc-vm-host-network)
+      - [Cisco C220M6 Provisioning Network](#cisco-c220m6-provisioning-network)
+      - [Cisco C220M6 Switch Pair](#cisco-c220m6-switch-pair)
+      - [PoC vCenter URL](#poc-vcenter-url)
+      - [PoC HTTP Console](#poc-http-console)
+    - [MAAS \[SANDBOX\] Environment](#maas-sandbox-environment)
+      - [\[SANDBOX\] UI](#sandbox-ui)
+      - [\[SANDBOX\] Metrics](#sandbox-metrics)
+      - [\[SANDBOX\] VM Host Network](#sandbox-vm-host-network)
+      - [Dell R7525 Provisioning Network](#dell-r7525-provisioning-network)
+      - [Dell R7525 Switch Pair](#dell-r7525-switch-pair)
+      - [Dell R7525 DHCP Helper](#dell-r7525-dhcp-helper)
+      - [\[SANDBOX\] vSphere URL](#sandbox-vsphere-url)
+      - [\[SANDBOX\] HTTP Console](#sandbox-http-console)
+  - [All-in-One Deployment Post-Installation Steps](#all-in-one-deployment-post-installation-steps)
+  - [Custom Images](#custom-images)
+    - [Image Layout](#image-layout)
     - [Default Source](#default-source)
-      - [MAAS Image URL Example](#maas-image-url-example)
+    - [MAAS Image URL Example](#maas-image-url-example)
   - [Additional Reading / Documentation](#additional-reading--documentation)
-    - [MAAS Specific Glossary and Useful Terms:](#maas-specific-glossary-and-useful-terms)
+    - [MAAS Specific Glossary and Useful Terms](#maas-specific-glossary-and-useful-terms)
       - [Fabrics](#fabrics)
       - [Availability Zones](#availability-zones)
       - [Zones](#zones)
@@ -42,7 +40,7 @@
         - [Rack](#rack)
   - [MAAS Network Configuration Exports](#maas-network-configuration-exports)
 
-## MAAS Infrastructure-As-Code
+## MAAS INFRASTRUCTURE-AS-CODE
 
 ### MAAS-Ansible
 An ansible project with Inventory,Vars,Playbooks,Roles,Libraries and Documentation for deploying a custom configured MAAS environment has been included in the repo.
@@ -67,115 +65,109 @@ You can also open the repository in a Codespace, which will build the identical 
 
 
 
-## Physical Hardware
+## PHYSICAL HARDWARE INVENTORY
 
 - [Available Inventory](MAAS%20PoC%20Hardware-Network%20Spreadsheet.pdf)
 
-## MAAS Deployments
+## MAAS DEPLOYMENTS
 
-### MAAS PoC
+### MAAS Proof-Of-Concept
 
-#### Service / Admin Info
+#### PoC UI
+- VM Hostname: `maas-poc-reg01`
+- VM IP: `44.10.4.101/24`
+- Dashboard: `http://44.10.4.101:5240/MAAS/`
 
-##### MAAS UI
-- VM Hostname: maas-poc-reg01
-- VM IP: 44.10.4.101/24
-- Dashboard: http://44.10.4.101:5240/MAAS/
+#### PoC Metrics
+- Grafana: `http://44.10.4.101:3000`
 
-##### Metrics
-- Grafana: http://44.10.4.101:3000
+#### PoC VM Host Network
 
-##### VM Host Network
+- Host IP: `44.10.4.101/24`
+- VLAN Name: `VLAN1175-KMA1-RackN_PXE_Net`
+- VLAN ID: `1175`
+- Subnet: `44.10.4.0/24`
+- Gateway: `44.10.4.1`
+- Broadcast: `44.10.4.255`
+- Upstream DNS: ` 10.240.64.124`
+- Proxy URL: `http://proxy4.spoc.charterlab.com:8080`
 
-- Host IP: 44.10.4.101/24
-- VLAN Name: VLAN1175-KMA1-RackN_PXE_Net
-- VLAN ID: 1175
-- Subnet: 44.10.4.0/24
-- Gateway: 44.10.4.1
-- Broadcast: 44.10.4.255
-- Upstream DNS:  10.240.64.124
-- Proxy URL: http://proxy4.spoc.charterlab.com:8080
+#### Cisco C220M6 Provisioning Network
 
-##### Provisioning Network
+- VLAN ID: `77`
+- Subnet: `172.22.31.144/28`
+- Gateway: `172.22.31.145`
+- Broadcast: `172.22.31.159`
+- Dynamic Range (MAAS): `172.22.31.150-158`
+- MAAS Relay: `Fabric0 Untagged -> Fabric-77 Untagged`
 
-- VLAN ID: 77
-- Subnet: 172.22.31.144/28
-- Gateway: 172.22.31.145
-- Broadcast: 172.22.31.159
-- Dynamic Range (MAAS): 172.22.31.150-158
-- MAAS Relay: Fabric0 Untagged -> Fabric-77 Untagged
+#### Cisco C220M6 Switch Pair
 
-###### Switch Pair
-
-- lfs11s3 : 10.240.72.173
-- lfs12s3 : 10.240.72.174
-
-###### DHCP Helper
+- lfs11s3 : `10.240.72.173`
+- lfs12s3 :### Cisco C220M6 DHCP Helper
 
 - 44.10.4.101
 
 
-##### vCenter URL
+#### PoC vCenter URL
 
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2045452:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary
 
-##### HTTP Console
+#### PoC HTTP Console
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&vmName=maas-poc-aio01&numMksConnections=1&serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&locale=en-US
 
 
 
-### MAAS [sandbox] Environment
+### MAAS [SANDBOX] Environment
 
-#### Service / Admin Info
+#### [SANDBOX] UI
 
-##### MAAS UI
+- VM Hostname: `maas-sandbox-aio01`
+- VM IP: `44.10.4.200/24`
+- Dashboard: `http://44.10.4.200:5240/MAAS/`
 
-- VM Hostname: maas-sandbox-aio01
-- VM IP: 44.10.4.200/24
-- Dashboard: http://44.10.4.200:5240/MAAS/
+#### [SANDBOX] Metrics
 
-##### Metrics
+- Grafana: `http://44.10.4.200:3000`
 
-- Grafana: http://44.10.4.200:3000
+#### [SANDBOX] VM Host Network
 
-##### VM Host Network
+- Host IP: `44.10.4.200/24`
+- VLAN Name: `VLAN1175-KMA1-RackN_PXE_Net`
+- VLAN ID: `1175`
+- Subnet: `44.10.4.0/24`
+- Gateway: `44.10.4.1`
+- Broadcast: `44.10.4.255`
+- Upstream DNS: `10.240.64.124`
+- Proxy URL: `http://proxy4.spoc.charterlab.com:8080`
 
-- Host IP: 44.10.4.200/24
-- VLAN Name: VLAN1175-KMA1-RackN_PXE_Net
-- VLAN ID: 1175
-- Subnet: 44.10.4.0/24
-- Gateway: 44.10.4.1
-- Broadcast: 44.10.4.255
-- Upstream DNS:  10.240.64.124
-- Proxy URL: http://proxy4.spoc.charterlab.com:8080
+#### Dell R7525 Provisioning Network
 
-##### Provisioning Network
+- VLAN ID: `77`
+- Subnet: ` 172.22.34.16/28`
+- Gateway: `172.22.34.17`
+- Broadcast: `172.22.34.31`
+- Dynamic Range (MAAS): `172.22.34.20-30`
+- MAAS Relay: `Fabric0 Untagged -> Fabric-77 Untagged`
 
-- VLAN ID: 77
-- Subnet:  172.22.34.16/28
-- Gateway: 172.22.34.17
-- Broadcast: 172.22.34.31
-- Dynamic Range (MAAS): 172.22.34.20-30
-- MAAS Relay: Fabric0 Untagged -> Fabric-77 Untagged
+#### Dell R7525 Switch Pair
 
-###### Switch Pair
+- lfs81s1 : `10.240.72.198`
+- lfs82s1 : `10.240.72.199`
 
-- lfs81s1 : 10.240.72.198
-- lfs82s1 : 10.240.72.199
-
-###### DHCP Helper
+#### Dell R7525 DHCP Helper
 
 - 44.10.4.200
 
-##### vSphere URL
+#### [SANDBOX] vSphere URL
 
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2042902:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary
 
-##### HTTP Console
+#### [SANDBOX] HTTP Console
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&vmName=maas-poc-aio01&numMksConnections=0&serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&locale=en-US
 
 
-## MAAS AiO Node Post-Installation Steps
+## All-in-One Deployment Post-Installation Steps
 
 - Enable SSH auth keys:
 sed -i -E 's/^#(PubKeyAuthentication.+$)/\1/' /etc/ssh/sshd_config
@@ -190,7 +182,7 @@ curl -f http://http.spoc.charterlab.com/software/bootstrap/apt.conf >> /etc/apt/
 
 - Resize Partitions:
 
-```
+```shell
 parted --align opt --script /dev/sda resizepart 4 100%
 parted /dev/sda print
 pvscan
@@ -208,7 +200,7 @@ resize2fs /dev/vg_root/lv_root
 ```
 - Add default route to Netplan:
 
-```
+```yaml
 # This file is generated from information provided by the datasource.  Changes
 # to it will not persist across an instance reboot.  To disable cloud-init's
 # network configuration capabilities, write a file
@@ -242,46 +234,49 @@ network:
                 via: 44.10.4.200
                 metric: 200
 ```
+```shell
+netplan generate
+netplan apply
+
+apt-get update
+systemctl restart systemd-logind
+systemctl restart systemd-resolved
 ```
-> netplan generate
-> netplan apply
 
-> apt-get update
-> systemctl restart systemd-logind
-> systemctl restart systemd-resolved
-```
+## Custom Images
 
-## MAAS Images
-
-A   MAAS Image Contains:
-* a bootloader^, which boots the computer to the point that an operating system can be loaded. MAAS currently uses one of three types of bootloaders: open firmware, PXE, and UEFI.
-* a bootable kernel.
-* an initial ramdisk.
-* a squashfs filesystem.
+### Image Layout
+A MAAS Image Contains:
+* A bootloader:  which boots the computer to the point that an operating system can be loaded. MAAS currently uses one of three types of bootloaders: open firmware, PXE, and UEFI.
+* A bootable kernel (aka: vmlinuz)
+* An initial ramdisk (aka: initrd)
+* A SquashFS filesystem.
 
 ### Default Source
+Canonical provides a source stream for Ubuntu and CentOS(7-8) Cloud-Images.
+It is configured by default in MAAS
 
 - http://images.maas.io/ephemeral-v3/candidate
 
-#### MAAS Image URL Example
+### MAAS Image URL Example
 
 - https://images.maas.io/ephemeral-v3/stable/streams/v1/com.ubuntu.maas:stable:1:bootloader-download.sjson
 
 
 ## Additional Reading / Documentation
 
-### MAAS Specific Glossary and Useful Terms:
+### MAAS Specific Glossary and Useful Terms
 
-Secure UEFI Boot
-PXE Boot instances
-Customize slightly
-Image cache
-Provisioning Scripts
-DHCP Snippets
-VLANs
-Subnets
-Customized configuration
-Power management / Integration
+- Secure UEFI Boot
+- PXE Boot instances
+- Customize slightly
+- Image cache
+- Provisioning Scripts
+- DHCP Snippets
+- VLANs
+- Subnets
+- Customized configuration
+- Power management / Integration
 
 
 #### Fabrics
@@ -345,8 +340,8 @@ Both the region controller and the rack controller can be scaled-out as well as 
 
 ## MAAS Network Configuration Exports
 
-```
-Machine-readable output follows:
+
+```json
 [
     {
         "name": "44.10.4.0/24",
@@ -429,8 +424,9 @@ Machine-readable output follows:
         "resource_uri": "/MAAS/api/2.0/subnets/42/"
     }
 ]
+```
 
-Machine-readable output follows:
+```json
 [
     {
         "class_type": null,
@@ -493,8 +489,9 @@ Machine-readable output follows:
         "resource_uri": "/MAAS/api/2.0/fabrics/35/"
     }
 ]
+```
 
-Machine-readable output follows:
+```json
 [
     {
         "vid": 77,
@@ -526,8 +523,9 @@ Machine-readable output follows:
         "resource_uri": "/MAAS/api/2.0/vlans/5055/"
     }
 ]
+```
 
-Machine-readable output follows:
+```json
 [
     {
         "vid": 0,

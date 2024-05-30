@@ -188,7 +188,7 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "cat ${localWorkspaceFolder}/.devcontainer/scripts/post-create.sh | bash",
   // Use 'postAttachCommand' to run commands when attaching to the container.
-  "postAttachCommand": "ansible-galaxy install -r collections/requirements.yml -f; sudo chmod 0777 /etc/resolv.conf; grep -q '10.0.10.222' /etc/resolv.conf || echo 'nameserver 10.0.10.222'>>/etc/resolv.conf; grep -q 'home.prettybaked.com' /etc/resolv.conf || echo 'search home.prettybaked.com'>>/etc/resolv.conf"
+  "postAttachCommand": "ansible-galaxy install -r collections/requirements.yml -f --ignore-certs; sudo chmod 0777 /etc/resolv.conf; grep -q '10.0.10.222' /etc/resolv.conf || echo 'nameserver 10.0.10.222'>>/etc/resolv.conf; grep -q 'home.prettybaked.com' /etc/resolv.conf || echo 'search home.prettybaked.com'>>/etc/resolv.conf"
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
 }

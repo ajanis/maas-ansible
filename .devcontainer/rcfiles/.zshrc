@@ -2,7 +2,7 @@
 function encrypt() {
   if [[ -n $1 ]]; then
     export VARNAME=$1
-  elif [[ -z $1 ]]; then
+  elif [[ ! -n $1 ]]; then
     read -s "VARNAME?Name of variable or path to file : "
   fi
   if [[ -f $VARNAME ]]; then
@@ -103,9 +103,9 @@ HIST_STAMPS="mm.dd.yyyy"
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# Example format: plugins=(git ssh-agent npm)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos ansible cp copyfile copypath debian docker git git-auto-fetch git-extras github gitignore git-prompt pip python pylint screen sublime virtualenv)
+plugins=(git ssh-agent npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,3 +115,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+export HISTFILE=/dc/shellhistory/.zsh_history
+export PROMPT_COMMAND='history -a'
+sudo chown -R vscode /dc/shellhistory
