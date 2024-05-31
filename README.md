@@ -146,9 +146,9 @@ Metrics for the MAAS environment as well as log collection for the environment (
 - MAAS Relay: `Fabric0 Untagged -> Fabric-77 Untagged`
 
 #### Cisco C220M6 Switch Pair
+- lfs81s1 : `10.240.72.198`
+- lfs82s1 : `10.240.72.199`
 
-- lfs11s3 : `10.240.72.173`
-- lfs12s3 :
 
 #### Cisco C220M6 DHCP Helper
 
@@ -199,8 +199,8 @@ Metrics for the MAAS environment as well as log collection for the environment (
 
 #### Dell R7525 Switch Pair
 
-- lfs81s1 : `10.240.72.198`
-- lfs82s1 : `10.240.72.199`
+- lfs11s3 : `10.240.72.173`
+- lfs12s3 : `10.240.72.174`
 
 #### Dell R7525 DHCP Helper
 
