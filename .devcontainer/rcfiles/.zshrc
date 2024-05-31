@@ -3,22 +3,27 @@ function encrypt() {
   if [[ -n $1 ]]; then
     export VARNAME=$1
   elif [[ ! -n $1 ]]; then
-    read -s "VARNAME?Name of variable or path to file : "
+    read "VARNAME?Name of variable or path to file : "
   fi
   if [[ -f $VARNAME ]]; then
     echo -e "
-    Encrypting file '${VARNAME}'..."
+    \033[33mEncrypting file: '$(realpath ${VARNAME})'...
+    "
     ansible-vault encrypt $VARNAME
     echo -e "
-    ...Done
-    Encrypted File Contents :
-    "
-    cat $VARNAME
+    \033[33mEncrypted File Contents :\033[0m
+
+    $(cat $VARNAME)"
   else
     read -s "ENCRYPTSTRING?Value to encrypt for $VARNAME : "
-    command pbcopy >/dev/null 2>&1 && echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $VARNAME | tee >(pbcopy) || echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $VARNAME
+    echo -e "
+
+    \033[33mEncrypting string: '${VARNAME}'...
+    "
+    command pbcopy >/dev/null 2>&1 && echo -n "$ENCRYPTSTRING" | ansible-vault encrypt_string --stdin-name $VARNAME | tee >(pbcopy) || echo -n "$ENCRYPTSTRING" | ansible-vault encrypt_string --stdin-name $VARNAME
   fi
 }
+
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -118,3 +123,6 @@ eval "$(pyenv virtualenv-init -)"
 export HISTFILE=/dc/shellhistory/.zsh_history
 export PROMPT_COMMAND='history -a'
 sudo chown -R vscode /dc/shellhistory
+function toggle-right-prompt() { p10k display '*/right'=hide,show; }
+zle -N toggle-right-prompt
+bindkey '^P' toggle-right-prompt

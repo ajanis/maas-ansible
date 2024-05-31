@@ -1,48 +1,94 @@
 # MAAS sPOC Lab
-- [MAAS sPOC Lab](#maas-spoc-lab)
-  - [MAAS INFRASTRUCTURE-AS-CODE](#maas-infrastructure-as-code)
-    - [MAAS-Ansible](#maas-ansible)
-    - [MAAS-Packer](#maas-packer)
-    - [Devcontainer / Codespace code environment](#devcontainer--codespace-code-environment)
-  - [PHYSICAL HARDWARE INVENTORY](#physical-hardware-inventory)
-  - [MAAS DEPLOYMENTS](#maas-deployments)
-    - [MAAS Proof-Of-Concept](#maas-proof-of-concept)
-      - [PoC UI](#poc-ui)
-      - [PoC Metrics](#poc-metrics)
-      - [PoC VM Host Network](#poc-vm-host-network)
-      - [Cisco C220M6 Provisioning Network](#cisco-c220m6-provisioning-network)
-      - [Cisco C220M6 Switch Pair](#cisco-c220m6-switch-pair)
-      - [PoC vCenter URL](#poc-vcenter-url)
-      - [PoC HTTP Console](#poc-http-console)
-    - [MAAS \[SANDBOX\] Environment](#maas-sandbox-environment)
-      - [\[SANDBOX\] UI](#sandbox-ui)
-      - [\[SANDBOX\] Metrics](#sandbox-metrics)
-      - [\[SANDBOX\] VM Host Network](#sandbox-vm-host-network)
-      - [Dell R7525 Provisioning Network](#dell-r7525-provisioning-network)
-      - [Dell R7525 Switch Pair](#dell-r7525-switch-pair)
-      - [Dell R7525 DHCP Helper](#dell-r7525-dhcp-helper)
-      - [\[SANDBOX\] vSphere URL](#sandbox-vsphere-url)
-      - [\[SANDBOX\] HTTP Console](#sandbox-http-console)
-  - [All-in-One Deployment Post-Installation Steps](#all-in-one-deployment-post-installation-steps)
-  - [Custom Images](#custom-images)
-    - [Image Layout](#image-layout)
-    - [Default Source](#default-source)
-    - [MAAS Image URL Example](#maas-image-url-example)
-  - [Additional Reading / Documentation](#additional-reading--documentation)
-    - [MAAS Specific Glossary and Useful Terms](#maas-specific-glossary-and-useful-terms)
-      - [Fabrics](#fabrics)
-      - [Availability Zones](#availability-zones)
-      - [Zones](#zones)
-      - [Spaces](#spaces)
-      - [Regions](#regions)
-      - [Controllers](#controllers)
-        - [Region](#region)
-        - [Rack](#rack)
-  - [MAAS Network Configuration Exports](#maas-network-configuration-exports)
 
-## MAAS INFRASTRUCTURE-AS-CODE
+MAAS (Metal as a Service) is a cloud platform for managing bare metal servers and virtual machines.
+
+It creates a single point of control for scalable automation, reconfiguration, and reliability, of networks, machines and OS images.
+
+Our primary use-cases will include:
+
+- Managing the lifecycle of physical hardware via traditional PXE network booting with modernized/improved useability.  Users may configure systems via GUI, CLI, API, Libraries and config-management modules (i.e.: Ansible), webhooks etc.  Additionally, a full suite of metrics and logging for the MAAS environment itself and deployed machines is available.
+
+- Enabling  `ZTP` (Zero-Touch Provisioning) / `LTP` (Low-Touch Provisioning) for critical systems or platforms that may take 30 minutes or more to deploy and configure via traditional methods.
+
+MAAS is designed to be cost-efficient, easy for the end-user to operate, highly-available and easy to scale, and to offer the end-user a rich set of tools for quick use or advanced integrations.
+The primary goals of our MAAS Deployment are:
+
+<div style="font-size:0.7em;line-height:1.5em;padding:1em 1em 1em 1em;border-style:dotted;border-width:1px;color:#808080;">
+As noted, our focus shall be bare-metal management and ZTP/LTP  However,  I want to quickly mention that MAAS also has functionality to build and manage the lifecycle of <a href=https://linux-kvm.org/page/Main_Page>KVM</a> virtual machines or <a href=https://linuxcontainers.org/lxc/introduction>LXC</a> containers.  This functionality is enabled when provisioning a bare-metal server and enabling one of the virtualization options below.
+<br><br>
+<li><a href=https://libvirt.org/auth.html>Libvirt</a><br>
+The Libvirt option configures the bare-metal server with the KVM and Qemu virtualization packages as well as the 'virsh' management tools.
+<br><br>
+<li><a href=https://documentation.ubuntu.com/lxd/en/latest/>LXD</a> (Pronounced Lex-Dee)
+<br>
+Not to be confused with LXC, This option deploys the Canonical LXD environment on the selected host.  LXD is a modern, secure and powerful system container and virtual machine manager.  Itprovides a unified experience for running and managing full Linux systems via LXC containers or QEMU/KVM virtual machines.
+Please note that further information on the hypervisor / virtualization management features of MAAS are beyond the scope of both this project and documentation.  Please see the official [MAAS Docs](https://maas.io/docs) if you wish to learn more.
+</div>
+<br><br>
+
+
+## Official Documentation
+
+Please see the official documentation for detailed and up-to-date information on all aspects of MAAS
+https://maas.io/docs
+
+## Deployment Requirements
+
+For the purposes of this PoC, the simplest form of the MAAS standard deployment (A single All-In-0ne host)
+will be deployed.
+
+*The following diagram shows the key services and request workflow for a basic distributed test environment. Our deployment will be simplified to a single node, however this diagram provides a much better visual representation.*
+
+[Deployment Diagram](https://chalk.charter.com/download/attachments/2178867135/maas.png?version=1&modificationDate=1707466712000&api=v)
+
+### MAAS Single-Node Requirements
+For a single-host test setup assuming the latest two Ubuntu LTS releases:
+| COMPONENT                            | MEMORY (MB) | CPU (GHZ) | DISK (GB) |
+|--------------------------------------|-------------|-----------|-----------|
+| Region controller (minus PostgreSQL) | 512         | 0.5       | 5         |
+| PostgreSQL                           | 512         | 0.5       | 5         |
+| Rack controller                      | 512         | 0.5       | 5         |
+| Ubuntu Server                        | 512         | 0.5       | 5         |
+
+*Total: 2 GB RAM, 2 GHz CPU, 20 GB disk.*
+
+### Production Base Requirements
+
+The following information is the minimum recommendation from Canonical for a large-scale, continuous client handling deployment.
+
+| COMPONENT         | Quantity | MEMORY (MB) | CPU (GHZ) | DISK (GB) |
+|-------------------|----------|-------------|-----------|-----------|
+| Region controller | 3        | 2048        | 2.0       | 5         |
+| PostgreSQL Node   | 3        | 2048        | 2.0       | 20        |
+| Rack controller   | n        | 2048        | 2.0       | 20        |
+| Ubuntu Server     | 1        | 512         | 0.5       | 5         |
+
+*Totals: 4.5 GB RAM, 4.5 GHz CPU, and 45 GB disk per host for region controllers, and slightly less for rack controllers.*
+
+- The Region controllers in a basic prod deployment will run Pacemaker and Corrosync.  They  will act as proxy hosts for the MAAS UI, Squid Proxy and Postgresql database.
+
+#### Additional Notes
+
+- These specs are MAAS-specific and don’t cover nodes for additional services
+- IPMI-based BMC controllers are recommended for power management.
+- Factors affecting these numbers:
+    - Client activity
+    - Service distribution
+    - Use of high availability/load balancing.
+    - Number and type of stored images
+
+**Don’t forget, a local image mirror could significantly increase disk requirements. Also, rack controllers have a 1000-machine cap per subnet. For larger networks, add more controllers.**
+
+## PHYSICAL HARDWARE INVENTORY
+
+Several bare-metal hosts have been made available for testing MAAS functionality
+- [Available Inventory](MAAS%20PoC%20Hardware-Network%20Spreadsheet.pdf)
+
+
+## MAAS CONFIGURATION AS CODE, DEVELOPMENT AND IMAGE-CREATION TOOLS
 
 ### MAAS-Ansible
+
 An ansible project with Inventory,Vars,Playbooks,Roles,Libraries and Documentation for deploying a custom configured MAAS environment has been included in the repo.
 
 The project includes everything needed to deploy:
@@ -51,25 +97,22 @@ The project includes everything needed to deploy:
 - Multiple-RegionD Hosts + HAProxy + EtcD, (n) RackD Hosts, HA PostgreSQL Cluster with Pacemaker
 - Optional Observability Stack - enables /metrics endpoints for all MaaS services,  Grafana-Agent Metrics and Log collection, Prometheus metrics storage, Loki Log Storage, Grafana Visualization
 
-### MAAS-Packer
-
-The MAAS-Packer repository for custom MAAS-compatible image builds has also been included in the repository.
-
 ### Devcontainer / Codespace code environment
 
 A devcontainer has been created specifically for this environment, allowing anyone to get up and running almost immediately.
 
 If you have Docker-Desktop and check out the repository locally or into a docker-volume, a container with PyEnv (which will set up the correct python version and activate the environment automatically, then install all python dependencies, linters, formatters, ansible utilities,  helper scripts, and other configurations.  '
 
-You can also open the repository in a Codespace, which will build the identical container remotely for you.
+You can also open the repository in a Codespace, which will build the identical container
+
+### MAAS-Packer
+
+The MAAS-Packer repository for custom MAAS-compatible image builds has also been included in the repository.
+
+remotely for you.
 
 
-
-## PHYSICAL HARDWARE INVENTORY
-
-- [Available Inventory](MAAS%20PoC%20Hardware-Network%20Spreadsheet.pdf)
-
-## MAAS DEPLOYMENTS
+## MAAS DEPLOYMENTS IN THE LAB
 
 ### MAAS Proof-Of-Concept
 
@@ -79,6 +122,7 @@ You can also open the repository in a Codespace, which will build the identical 
 - Dashboard: `http://44.10.4.101:5240/MAAS/`
 
 #### PoC Metrics
+Metrics for the MAAS environment as well as log collection for the environment (all services + syslog) and syslog for all deployed systems has been made available.
 - Grafana: `http://44.10.4.101:3000`
 
 #### PoC VM Host Network
@@ -104,7 +148,9 @@ You can also open the repository in a Codespace, which will build the identical 
 #### Cisco C220M6 Switch Pair
 
 - lfs11s3 : `10.240.72.173`
-- lfs12s3 :### Cisco C220M6 DHCP Helper
+- lfs12s3 :
+
+#### Cisco C220M6 DHCP Helper
 
 - 44.10.4.101
 
@@ -114,6 +160,7 @@ You can also open the repository in a Codespace, which will build the identical 
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2045452:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary
 
 #### PoC HTTP Console
+
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&vmName=maas-poc-aio01&numMksConnections=1&serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&locale=en-US
 
 
@@ -127,7 +174,7 @@ You can also open the repository in a Codespace, which will build the identical 
 - Dashboard: `http://44.10.4.200:5240/MAAS/`
 
 #### [SANDBOX] Metrics
-
+Metrics for the MAAS environment as well as log collection for the environment (all services + syslog) and syslog for all deployed systems has been made available.
 - Grafana: `http://44.10.4.200:3000`
 
 #### [SANDBOX] VM Host Network
@@ -164,6 +211,7 @@ You can also open the repository in a Codespace, which will build the identical 
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/app/vm;nav=v/urn:vmomi:VirtualMachine:vm-2042902:e78e7661-7e60-4d6c-9a12-86ebfeaf067e/summary
 
 #### [SANDBOX] HTTP Console
+
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&vmName=maas-poc-aio01&numMksConnections=0&serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&locale=en-US
 
 
