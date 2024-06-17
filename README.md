@@ -4,14 +4,15 @@ MAAS (Metal as a Service) is a cloud platform for managing bare metal servers an
 
 It creates a single point of control for scalable automation, reconfiguration, and reliability, of networks, machines and OS images.
 
-Our primary use-cases will include:
+MAAS is designed to be cost-efficient, easy for the end-user to operate, highly-available and easy to scale, and to offer the end-user a rich set of tools for quick use or advanced integrations.
+
+The primary goals of our MAAS Deployment are:
 
 - Managing the lifecycle of physical hardware via traditional PXE network booting with modernized/improved useability.  Users may configure systems via GUI, CLI, API, Libraries and config-management modules (i.e.: Ansible), webhooks etc.  Additionally, a full suite of metrics and logging for the MAAS environment itself and deployed machines is available.
 
+
 - Enabling  `ZTP` (Zero-Touch Provisioning) / `LTP` (Low-Touch Provisioning) for critical systems or platforms that may take 30 minutes or more to deploy and configure via traditional methods.
 
-MAAS is designed to be cost-efficient, easy for the end-user to operate, highly-available and easy to scale, and to offer the end-user a rich set of tools for quick use or advanced integrations.
-The primary goals of our MAAS Deployment are:
 
 <div style="font-size:0.7em;line-height:1.5em;padding:1em 1em 1em 1em;border-style:dotted;border-width:1px;color:#808080;">
 As noted, our focus shall be bare-metal management and ZTP/LTP  However,  I want to quickly mention that MAAS also has functionality to build and manage the lifecycle of <a href=https://linux-kvm.org/page/Main_Page>KVM</a> virtual machines or <a href=https://linuxcontainers.org/lxc/introduction>LXC</a> containers.  This functionality is enabled when provisioning a bare-metal server and enabling one of the virtualization options below.
@@ -25,7 +26,6 @@ Not to be confused with LXC, This option deploys the Canonical LXD environment o
 Please note that further information on the hypervisor / virtualization management features of MAAS are beyond the scope of both this project and documentation.  Please see the official [MAAS Docs](https://maas.io/docs) if you wish to learn more.
 </div>
 <br><br>
-
 
 ## Official Documentation
 
