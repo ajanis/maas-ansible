@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:jammy
+FROM mcr.microsoft.com/devcontainers/base:noble
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG USER=vscode
@@ -16,7 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive sudo apt-get update --no-install-recommends \
     gcc jq git vim wget curl yodl groff xz-utils ca-certificates man-db \
     libncursesw5-dev libpcre3-dev libgdbm-dev libssl-dev libonig-dev \
     zlib1g-dev libreadline-dev libbz2-dev libsqlite3-dev libcap-dev \
-    libxml2-dev libxmlsec1-dev libffi-dev libtinfo5 liblzma-dev libpq-dev \
+    libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libpq-dev \
     musl-dev libonig5 libtool inetutils-ping dnsutils bind9-dnsutils \
     docker.io redis redis-sentinel libgtk-3-dev libasound2-dev libxss-dev \
     && sudo rm -rf /var/lib/apt/lists/*
