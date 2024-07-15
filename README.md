@@ -214,6 +214,112 @@ Metrics for the MAAS environment as well as log collection for the environment (
 
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&vmName=maas-poc-aio01&numMksConnections=0&serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&locale=en-US
 
+### Packer Image Build Host
+
+This is a custom-built host that has all dependencies installed for creating custom MAAS images via Packer.
+<div style="font-size:0.7em;line-height:1.5em;padding:1em 1em 1em 1em;border-style:dotted;border-width:1px;color:#808080;">
+
+<b>NOTE: This host was not created in VMWare, but rather via MAAS using one of the PoC Cisco C220-M6 Devices.</b>
+<br>
+<li>The host was provisoned with Ubuntu 22.04 with the 'libvirt' option selected prior to deployment.</li>
+<li>This resulted in a host capable of running KVM virtual machines which are required by the Packer build process.</li>
+<br>
+This host is accessible via SSH only at:  
+<a href=ssh://ubuntu:ubuntu@172.22.31.150>ssh://ubuntu:ubuntu@172.22.31.150</a>
+<br>
+The Packer-MAAS Git Repository (which is included as a submodule in this repository for convenience) has been added to the MaaS-Packer server at <b>/opt/packer-maas</b>
+</div>
+
+#### [MAAS-Packer] VM Host Access
+
+- Host IP: `172.22.31.150`
+- SSH User: `ubuntu`
+- SSH Password: `ubuntu`
+
+
+#### Packer-MAAS Documentation
+Official documentation for Packer+MAAS can be found at [Customizing Images](https://maas.io/docs/how-to-customise-images)
+
+Documentation for custom images should be created any time a new image type or build process is configured.
+
+* Harmonic Documentation: [packer-maas/harmonic/README.md](packer-maas/harmonic/README.md)
+
+#### Packer Image Build Requirements
+
+- QEMU/KVM/Libvirt libraries and utilities
+- Utilities to manipulate image sqauashfs filessystem
+- Latest Packer release
+- Templates for creating MAAS images via Packer
+- Misc (See documentation)
+
+#### Packer-MAAS Repository 
+The maas-packer repository (complete with build-templates for most operating systems) is located at `/opt/packer-maas`
+
+
+#### Image Creation Example
+
+ - See README files in each OS subdirectory.  
+
+#### Uploading Custom Image to MAAS
+
+Depending on the image source (ISO, tar.gz), the process for importing a custom image may vary.  However the basic command will look like this:
+
+```bash
+maas admin boot-resources create name='custom/harmonic-cos' title='Harmonic cOS' architecture='amd64/generic' filetype='ddraw' base_image='ubuntu/jammy' content@='APOLLO_PLATFORM-release-3.21.3.0-7+auto15.iso' size='366399488' sha256='ce8518f4a424742bb4274374f72108060c13c256598f693be87c5d41027e4932'
+```
+
+This command contains 2 arguments that will be unique to any image upload.
+- size (of image in bytes)
+- sha256 (sha256 sum of image)
+
+The following script (modified slightly to accommodate different file titles) is executed at the end of the `harmonic os installer image` build process.  It will print the actual command/args required to import the created image file.
+
+This script has been modified to take a single argument, which should be an ISO file with a name format similar to: `scgp-rocky-9.2-23q2-charter.iso`
+
+```bash
+#!/bin/bash
+
+##########################################################################
+# gencmd.sh
+#
+# Generate the complete command that will copy a given image into MAAS.
+# Usage: $0 <image file>
+##########################################################################
+
+image="$1"
+name="$(sed -r 's/^(.*[0-9]\.[0-9]).*/\1/' < <(echo $image))"
+title="$(sed -r 's/^.+((:?\b[a-z]+)-[0-9]\.[0-9]).*$/\1/;s/-/ /;s/\b(.)/\u\1/g' < <(echo $image))"
+sha256="$(sha256sum ${image} | cut -d ' ' -f1)"
+bytesize="$(stat -c'%s' ${image})"
+
+cat <<EOF
+
+maas admin boot-resources create \
+name="${name}" title="${title}" \
+architecture="amd64/generic" filetype="ddraw" content@="${image}" \
+sha256="${sha256}" bytesize="${bytesize}" 
+
+EOF
+
+read -rp "Press [Enter/Return] to run this command : "
+
+maas admin boot-resources create name="${name}" title="${title}" architecture="amd64/generic" filetype="ddraw" content@="${image}" sha256="${sha256}" bytesize="${bytesize}"
+```
+
+Running the above script against the named ISO will print the following:
+```bash
+❯ ./gencmd.sh scgp-rocky-9.2-23q2-charter.iso
+
+maas admin boot-resources create name="scgp-rocky-9.2" title="Rocky 9.2" architecture="amd64/generic" filetype="ddraw" content@="scgp-rocky-9.2-23q2-charter.iso" sha256="4349275b0c17adce75a4dd62efe39ba3a947db79c48ac1b8b69c84da16501969" bytesize="2056093696"
+
+Press [Enter/Return] to run this command :
+```
+
+
+#### Deploying Custom Image
+
+WORK-IN-PROGRESS
+
 
 ## All-in-One Deployment Post-Installation Steps
 
