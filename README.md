@@ -216,19 +216,21 @@ Metrics for the MAAS environment as well as log collection for the environment (
 
 ### Packer Image Build Host
 
-This is a custom-built host that has all dependencies installed for creating custom MAAS images via Packer.
+
 <div style="font-size:0.7em;line-height:1.5em;padding:1em 1em 1em 1em;border-style:dotted;border-width:1px;color:#808080;">
 
-<b>NOTE: This host was not created in VMWare, but rather via MAAS using one of the PoC Cisco C220-M6 Devices.</b>
+This is a custom-built host that has all dependencies installed for creating custom MAAS images via Packer.
+
+NOTE: This host was not created in VMWare, but rather via MAAS using one of the PoC Cisco C220-M6 Devices.
 <br>
-<li>The host was provisoned with Ubuntu 22.04 with the 'libvirt' option selected prior to deployment.</li>
-<li>This resulted in a host capable of running KVM virtual machines which are required by the Packer build process.</li>
-<br>
-This host is accessible via SSH only at:  
+<li>The host was provisoned with Ubuntu 22.04 with the 'libvirt' option selected prior to deployment.<br>
+<li>This resulted in a host capable of running KVM virtual machines which are required by the Packer build process.<br>
+<li>This host is accessible via SSH only at:  
 <a href=ssh://ubuntu:ubuntu@172.22.31.150>ssh://ubuntu:ubuntu@172.22.31.150</a>
-<br>
-The Packer-MAAS Git Repository (which is included as a submodule in this repository for convenience) has been added to the MaaS-Packer server at <b>/opt/packer-maas</b>
+<br><br>
+The <a href=https://github.com/canonical/packer-maas>Packer-MAAS Git Repository</a> is included as a submodule in this repository for convenience at <a href=file:///packer-maas>./packer-maas</a>  and has been added to the MaaS-Packer server at <a href=file:///opt/packer-maas>/opt/packer-maas</a>
 </div>
+
 
 #### [MAAS-Packer] VM Host Access
 
