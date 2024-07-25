@@ -13,59 +13,57 @@
     path: "{{ o11y_agent_dir }}"
     state: "{{ 'directory' if o11y_enable else 'absent' }}"
     mode: "0644"
-  loop: "{{ o11y_grafana_agent_dirs }}"
+  loop: "{{ o11y_alloy_dirs }}"
   loop_control:
     loop_var: o11y_agent_dir
 
-- name: Install unzip
-  ansible.builtin.apt:
-    name: unzip
+- name: Add Alloy Repo
+  ansible.builtin.deb822_repository:
+  args: "{{ item }}"
+  loop: "{{ o11y_alloy_repo }}"
+
+- name: Install Grafana Alloy
+  ansible.builtin.package:
+    name: "{{ alloy_pkg }}"
     state: present
-
-- name: Download and unzip grafana agent
-  ansible.builtin.unarchive:
-    src: "{{ grafana_agent_pkg }}"
-    dest: "{{ o11y_grafana_agent_dir }}"
-    remote_src: true
-  when: o11y_enable
-
-- name: Make agent executable
-  ansible.builtin.file:
-    path: "{{ o11y_grafana_agent_dir }}/grafana-agent-linux-{{ ubuntu_arch }}"
-    mode: a+x
   when: o11y_enable
 
 - name: Creating a service file
   ansible.builtin.copy:
-    dest: "{{ o11y_grafana_agent_unit }}"
+    dest: "{{ o11y_alloy_unit }}"
     mode: "0644"
     content: |
       [Unit]
-      Description=Grafana-agent Service
+      Description=Grafana Alloy  Service
       Requires=network.target
       After=network.target
       [Service]
       Type=simple
-      ExecStart={{ o11y_grafana_agent_dir }}/grafana-agent-linux-{{ ubuntu_arch }} -config.file={{ o11y_grafana_agent_dir }}/agent.yaml
+      ExecStart=/usr/bin/alloy run --storage.path {{ o11y_alloy_data_dir }}  --config.format alloy {{ o11y_alloy_data_dir }}
       Restart=on-abnormal
       [Install]
       WantedBy=multi-user.target
   when: o11y_enable
 
-- name: Agent configuration
+- name: Agent configuration for MAAS < 3.5
   ansible.builtin.template:
     src: grafana-agent.yaml.j2
-    dest: "{{ o11y_grafana_agent_dir }}/agent.yaml"
+    dest: "{{ o11y_alloy_dir }}/agent.yaml"
     mode: "0644"
   when: o11y_enable and maas_version is version("3.5",'<')
   notify:
-    - Start grafana agent
+    - Convert Agent Config
 
 - name: Agent configuration for MAAS 3.5
   ansible.builtin.template:
-    src: agent-{{ maas_installation_type }}.yaml.j2
-    dest: "{{ o11y_grafana_agent_dir }}/agent.yaml"
+    src: grafana-agent.yaml.j2
+    dest: "{{ o11y_alloy_dir }}/agent.yaml"
     mode: "0644"
   when: o11y_enable and maas_version is version("3.5",'>=')
   notify:
-    - Start grafana agent
+    - Convert Agent Config
+
+- name: Flush Handlers
+  ansible.builtin.meta:
+    free_form: flush_handlers
+  when: o11y_enable

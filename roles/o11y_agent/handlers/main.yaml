@@ -1,5 +1,13 @@
 ---
-- name: Start grafana agent
+- name: Convert Agent Config
+  ansible.builtin.shell:
+    cmd: /usr/bin/alloy convert -r /opt/alloy/report -f static -o /opt/alloy/alloy.config /opt/alloy/agent.yaml
+    creates: /opt/alloy/alloy.config
+    executable: /bin/bash
+  notify:
+    - Start Alloy
+
+- name: Start Alloy
   ansible.builtin.systemd:
     name: telemetry
     enabled: true
