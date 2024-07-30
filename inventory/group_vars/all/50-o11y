@@ -10,6 +10,7 @@ o11y_enabled_roles:
   - maas_region_controller
   - maas_rack_controller
 
+o11y_alloy_bin: /usr/bin/alloy
 o11y_alloy_dir: /opt/alloy
 o11y_alloy_data_dir: "{{ o11y_alloy_dir }}/data-alloy"
 o11y_alloy_config: "{{ o11y_alloy_dir }}/config.alloy"
@@ -21,9 +22,6 @@ o11y_alloy_dirs:
   - "{{ o11y_alloy_dir }}"
   - "{{ o11y_alloy_data_dir }}"
 
-  # - "{{ o11y_alloy_wal_dir }}"
-  # - "{{ o11y_alloy_pos_dir }}"
-
 
 o11y_alloy_repo:
   - name: alloy
@@ -34,6 +32,42 @@ o11y_alloy_repo:
       - main
     signed_by: https://apt.grafana.com/gpg.key
 
+o11y_alloy_files:
+  - dest: /etc/default/alloy
+    mode: "0644"
+    owner: root
+    group: root
+    content: |
+      ## Path:
+      ## Description: Grafana Alloy settings
+      ## Type:        string
+      ## Default:     ""
+      ## ServiceRestart: alloy
+      #
+      # Command line options for Alloy.
+      #
+      # The configuration file holding the Alloy config.
+      CONFIG_FILE="{{ o11y_alloy_config }}"
+      # User-defined arguments to pass to the run command.
+      CUSTOM_ARGS="--storage.path={{ o11y_alloy_data_dir }}/ --server.http.listen-addr=0.0.0.0:12345"
+      # Restart on system upgrade. Defaults to true.
+      RESTART_ON_UPGRADE=true
+  - dest: "{{ o11y_alloy_unit }}"
+    mode: "0644"
+    owner: root
+    group: root
+    content: |
+      [Unit]
+      Description=Grafana Alloy Service
+      Requires=network.target
+      After=network.target
+      [Service]
+      Type=simple
+      EnvironmentFile=/etc/default/alloy
+      ExecStart=/usr/bin/alloy run $CUSTOM_ARGS $CONFIG_FILE
+      Restart=on-abnormal
+      [Install]
+      WantedBy=multi-user.target
 alloy_pkg: alloy
 # alloy_pkg: "https://github.com/grafana/agent/releases/download/v{{'0.37.4' if maas_version is version('3.5', '>=') else '0.32.1'}}/grafana-agent-linux-{{ ubuntu_arch }}.zip"
 

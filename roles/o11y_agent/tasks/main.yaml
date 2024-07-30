@@ -16,54 +16,66 @@
   loop: "{{ o11y_alloy_dirs }}"
   loop_control:
     loop_var: o11y_agent_dir
+  when:
+    - o11y_enable
 
 - name: Add Alloy Repo
-  ansible.builtin.deb822_repository:
+  ansible.builtin.deb822_repository: # noqa yaml[empty-values]
   args: "{{ item }}"
   loop: "{{ o11y_alloy_repo }}"
+  when:
+    - o11y_enable
 
 - name: Install Grafana Alloy
-  ansible.builtin.package:
+  ansible.builtin.apt:
     name: "{{ alloy_pkg }}"
     state: present
-  when: o11y_enable
+    update_cache: true
+  when:
+    - o11y_enable
 
-- name: Creating a service file
-  ansible.builtin.copy:
-    dest: "{{ o11y_alloy_unit }}"
-    mode: "0644"
-    content: |
-      [Unit]
-      Description=Grafana Alloy  Service
-      Requires=network.target
-      After=network.target
-      [Service]
-      Type=simple
-      ExecStart=/usr/bin/alloy run --storage.path {{ o11y_alloy_data_dir }}  --config.format alloy {{ o11y_alloy_data_dir }}
-      Restart=on-abnormal
-      [Install]
-      WantedBy=multi-user.target
-  when: o11y_enable
-
-- name: Agent configuration for MAAS < 3.5
-  ansible.builtin.template:
-    src: grafana-agent.yaml.j2
-    dest: "{{ o11y_alloy_dir }}/agent.yaml"
-    mode: "0644"
-  when: o11y_enable and maas_version is version("3.5",'<')
-  notify:
-    - Convert Agent Config
+- name: Generate Alloy systemd config and service files
+  ansible.builtin.copy: # noqa yaml[empty-values]
+  args: "{{ item }}"
+  loop: "{{ o11y_alloy_files }}"
+  when:
+    - o11y_enable
 
 - name: Agent configuration for MAAS 3.5
   ansible.builtin.template:
     src: grafana-agent.yaml.j2
-    dest: "{{ o11y_alloy_dir }}/agent.yaml"
-    mode: "0644"
-  when: o11y_enable and maas_version is version("3.5",'>=')
-  notify:
-    - Convert Agent Config
+    dest: "{{ o11y_alloy_dir }}/grafana-agent.yaml"
+    mode: "0777"
+  when: o11y_enable
+  register: grafana_agent_config
 
-- name: Flush Handlers
-  ansible.builtin.meta:
-    free_form: flush_handlers
+- name: Convert Agent Config # noqa no-handler
+  ansible.builtin.shell:
+    cmd: "{{ o11y_alloy_bin }} convert --source-format=static --bypass-errors --report={{ o11y_alloy_dir }}/report --output={{ o11y_alloy_config }} {{ o11y_alloy_dir }}/grafana-agent.yaml"
+    creates: "{{ o11y_alloy_config }}"
+    executable: /bin/bash
+  when:
+    - grafana_agent_config is changed
+  register: grafana_alloy_config
+
+
+- name: Update 'protocol' value in Alloy config # noqa no-handler
+  ansible.builtin.lineinfile:
+    path: "{{ o11y_alloy_config }}"
+    regexp: '^(\s+protocol\s+=)\s"".*?$' # noqa yaml[quoted-strings]
+    line: '\1 "tcp"' # noqa yaml[quoted-strings]
+    backrefs: true
+    mode: "0644"
+    owner: root
+    group: root
+  when:
+    - grafana_alloy_config is changed
+  register: protocol_update
+
+- name: Start or Restart Alloy
+  ansible.builtin.systemd:
+    name: telemetry
+    enabled: true
+    state: restarted
+    daemon-reload: true
   when: o11y_enable

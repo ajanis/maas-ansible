@@ -1,15 +1,8 @@
 ---
 - name: Convert Agent Config
-  ansible.builtin.shell:
-    cmd: /usr/bin/alloy convert -r /opt/alloy/report -f static -o /opt/alloy/alloy.config /opt/alloy/agent.yaml
-    creates: /opt/alloy/alloy.config
-    executable: /bin/bash
-  notify:
-    - Start Alloy
+  ansible.builtin.set_fact:
+    build_alloy_config: true
 
-- name: Start Alloy
-  ansible.builtin.systemd:
-    name: telemetry
-    enabled: true
-    state: restarted
-    daemon-reload: true
+- name: Restart Alloy
+  ansible.builtin.set_fact:
+    restart_alloy: true
