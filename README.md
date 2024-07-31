@@ -117,7 +117,7 @@ remotely for you.
 ### MAAS Proof-Of-Concept
 
 #### PoC UI
-- VM Hostname: `maas-poc-reg01`
+- VM Hostname: `maas-poc-aio01`
 - VM IP: `44.10.4.101/24`
 - Dashboard: `http://44.10.4.101:5240/MAAS/`
 
