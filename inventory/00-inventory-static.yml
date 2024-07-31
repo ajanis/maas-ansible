@@ -58,7 +58,7 @@ all:
   children:
     maas_region_controller:
       hosts:
-        maas-poc-reg01:
+        maas-poc-aio01:
           ansible_host: 44.10.4.101
           ansible_user: ajanis
         # maas-region01:
@@ -67,21 +67,21 @@ all:
 
     maas_rack_controller:
       hosts:
-        maas-poc-reg01: {}
+        maas-poc-aio01: {}
       # maas-region01:
       # maas-rack01:
       # maas-rack02:
 
     maas_postgres:
       hosts:
-        maas-poc-reg01: {}
+        maas-poc-aio01: {}
       # maas-pg01:
       # maas-pg02:
       # maas-pg03:
 
     maas_postgres_primary:
       hosts:
-        maas-poc-reg01: {}
+        maas-poc-aio01: {}
 
     # maas_proxy:
     #   hosts:
