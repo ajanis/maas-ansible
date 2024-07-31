@@ -11,8 +11,8 @@ o11y_enabled_roles:
   - maas_rack_controller
 
 o11y_alloy_bin: /usr/bin/alloy
-o11y_alloy_dir: /opt/alloy
-o11y_alloy_data_dir: "{{ o11y_alloy_dir }}/data-alloy"
+o11y_alloy_dir: "/opt/alloy"
+o11y_alloy_data_dir: "{{ o11y_alloy_dir }}/data"
 o11y_alloy_config: "{{ o11y_alloy_dir }}/config.alloy"
 o11y_grafana_agent_wal_dir: "/var/lib/grafana-agent/wal"
 o11y_grafana_agent_pos_dir: "/var/lib/grafana-agent/positions"
@@ -45,11 +45,10 @@ o11y_alloy_files:
       ## ServiceRestart: alloy
       #
       # Command line options for Alloy.
-      #
       # The configuration file holding the Alloy config.
       CONFIG_FILE="{{ o11y_alloy_config }}"
       # User-defined arguments to pass to the run command.
-      CUSTOM_ARGS="--storage.path={{ o11y_alloy_data_dir }}/ --server.http.listen-addr=0.0.0.0:12345"
+      CUSTOM_ARGS="--server.http.listen-addr=0.0.0.0:12345"
       # Restart on system upgrade. Defaults to true.
       RESTART_ON_UPGRADE=true
   - dest: "{{ o11y_alloy_unit }}"
@@ -58,16 +57,26 @@ o11y_alloy_files:
     group: root
     content: |
       [Unit]
-      Description=Grafana Alloy Service
-      Requires=network.target
-      After=network.target
+      Description= Vendor-agnostic OpenTelemetry Collector distribution with programmable pipelines
+      Documentation=https://grafana.com/docs/alloy
+      Wants=network-online.target
+      After=network-online.target
+
       [Service]
-      Type=simple
+      Restart=always
+      User=root
+      Environment=HOSTNAME=%H
+      Environment=ALLOY_DEPLOY_MODE=deb
       EnvironmentFile=/etc/default/alloy
-      ExecStart=/usr/bin/alloy run $CUSTOM_ARGS $CONFIG_FILE
-      Restart=on-abnormal
+      WorkingDirectory={{ o11y_alloy_dir }}
+      ExecStart=/usr/bin/alloy run $CUSTOM_ARGS --storage.path={{ o11y_alloy_data_dir }} $CONFIG_FILE
+      ExecReload=/usr/bin/env kill -HUP $MAINPID
+      TimeoutStopSec=20s
+      SendSIGKILL=no
+
       [Install]
       WantedBy=multi-user.target
+
 alloy_pkg: alloy
 # alloy_pkg: "https://github.com/grafana/agent/releases/download/v{{'0.37.4' if maas_version is version('3.5', '>=') else '0.32.1'}}/grafana-agent-linux-{{ ubuntu_arch }}.zip"
 

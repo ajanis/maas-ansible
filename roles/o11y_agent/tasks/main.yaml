@@ -51,7 +51,7 @@
 
 - name: Convert Agent Config # noqa no-handler
   ansible.builtin.shell:
-    cmd: "{{ o11y_alloy_bin }} convert --source-format=static --bypass-errors --report={{ o11y_alloy_dir }}/report --output={{ o11y_alloy_config }} {{ o11y_alloy_dir }}/grafana-agent.yaml"
+    cmd: "{{ o11y_alloy_bin }} convert --source-format=static --bypass-errors --report={{ o11y_alloy_dir }}/report --output={{ o11y_alloy_config }} {{ o11y_alloy_dir }}/grafana-agent.yaml" # noqa yaml[line-le]
     creates: "{{ o11y_alloy_config }}"
     executable: /bin/bash
   when:
