@@ -29,6 +29,9 @@ COPY --chown="${USER}" rcfiles/.zshrc "${HOME}/.zshrc"
 COPY --chown="${USER}" rcfiles/.p10k.zsh "${HOME}/.p10k.zsh"
 COPY --chown="${USER}" pipfiles/ansible.txt "/tmp/ansible.txt"
 COPY --chown="${USER}" pipfiles/requirements.txt "/tmp/requirements.txt"
+COPY --chown="${USER}" pkgs/lsd-musl_1.1.2_amd64.deb "/tmp/lsd-musl_1.1.2_amd64.deb"
+
+RUN DEBIAN_FRONTEND=noninteractive sudo apt -y install "/tmp/lsd-musl_1.1.2_amd64.deb"
 RUN curl -S https://pyenv.run | bash \
     && ${PYENV_ROOT}/bin/pyenv install ${PYTHON_VERSION} \
     && ${PYENV_ROOT}/bin/pyenv global ${PYTHON_VERSION} \
