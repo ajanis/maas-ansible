@@ -1,5 +1,5 @@
 {
-  "ansible.python.interpreterPath": "/home/vscode/.pyenv/versions/3.12.3/bin/python",
+  "ansible.python.interpreterPath": "/home/vscode/.pyenv/versions/3.12.4/bin/python",
   "ansible.ansible.path": "ansible",
   "ansible.ansibleNavigator.path": "ansible-navigator",
   "ansible.validation.lint.path": "ansible-lint",
@@ -10,4 +10,5 @@
   },
   "ansible.lightspeed.suggestions.enabled": true,
   "ansible.ansible.reuseTerminal": true,
+  "a-file-icon-vscode.folderTheme": "specific",
 }

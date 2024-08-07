@@ -35,6 +35,7 @@ fi
 # Path to your oh-my-zsh installation.
 export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -126,3 +127,11 @@ sudo chown -R vscode /dc/shellhistory
 function toggle-right-prompt() { p10k display '*/right'=hide,show; }
 zle -N toggle-right-prompt
 bindkey '^P' toggle-right-prompt
+alias ls="lsd"
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+export HISTFILE=/dc/shellhistory/.zsh_history
+export PROMPT_COMMAND='history -a'
+sudo chown -R vscode /dc/shellhistory

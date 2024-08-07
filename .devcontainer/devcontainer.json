@@ -87,7 +87,10 @@
         "timonwong.shellcheck",
         "mads-hartmann.bash-ide-vscode",
         "chouzz.vscode-better-align",
-        "fabiospampinato.vscode-bump"
+        "fabiospampinato.vscode-bump",
+        "daniloprevides.tasker",
+        "dbankier.vscode-quick-select",
+        "donjayamanne.python-environment-manager"
       ],
       // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
       "settings": {

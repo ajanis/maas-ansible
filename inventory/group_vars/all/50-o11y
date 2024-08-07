@@ -10,17 +10,75 @@ o11y_enabled_roles:
   - maas_region_controller
   - maas_rack_controller
 
-o11y_grafana_agent_dir: "/opt/grafana-agent"
+o11y_alloy_bin: /usr/bin/alloy
+o11y_alloy_dir: "/opt/alloy"
+o11y_alloy_data_dir: "{{ o11y_alloy_dir }}/data"
+o11y_alloy_config: "{{ o11y_alloy_dir }}/config.alloy"
 o11y_grafana_agent_wal_dir: "/var/lib/grafana-agent/wal"
 o11y_grafana_agent_pos_dir: "/var/lib/grafana-agent/positions"
-o11y_grafana_agent_unit: "/etc/systemd/system/telemetry.service"
+o11y_alloy_unit: "/etc/systemd/system/telemetry.service"
 
-o11y_grafana_agent_dirs:
-  - "{{ o11y_grafana_agent_dir }}"
-  - "{{ o11y_grafana_agent_wal_dir }}"
-  - "{{ o11y_grafana_agent_pos_dir }}"
+o11y_alloy_dirs:
+  - "{{ o11y_alloy_dir }}"
+  - "{{ o11y_alloy_data_dir }}"
 
-grafana_agent_pkg: "https://github.com/grafana/agent/releases/download/v{{'0.37.4' if maas_version is version('3.5', '>=') else '0.32.1'}}/grafana-agent-linux-{{ ubuntu_arch }}.zip"
+
+o11y_alloy_repo:
+  - name: alloy
+    types: deb
+    uris: https://apt.grafana.com
+    suites: stable
+    components:
+      - main
+    signed_by: https://apt.grafana.com/gpg.key
+
+o11y_alloy_files:
+  - dest: /etc/default/alloy
+    mode: "0644"
+    owner: root
+    group: root
+    content: |
+      ## Path:
+      ## Description: Grafana Alloy settings
+      ## Type:        string
+      ## Default:     ""
+      ## ServiceRestart: alloy
+      #
+      # Command line options for Alloy.
+      # The configuration file holding the Alloy config.
+      CONFIG_FILE="{{ o11y_alloy_config }}"
+      # User-defined arguments to pass to the run command.
+      CUSTOM_ARGS="--server.http.listen-addr=0.0.0.0:12345"
+      # Restart on system upgrade. Defaults to true.
+      RESTART_ON_UPGRADE=true
+  - dest: "{{ o11y_alloy_unit }}"
+    mode: "0644"
+    owner: root
+    group: root
+    content: |
+      [Unit]
+      Description= Vendor-agnostic OpenTelemetry Collector distribution with programmable pipelines
+      Documentation=https://grafana.com/docs/alloy
+      Wants=network-online.target
+      After=network-online.target
+
+      [Service]
+      Restart=always
+      User=root
+      Environment=HOSTNAME=%H
+      Environment=ALLOY_DEPLOY_MODE=deb
+      EnvironmentFile=/etc/default/alloy
+      WorkingDirectory={{ o11y_alloy_dir }}
+      ExecStart=/usr/bin/alloy run $CUSTOM_ARGS --storage.path={{ o11y_alloy_data_dir }} $CONFIG_FILE
+      ExecReload=/usr/bin/env kill -HUP $MAINPID
+      TimeoutStopSec=20s
+      SendSIGKILL=no
+
+      [Install]
+      WantedBy=multi-user.target
+
+alloy_pkg: alloy
+# alloy_pkg: "https://github.com/grafana/agent/releases/download/v{{'0.37.4' if maas_version is version('3.5', '>=') else '0.32.1'}}/grafana-agent-linux-{{ ubuntu_arch }}.zip"
 
 o11y_postgres_exporter_dir: "/opt/postgres-exporter"
 pg_exp_pkg: "https://github.com/prometheus-community/postgres_exporter/releases/download/v0.11.1/postgres_exporter-0.11.1.linux-{{ ubuntu_arch }}.tar.gz"

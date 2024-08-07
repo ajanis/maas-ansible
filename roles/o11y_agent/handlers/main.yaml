@@ -1,7 +1,8 @@
 ---
-- name: Start grafana agent
-  ansible.builtin.systemd:
-    name: telemetry
-    enabled: true
-    state: restarted
-    daemon-reload: true
+- name: Convert Agent Config
+  ansible.builtin.set_fact:
+    build_alloy_config: true
+
+- name: Restart Alloy
+  ansible.builtin.set_fact:
+    restart_alloy: true

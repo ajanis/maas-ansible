@@ -10,3 +10,6 @@
 [submodule "maas-performance"]
 	path = maas-performance
 	url = https://git.launchpad.net/~maas-committers/maas/+git/maas-performance
+[submodule "python-libmaas"]
+	path = python-libmaas
+	url = https://github.com/canonical/python-libmaas.git

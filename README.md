@@ -4,14 +4,15 @@ MAAS (Metal as a Service) is a cloud platform for managing bare metal servers an
 
 It creates a single point of control for scalable automation, reconfiguration, and reliability, of networks, machines and OS images.
 
-Our primary use-cases will include:
+MAAS is designed to be cost-efficient, easy for the end-user to operate, highly-available and easy to scale, and to offer the end-user a rich set of tools for quick use or advanced integrations.
+
+The primary goals of our MAAS Deployment are:
 
 - Managing the lifecycle of physical hardware via traditional PXE network booting with modernized/improved useability.  Users may configure systems via GUI, CLI, API, Libraries and config-management modules (i.e.: Ansible), webhooks etc.  Additionally, a full suite of metrics and logging for the MAAS environment itself and deployed machines is available.
 
+
 - Enabling  `ZTP` (Zero-Touch Provisioning) / `LTP` (Low-Touch Provisioning) for critical systems or platforms that may take 30 minutes or more to deploy and configure via traditional methods.
 
-MAAS is designed to be cost-efficient, easy for the end-user to operate, highly-available and easy to scale, and to offer the end-user a rich set of tools for quick use or advanced integrations.
-The primary goals of our MAAS Deployment are:
 
 <div style="font-size:0.7em;line-height:1.5em;padding:1em 1em 1em 1em;border-style:dotted;border-width:1px;color:#808080;">
 As noted, our focus shall be bare-metal management and ZTP/LTP  However,  I want to quickly mention that MAAS also has functionality to build and manage the lifecycle of <a href=https://linux-kvm.org/page/Main_Page>KVM</a> virtual machines or <a href=https://linuxcontainers.org/lxc/introduction>LXC</a> containers.  This functionality is enabled when provisioning a bare-metal server and enabling one of the virtualization options below.
@@ -25,7 +26,6 @@ Not to be confused with LXC, This option deploys the Canonical LXD environment o
 Please note that further information on the hypervisor / virtualization management features of MAAS are beyond the scope of both this project and documentation.  Please see the official [MAAS Docs](https://maas.io/docs) if you wish to learn more.
 </div>
 <br><br>
-
 
 ## Official Documentation
 
@@ -117,7 +117,7 @@ remotely for you.
 ### MAAS Proof-Of-Concept
 
 #### PoC UI
-- VM Hostname: `maas-poc-reg01`
+- VM Hostname: `maas-poc-aio01`
 - VM IP: `44.10.4.101/24`
 - Dashboard: `http://44.10.4.101:5240/MAAS/`
 
@@ -146,9 +146,9 @@ Metrics for the MAAS environment as well as log collection for the environment (
 - MAAS Relay: `Fabric0 Untagged -> Fabric-77 Untagged`
 
 #### Cisco C220M6 Switch Pair
+- lfs81s1 : `10.240.72.198`
+- lfs82s1 : `10.240.72.199`
 
-- lfs11s3 : `10.240.72.173`
-- lfs12s3 :
 
 #### Cisco C220M6 DHCP Helper
 
@@ -199,8 +199,8 @@ Metrics for the MAAS environment as well as log collection for the environment (
 
 #### Dell R7525 Switch Pair
 
-- lfs81s1 : `10.240.72.198`
-- lfs82s1 : `10.240.72.199`
+- lfs11s3 : `10.240.72.173`
+- lfs12s3 : `10.240.72.174`
 
 #### Dell R7525 DHCP Helper
 
@@ -213,6 +213,114 @@ Metrics for the MAAS environment as well as log collection for the environment (
 #### [SANDBOX] HTTP Console
 
 - https://ctecco01-tnsdcvcsa01.cloud.spoc.charterlab.com/ui/webconsole.html?vmId=vm-2045452&vmName=maas-poc-aio01&numMksConnections=0&serverGuid=e78e7661-7e60-4d6c-9a12-86ebfeaf067e&locale=en-US
+
+### Packer Image Build Host
+
+
+<div style="font-size:0.7em;line-height:1.5em;padding:1em 1em 1em 1em;border-style:dotted;border-width:1px;color:#808080;">
+
+This is a custom-built host that has all dependencies installed for creating custom MAAS images via Packer.
+
+NOTE: This host was not created in VMWare, but rather via MAAS using one of the PoC Cisco C220-M6 Devices.
+<br>
+<li>The host was provisoned with Ubuntu 22.04 with the 'libvirt' option selected prior to deployment.<br>
+<li>This resulted in a host capable of running KVM virtual machines which are required by the Packer build process.<br>
+<li>This host is accessible via SSH only at:  
+<a href=ssh://ubuntu:ubuntu@172.22.31.150>ssh://ubuntu:ubuntu@172.22.31.150</a>
+<br><br>
+The <a href=https://github.com/canonical/packer-maas>Packer-MAAS Git Repository</a> is included as a submodule in this repository for convenience at <a href=file:///packer-maas>./packer-maas</a>  and has been added to the MaaS-Packer server at <a href=file:///opt/packer-maas>/opt/packer-maas</a>
+</div>
+
+
+#### [MAAS-Packer] VM Host Access
+
+- Host IP: `172.22.31.150`
+- SSH User: `ubuntu`
+- SSH Password: `ubuntu`
+
+
+#### Packer-MAAS Documentation
+Official documentation for Packer+MAAS can be found at [Customizing Images](https://maas.io/docs/how-to-customise-images)
+
+Documentation for custom images should be created any time a new image type or build process is configured.
+
+* Harmonic Documentation: [packer-maas/harmonic/README.md](packer-maas/harmonic/README.md)
+
+#### Packer Image Build Requirements
+
+- QEMU/KVM/Libvirt libraries and utilities
+- Utilities to manipulate image sqauashfs filessystem
+- Latest Packer release
+- Templates for creating MAAS images via Packer
+- Misc (See documentation)
+
+#### Packer-MAAS Repository 
+The maas-packer repository (complete with build-templates for most operating systems) is located at `/opt/packer-maas`
+
+
+#### Image Creation Example
+
+ - See README files in each OS subdirectory.  
+
+#### Uploading Custom Image to MAAS
+
+Depending on the image source (ISO, tar.gz), the process for importing a custom image may vary.  However the basic command will look like this:
+
+```bash
+maas admin boot-resources create name='custom/harmonic-cos' title='Harmonic cOS' architecture='amd64/generic' filetype='ddraw' base_image='ubuntu/jammy' content@='APOLLO_PLATFORM-release-3.21.3.0-7+auto15.iso' size='366399488' sha256='ce8518f4a424742bb4274374f72108060c13c256598f693be87c5d41027e4932'
+```
+
+This command contains 2 arguments that will be unique to any image upload.
+- size (of image in bytes)
+- sha256 (sha256 sum of image)
+
+The following script (modified slightly to accommodate different file titles) is executed at the end of the `harmonic os installer image` build process.  It will print the actual command/args required to import the created image file.
+
+This script has been modified to take a single argument, which should be an ISO file with a name format similar to: `scgp-rocky-9.2-23q2-charter.iso`
+
+```bash
+#!/bin/bash
+
+##########################################################################
+# gencmd.sh
+#
+# Generate the complete command that will copy a given image into MAAS.
+# Usage: $0 <image file>
+##########################################################################
+
+image="$1"
+name="$(sed -r 's/^(.*[0-9]\.[0-9]).*/\1/' < <(echo $image))"
+title="$(sed -r 's/^.+((:?\b[a-z]+)-[0-9]\.[0-9]).*$/\1/;s/-/ /;s/\b(.)/\u\1/g' < <(echo $image))"
+sha256="$(sha256sum ${image} | cut -d ' ' -f1)"
+bytesize="$(stat -c'%s' ${image})"
+
+cat <<EOF
+
+maas admin boot-resources create \
+name="${name}" title="${title}" \
+architecture="amd64/generic" filetype="ddraw" content@="${image}" \
+sha256="${sha256}" bytesize="${bytesize}" 
+
+EOF
+
+read -rp "Press [Enter/Return] to run this command : "
+
+maas admin boot-resources create name="${name}" title="${title}" architecture="amd64/generic" filetype="ddraw" content@="${image}" sha256="${sha256}" bytesize="${bytesize}"
+```
+
+Running the above script against the named ISO will print the following:
+```bash
+❯ ./gencmd.sh scgp-rocky-9.2-23q2-charter.iso
+
+maas admin boot-resources create name="scgp-rocky-9.2" title="Rocky 9.2" architecture="amd64/generic" filetype="ddraw" content@="scgp-rocky-9.2-23q2-charter.iso" sha256="4349275b0c17adce75a4dd62efe39ba3a947db79c48ac1b8b69c84da16501969" bytesize="2056093696"
+
+Press [Enter/Return] to run this command :
+```
+
+
+#### Deploying Custom Image
+
+WORK-IN-PROGRESS
 
 
 ## All-in-One Deployment Post-Installation Steps

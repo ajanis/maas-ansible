@@ -2,6 +2,8 @@
 # This playbook should deploy everything
 - name: Site playbook
   hosts: all
+  tags:
+    - always
   tasks:
     - name: Ensure required variables have been defined
       ansible.builtin.assert:
@@ -18,14 +20,6 @@
         fail_msg: "'{{ maas_version }}' is not a valid version number"
         that:
           - maas_version is regex('\d+\.\d+(\.\d+)?')
-
-    - name: Ensure o11y can be enabled
-      ansible.builtin.assert:
-        quiet: true
-        fail_msg: Prometheus or Loki endpoints must be defined
-        that:
-          - (o11y_prometheus_url|length > 0 or o11y_loki_url|length > 0)
-      when: o11y_enable
 
     - name: Define proxy environment if proxies given
       ansible.builtin.set_fact:
@@ -56,7 +50,6 @@
   hosts: maas_postgres
   roles:
     - role: maas_postgres
-    - role: o11y_agent
   become: true
   gather_facts: true
   tags:
@@ -114,7 +107,6 @@
   hosts: maas_region_controller
   roles:
     - role: maas_region_controller
-    - role: o11y_agent
   become: true
   gather_facts: true
   tags:
@@ -126,10 +118,27 @@
   hosts: maas_rack_controller
   roles:
     - role: maas_rack_controller
-    - role: o11y_agent
   become: true
   gather_facts: true
   tags:
     - maas_rack_controller
     - maas_controller
   environment: "{{ proxy_env }}"
+
+- name: Configure observability
+  hosts: maas_rack_controller, maas_region_controller, maas_postgres
+  become: true
+  gather_facts: true
+  tags:
+    - maas_o11y
+  environment: "{{ proxy_env }}"
+  pre_tasks:
+    - name: Ensure o11y can be enabled
+      ansible.builtin.assert:
+        quiet: true
+        fail_msg: Prometheus or Loki endpoints must be defined
+        that:
+          - (o11y_prometheus_url|length > 0 or o11y_loki_url|length > 0)
+      when: o11y_enable
+  roles:
+    - role: o11y_agent
