@@ -47,3 +47,4 @@ wrapt
 yamllint
 pytest-testinfra
 pytest-xdist
+python-libmaas
