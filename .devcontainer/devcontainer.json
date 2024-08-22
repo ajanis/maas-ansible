@@ -90,7 +90,8 @@
         "fabiospampinato.vscode-bump",
         "daniloprevides.tasker",
         "dbankier.vscode-quick-select",
-        "donjayamanne.python-environment-manager"
+        "donjayamanne.python-environment-manager",
+        "JFrog.jfrog-vscode-extension"
       ],
       // Machine specific settings that should be copied into the container. These are only copied when connecting to the container for the first time, rebuilding the container then triggers it again.
       "settings": {
