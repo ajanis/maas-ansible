@@ -8,3 +8,4 @@ maas_local
 #maas-loki-alert-rules
 .python-version
 /maas-docs/physical.md
+.dmypy.json
