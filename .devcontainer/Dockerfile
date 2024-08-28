@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:noble
+FROM mcr.microsoft.com/devcontainers/base:jammy
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG USER=vscode

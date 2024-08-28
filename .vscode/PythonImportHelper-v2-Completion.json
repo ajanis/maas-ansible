@@ -2190,5 +2190,167 @@
         "peekOfCode": "DATASOURCE = \"\"\"\\\ndatasource:\n  MAAS: {{consumer_key: {consumer_key}, metadata_url: '{url}',\n    token_key: {token_key}, token_secret: {token_secret}}}\n\"\"\"\ndef get_datasource(**kwargs):\n    \"\"\"Returns the format cloud-init datasource.\"\"\"\n    return DATASOURCE_LIST + DATASOURCE.format(**kwargs)\ndef load_config(path):\n    \"\"\"Loads the curtin config.\"\"\"",
         "detail": "packer-maas.centos6.curtin.finalize",
         "documentation": {}
+    },
+    {
+        "label": "read_json_file",
+        "kind": 2,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "def read_json_file(path):\n    try:\n        with open(path) as fd:\n            return json.load(fd)\n    except OSError as e:\n        sys.exit(f\"Failed to read {path}: {e}\")\n    except json.JSONDecodeError as e:\n        sys.exit(f\"Failed to parse {path}: {e}\")\n# Load the hardware from the json in the MAAS_RESOURCES_FILE\nhardware = read_json_file(os.environ['MAAS_RESOURCES_FILE'])",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "hardware",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "hardware = read_json_file(os.environ['MAAS_RESOURCES_FILE'])\n####\n#\n#  This is the primary datastructure (in json format) with\n# placeholders which are easily found and replaced below (DISK & MAX)\n#\n####\ncfg = '''{\n    \"layout\": {\n        \"DISK\": {",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "cfg",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "cfg = '''{\n    \"layout\": {\n        \"DISK\": {\n            \"type\": \"disk\",\n            \"ptable\": \"gpt\",\n            \"boot\": true,\n            \"partitions\": [\n                { \"name\": \"DISK1\", \"fs\": \"fat32\", \"size\": \"2G\", \"bootable\": true },\n                { \"name\": \"DISK2\", \"size\": \"MAX\" }\n            ]",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "disks",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "disks = hardware['resources']['storage']['disks']\n# Initialize a few variables so we have consistent values below\nprimary = ''\nprimaryId = 0\ndiskSize = 0\nindex=0\n# Iterate through all the disks defined for this machine\nfor disk in disks:\n    # skip virtual mounted drives from maas\n    if 'Virtual' in disk[\"model\"] or 'Virtual' in disk['device_id']:",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "primary",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "primary = ''\nprimaryId = 0\ndiskSize = 0\nindex=0\n# Iterate through all the disks defined for this machine\nfor disk in disks:\n    # skip virtual mounted drives from maas\n    if 'Virtual' in disk[\"model\"] or 'Virtual' in disk['device_id']:\n        continue\n    # find the PERC or DELLBOSS id to use...",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "primaryId",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "primaryId = 0\ndiskSize = 0\nindex=0\n# Iterate through all the disks defined for this machine\nfor disk in disks:\n    # skip virtual mounted drives from maas\n    if 'Virtual' in disk[\"model\"] or 'Virtual' in disk['device_id']:\n        continue\n    # find the PERC or DELLBOSS id to use...\n    if 'PERC' in disk[\"model\"] or 'DELLBOSS' in disk[\"model\"]:",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "diskSize",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "diskSize = 0\nindex=0\n# Iterate through all the disks defined for this machine\nfor disk in disks:\n    # skip virtual mounted drives from maas\n    if 'Virtual' in disk[\"model\"] or 'Virtual' in disk['device_id']:\n        continue\n    # find the PERC or DELLBOSS id to use...\n    if 'PERC' in disk[\"model\"] or 'DELLBOSS' in disk[\"model\"]:\n            primary = disk['id']",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "diskId",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "diskId = hardware[\"resources\"][\"storage\"][\"disks\"][primaryId][\"id\"]\n# Load layoutDetail from the above structure\nlayoutDetail = json.loads(cfg)\n# copy the DISK temporary structure over the top of the new diskId name\nlayoutDetail[\"layout\"][diskId] = layoutDetail[\"layout\"][\"DISK\"]\n# Now delete the DISK temporary structure\ndel layoutDetail[\"layout\"][\"DISK\"]\n####\n#\n#  Cleanup the structure details",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "layoutDetail",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "layoutDetail = json.loads(cfg)\n# copy the DISK temporary structure over the top of the new diskId name\nlayoutDetail[\"layout\"][diskId] = layoutDetail[\"layout\"][\"DISK\"]\n# Now delete the DISK temporary structure\ndel layoutDetail[\"layout\"][\"DISK\"]\n####\n#\n#  Cleanup the structure details\n#\n####",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "layoutDetail[\"layout\"][diskId]",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "layoutDetail[\"layout\"][diskId] = layoutDetail[\"layout\"][\"DISK\"]\n# Now delete the DISK temporary structure\ndel layoutDetail[\"layout\"][\"DISK\"]\n####\n#\n#  Cleanup the structure details\n#\n####\n# set the names and sizes on the partitions:\n# Note: the sizes are NOT based on 1024, but 1000.",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "mySize",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "mySize = ( diskSize - 2000000000 ) / 1000000000\nnum = 1\nfor p in layoutDetail[\"layout\"][diskId][\"partitions\"]:\n\tp[\"name\"] = diskId + str(num)\n\tnum += 1;\n\tif p[\"size\"] == \"MAX\":\n\t\tp[\"size\"] = str(int(mySize)) + \"G\"\n\t\tsavedP = p\n# The Members of the lvm\nlayoutDetail[\"layout\"][\"vg\"][\"members\"] = [ savedP[\"name\"] ]",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "num",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "num = 1\nfor p in layoutDetail[\"layout\"][diskId][\"partitions\"]:\n\tp[\"name\"] = diskId + str(num)\n\tnum += 1;\n\tif p[\"size\"] == \"MAX\":\n\t\tp[\"size\"] = str(int(mySize)) + \"G\"\n\t\tsavedP = p\n# The Members of the lvm\nlayoutDetail[\"layout\"][\"vg\"][\"members\"] = [ savedP[\"name\"] ]\n# last but not least - fix the one mount detail",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "\tp[\"name\"]",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "\tp[\"name\"] = diskId + str(num)\n\tnum += 1;\n\tif p[\"size\"] == \"MAX\":\n\t\tp[\"size\"] = str(int(mySize)) + \"G\"\n\t\tsavedP = p\n# The Members of the lvm\nlayoutDetail[\"layout\"][\"vg\"][\"members\"] = [ savedP[\"name\"] ]\n# last but not least - fix the one mount detail\nlayoutDetail[\"mounts\"][\"/boot/efi\"][\"device\"] = diskId + \"1\"\n####",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tp[\"size\"]",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "\t\tp[\"size\"] = str(int(mySize)) + \"G\"\n\t\tsavedP = p\n# The Members of the lvm\nlayoutDetail[\"layout\"][\"vg\"][\"members\"] = [ savedP[\"name\"] ]\n# last but not least - fix the one mount detail\nlayoutDetail[\"mounts\"][\"/boot/efi\"][\"device\"] = diskId + \"1\"\n####\n#\n#  Output\n#",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tsavedP",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "\t\tsavedP = p\n# The Members of the lvm\nlayoutDetail[\"layout\"][\"vg\"][\"members\"] = [ savedP[\"name\"] ]\n# last but not least - fix the one mount detail\nlayoutDetail[\"mounts\"][\"/boot/efi\"][\"device\"] = diskId + \"1\"\n####\n#\n#  Output\n#\n####",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "layoutDetail[\"layout\"][\"vg\"][\"members\"]",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "layoutDetail[\"layout\"][\"vg\"][\"members\"] = [ savedP[\"name\"] ]\n# last but not least - fix the one mount detail\nlayoutDetail[\"mounts\"][\"/boot/efi\"][\"device\"] = diskId + \"1\"\n####\n#\n#  Output\n#\n####\nhardware[\"storage-extra\"] = layoutDetail\nprint('Saving custom storage layout to ' + os.environ['MAAS_RESOURCES_FILE'])",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "layoutDetail[\"mounts\"][\"/boot/efi\"][\"device\"]",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "layoutDetail[\"mounts\"][\"/boot/efi\"][\"device\"] = diskId + \"1\"\n####\n#\n#  Output\n#\n####\nhardware[\"storage-extra\"] = layoutDetail\nprint('Saving custom storage layout to ' + os.environ['MAAS_RESOURCES_FILE'])\nprint(json.dumps(hardware))\nwith open(os.environ['MAAS_RESOURCES_FILE'], 'w') as fd:",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
+    },
+    {
+        "label": "hardware[\"storage-extra\"]",
+        "kind": 5,
+        "importPath": "packer-maas.harmonic.scratch.custom",
+        "description": "packer-maas.harmonic.scratch.custom",
+        "peekOfCode": "hardware[\"storage-extra\"] = layoutDetail\nprint('Saving custom storage layout to ' + os.environ['MAAS_RESOURCES_FILE'])\nprint(json.dumps(hardware))\nwith open(os.environ['MAAS_RESOURCES_FILE'], 'w') as fd:\n    json.dump(hardware, fd)\n```",
+        "detail": "packer-maas.harmonic.scratch.custom",
+        "documentation": {}
     }
 ]
